@@ -149,6 +149,15 @@ try {
   const search = (await call("/api/products?q=prisioneros")).value;
   assert.ok(search.products.some((p) => p.artist.includes("PRISIONEROS")));
   assert.equal((await call("/api/products?page=1.5")).status, 400);
+  assert.equal((await call("/api/products?q=" + "x".repeat(150))).status, 200);
+  assert.equal(
+    (
+      await call("/api/admin/orders?q=" + encodeURIComponent("á".repeat(100)), {
+        admin: true,
+      })
+    ).status,
+    200,
+  );
   ok("Search and pagination validation");
   const a = await product("PRECIO Y RESERVA", 3),
     b = await product("ULTIMA UNIDAD", 1);
@@ -354,6 +363,23 @@ try {
   assert.equal(imported.value.updated, 1);
   assert.equal((await get(a.id)).price, 17000);
   assert.equal((await get(b.id)).stock, 1);
+  assert.equal(
+    (
+      await call("/api/admin/import", {
+        method: "POST",
+        admin: true,
+        data: {
+          rows: Array.from({ length: 21 }, (_, i) => ({
+            id: "qa-limit-" + i,
+            price: 1000,
+            stock: 0,
+            version: 1,
+          })),
+        },
+      })
+    ).status,
+    400,
+  );
   ok("CSV import preserves concurrent inventory changes");
   const formula = await product('=HYPERLINK("bad")', 0);
   const exported = await call("/api/admin/export", { admin: true });

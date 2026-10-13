@@ -29,6 +29,7 @@ import {
 import { api } from "./api";
 import { Cover, Empty, Loading, Logo, Modal } from "./components";
 import {
+  IMPORT_BATCH_SIZE,
   displayTitle,
   money,
   statusName,
@@ -975,13 +976,13 @@ function InventoryImport({ onDone }: { onDone: (s: string) => void }) {
     let updated = 0,
       processed = 0;
     try {
-      for (let i = 0; i < rows.length; i += 100) {
+      for (let i = 0; i < rows.length; i += IMPORT_BATCH_SIZE) {
         const r = await api<{ updated: number }>("/api/admin/import", {
           method: "POST",
-          body: JSON.stringify({ rows: rows.slice(i, i + 100) }),
+          body: JSON.stringify({ rows: rows.slice(i, i + IMPORT_BATCH_SIZE) }),
         });
         updated += r.updated;
-        processed += Math.min(100, rows.length - i);
+        processed += Math.min(IMPORT_BATCH_SIZE, rows.length - i);
         setProgress(processed);
       }
       onDone(

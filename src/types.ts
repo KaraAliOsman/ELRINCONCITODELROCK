@@ -16,6 +16,8 @@ export interface Product {
   version: number;
   source?: string;
 }
+// Two D1 statements per row, within the Free plan's 50-query request limit.
+export const IMPORT_BATCH_SIZE = 20;
 export interface StoreSettings {
   address: string;
   city: string;

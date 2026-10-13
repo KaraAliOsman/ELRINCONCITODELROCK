@@ -1,4 +1,9 @@
-import { normal, type Product, type StoreSettings } from "../src/types";
+import {
+  normal,
+  IMPORT_BATCH_SIZE,
+  type Product,
+  type StoreSettings,
+} from "../src/types";
 import { timingSafeEqual } from "node:crypto";
 
 type AppEnv = Env & { ADMIN_PASSWORD: string; SESSION_SECRET: string };
@@ -16,6 +21,17 @@ const json = (data: unknown, status = 200, headers: HeadersInit = {}) =>
     headers: { "Cache-Control": "no-store", ...headers },
   });
 const enc = new TextEncoder();
+function likePattern(value: string) {
+  let prefix = "",
+    bytes = 0;
+  for (const character of value.replace(/[%_]/g, "")) {
+    const size = enc.encode(character).length;
+    if (bytes + size > 48) break;
+    prefix += character;
+    bytes += size;
+  }
+  return "%" + prefix + "%";
+}
 const publicColumns =
   "id,slug,artist,title,format,content,language,category,price,stock,image,description,featured,active,version";
 function text(v: unknown, max = 250) {
@@ -169,7 +185,7 @@ async function listProducts(url: URL, env: AppEnv, admin = false) {
   const q = normal(url.searchParams.get("q") || "").slice(0, 150);
   for (const word of q.split(" ").filter(Boolean).slice(0, 8)) {
     clauses.push("search_text LIKE ?");
-    bindings.push("%" + word + "%");
+    bindings.push(likePattern(word));
   }
   const fmt = url.searchParams.get("format");
   if (fmt === "vinilo" || fmt === "cd") {
@@ -783,7 +799,7 @@ async function api(req: Request, env: AppEnv, ctx: ExecutionContext) {
       }
       if (q) {
         clauses.push("(code LIKE ? OR customer_name LIKE ?)");
-        args.push("%" + q + "%", "%" + q + "%");
+        args.push(likePattern(q), likePattern(q));
       }
       const rows = await env.DB.prepare(
         "SELECT id,code,customer_name,delivery,subtotal,shipping_cost,status,payment_status,created_at,expires_at FROM orders WHERE " +
@@ -947,8 +963,15 @@ async function api(req: Request, env: AppEnv, ctx: ExecutionContext) {
     }
     if (path === "/api/admin/import" && method === "POST") {
       const b = await body(req);
-      if (!Array.isArray(b.rows) || b.rows.length > 100 || b.rows.length < 1)
-        throw new HttpError(400, "Importa entre 1 y 100 filas por lote.");
+      if (
+        !Array.isArray(b.rows) ||
+        b.rows.length > IMPORT_BATCH_SIZE ||
+        b.rows.length < 1
+      )
+        throw new HttpError(
+          400,
+          `Importa entre 1 y ${IMPORT_BATCH_SIZE} filas por lote.`,
+        );
       const statements: D1PreparedStatement[] = [];
       const unique = new Set<string>();
       for (const row of b.rows) {
