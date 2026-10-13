@@ -1,43 +1,26 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { X, Disc3, ArrowUpRight, Plus, Heart } from "lucide-react";
-import { displayTitle, money, type Product } from "./types";
+import { displayTitle, formatLabel, money, type Product } from "./types";
 
-export function Record({
-  className = "",
-  label = "EL RINCONCITO / DEL ROCK",
-}: {
-  className?: string;
-  label?: string;
-}) {
+export function Record({ className = "" }: { className?: string }) {
   return (
     <div className={"record " + className} aria-hidden="true">
       <div className="record-label">
-        <span>33⅓ RPM · CONCEPCIÓN</span>
-        <strong>
-          {label.split("/").map((s, i) => (
-            <span key={i}>{s}</span>
-          ))}
-        </strong>
+        <img src="/assets/logo.jpg" alt="" width="150" height="150" />
         <i />
-        <small>LADO A · BUENA MÚSICA</small>
       </div>
     </div>
   );
 }
 export function Logo() {
   return (
-    <span className="brand">
-      <span className="brand-disc">
-        <Disc3 size={40} strokeWidth={1.5} />
-      </span>
-      <span>
-        EL RINCONCITO
-        <br />
-        <b>
-          DEL ROCK<span className="brand-dot">.</span>
-        </b>
-      </span>
-    </span>
+    <img
+      className="brand"
+      src="/assets/logo.jpg"
+      alt="El Rinconcito del Rock"
+      width="150"
+      height="150"
+    />
   );
 }
 export function Modal({
@@ -55,12 +38,31 @@ export function Modal({
 }) {
   const ref = useRef<HTMLDialogElement>(null);
   const back = useRef<Element | null>(null);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [closing, setClosing] = useState(false);
+  const [keyboardOpen] = useState(
+    () => document.activeElement?.matches(":focus-visible") ?? false,
+  );
+  function close(immediate = false) {
+    if (
+      immediate ||
+      keyboardOpen ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      onClose();
+      return;
+    }
+    if (closing) return;
+    setClosing(true);
+    timer.current = setTimeout(onClose, 180);
+  }
   useEffect(() => {
     back.current = document.activeElement;
     ref.current?.showModal();
     const before = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
+      if (timer.current) clearTimeout(timer.current);
       document.body.style.overflow = before;
       if (back.current instanceof HTMLElement) back.current.focus();
     };
@@ -70,16 +72,21 @@ export function Modal({
       ref={ref}
       className={`modal ${drawer ? "drawer" : ""} ${wide ? "wide" : ""}`}
       aria-label={title}
-      onCancel={onClose}
+      data-closing={closing}
+      data-keyboard-open={keyboardOpen}
+      onCancel={(e) => {
+        e.preventDefault();
+        close(true);
+      }}
       onClick={(e) => {
-        if (e.target === e.currentTarget) onClose();
+        if (e.target === e.currentTarget) close(e.detail === 0);
       }}
     >
       <div className="modal-inner">
         <div className="modal-head">
           <span className="eyebrow">{title}</span>
           <button
-            onClick={onClose}
+            onClick={(e) => close(e.detail === 0)}
             aria-label="Cerrar ventana"
             className="icon-button"
           >
@@ -106,12 +113,12 @@ export function Cover({ p, eager = false }: { p: Product; eager?: boolean }) {
       onError={() => setFailed(true)}
     />
   ) : (
-    <div className={`sleeve sleeve-${Number(p.id.replace(/\D/g, "")) % 5}`}>
-      <span>{p.format === "vinilo" ? "LONG PLAY" : "COMPACT DISC"}</span>
+    <div className="sleeve">
+      <span>{p.format === "vinilo" ? "VINILO" : "CD"}</span>
       <Disc3 strokeWidth={0.6} />
       <strong>{displayTitle(p.artist)}</strong>
       <small>{displayTitle(p.title)}</small>
-      <span className="sleeve-caption">PORTADA ILUSTRATIVA · {p.content}</span>
+      <span className="sleeve-caption">SIN FOTO DEL EJEMPLAR</span>
     </div>
   );
 }
@@ -133,28 +140,22 @@ export function ProductCard({
   return (
     <article className="product-card">
       <div className="product-art">
-        <button
+        <a
           className="art-button"
-          onClick={() => onOpen(p)}
+          href={"/disco/" + p.slug}
+          onClick={(e) => {
+            if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+            e.preventDefault();
+            onOpen(p);
+          }}
           aria-label={`Ver ${displayTitle(p.title)} de ${displayTitle(p.artist)}`}
         >
           <Cover p={p} eager={eager} />
-          <span className="art-fallback">
-            <Disc3 />
-            <span>
-              {displayTitle(p.artist)}
-              <br />
-              {displayTitle(p.title)}
-            </span>
-          </span>
-        </button>
-        <span className="format-tag">
-          {p.content.replace(/\s/g, " ").toUpperCase()}
-        </span>
+        </a>
         <button
           className={`favorite-button ${favorite ? "saved" : ""}`}
           onClick={() => onFavorite(p)}
-          aria-label={`${favorite ? "Quitar" : "Guardar"} ${displayTitle(p.title)} en favoritos`}
+          aria-label={`${favorite ? "Quitar" : "Guardar"} ${displayTitle(p.title)} ${favorite ? "de" : "en"} favoritos`}
           aria-pressed={favorite}
         >
           <Heart size={17} fill={favorite ? "currentColor" : "none"} />
@@ -162,11 +163,20 @@ export function ProductCard({
         {p.stock === 0 && <span className="sold-out">Agotado</span>}
       </div>
       <div className="product-meta">
-        <div>
-          <p>{displayTitle(p.artist)}</p>
-          <button className="title-button" onClick={() => onOpen(p)}>
+        <div className="product-caption">
+          <span className="format-tag">{formatLabel(p)}</span>
+          <h3>{displayTitle(p.artist)}</h3>
+          <a
+            className="title-button"
+            href={"/disco/" + p.slug}
+            onClick={(e) => {
+              if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+              e.preventDefault();
+              onOpen(p);
+            }}
+          >
             {displayTitle(p.title)}
-          </button>
+          </a>
         </div>
         <div className="product-price">
           <strong>{money(p.price)}</strong>
@@ -180,9 +190,9 @@ export function ProductCard({
           </button>
         </div>
       </div>
-      {p.stock === 1 && (
-        <span className="last-copy">Última unidad disponible</span>
-      )}
+      <span className="last-copy" aria-hidden={p.stock !== 1}>
+        {p.stock === 1 ? "Queda 1" : "\u00a0"}
+      </span>
     </article>
   );
 }
@@ -203,7 +213,7 @@ export function Loading({ cards = false }: { cards?: boolean }) {
     </div>
   ) : (
     <div className="loading" role="status">
-      <Disc3 className="spin" /> Un momento, estamos revisando la batea.
+      <Disc3 className="spin" /> Cargando…
     </div>
   );
 }

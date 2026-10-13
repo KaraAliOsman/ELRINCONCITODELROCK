@@ -1,0 +1,18 @@
+[
+  {
+    "path": "/assets/covers/metallica-master-of-puppets.webp",
+    "artist": "Metallica",
+    "album": "Master of Puppets (Remastered)",
+    "source": "https://music.apple.com/us/album/master-of-puppets-remastered/1275600311?uo=4",
+    "verified": "2026-10-13",
+    "action": "corrected"
+  },
+  {
+    "path": "/assets/covers/los-tres-la-espada-y-la-pared.webp",
+    "artist": "Los Tres",
+    "album": "La Espada & la Pared",
+    "source": "https://music.apple.com/cl/album/la-espada-la-pared/682175019?uo=4",
+    "verified": "2026-10-13",
+    "action": "verified"
+  }
+]

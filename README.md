@@ -1,6 +1,6 @@
 # El Rinconcito del Rock
 
-Tienda operativa de vinilos y CDs en Concepción. Diseño propio inspirado en las bateas, fundas y carteles de una disquería: tipografía condensada, papel, tinta y rojo. React + Vite, API en Cloudflare Workers e inventario en D1.
+Tienda operativa de vinilos y CDs en Concepción. Diseño propio en blanco y negro, centrado en el logo oficial, las carátulas y la compra de discos. React + Vite, API en Cloudflare Workers e inventario en D1.
 
 **Tienda:** https://el-rinconcito-del-rock.aliosmankara111.workers.dev
 **Panel privado:** https://el-rinconcito-del-rock.aliosmankara111.workers.dev/admin
@@ -26,7 +26,7 @@ Datos verificados en [Instagram oficial](https://www.instagram.com/elrinconcitod
 
 Instagram es el contacto vigente verificado. El negocio anuncia entregas locales y envíos a Chile. No se publicaron teléfonos antiguos, courier, plazos ni tarifas sin verificar. El despacho se cotiza antes del pago. La duración inicial de reserva de 24 horas es configurable desde administración.
 
-Las 467 imágenes de productos son carátulas **de referencia**, nunca una afirmación sobre la edición o condición del ejemplar. Los otros títulos usan fundas ilustrativas. Ver [créditos](public/assets/CREDITS.md) y [fuentes de carátulas](data/artwork-credits.json). La tienda puede sustituirlas por fotos de sus ejemplares desde el panel.
+Las 467 imágenes de productos son carátulas **de referencia**, nunca una afirmación sobre la edición o condición del ejemplar. Los otros títulos muestran un marcador sin foto. Ver [créditos](public/assets/CREDITS.md) y [fuentes de carátulas](data/artwork-credits.json). La tienda puede sustituirlas por fotos de sus ejemplares desde el panel.
 
 ## Desarrollo
 

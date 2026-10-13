@@ -159,12 +159,8 @@ export default function Admin({ onExit, onStoreChange }: AdminProps) {
         </div>
         <form onSubmit={login}>
           <LockKeyhole size={31} strokeWidth={1.3} />
-          <p className="eyebrow">EL LADO DE ADENTRO</p>
-          <h1>
-            TU TIENDA.
-            <br />
-            AL DÍA<span>.</span>
-          </h1>
+          <p className="eyebrow">Acceso privado</p>
+          <h1>Administración</h1>
           <p>Acceso privado para gestionar discos, pedidos y ventas.</p>
           <label>
             Contraseña de administración
@@ -183,7 +179,7 @@ export default function Admin({ onExit, onStoreChange }: AdminProps) {
             </div>
           )}
           <button className="button red full" disabled={busy}>
-            {busy ? "Comprobando acceso…" : "Entrar al rincón"}
+            {busy ? "Comprobando acceso…" : "Ingresar"}
             <ArrowRight size={18} />
           </button>
           <small>
@@ -230,7 +226,7 @@ export default function Admin({ onExit, onStoreChange }: AdminProps) {
       </aside>
       <div className="admin-main">
         <header className="admin-header">
-          <span className="eyebrow">TU RINCÓN, BAJO CONTROL.</span>
+          <span className="eyebrow">El Rinconcito del Rock</span>
           <div>
             <span className="admin-online">
               <i /> SESIÓN PRIVADA
@@ -309,10 +305,7 @@ function Dashboard({
   const max = Math.max(1, ...data.sales.map((s) => s.revenue));
   return (
     <>
-      <PageHeader
-        eyebrow="VISTA GENERAL / HOY SUENA ASÍ"
-        title="La tienda al día"
-      />
+      <PageHeader eyebrow="Vista general" title="La tienda al día" />
       <div className="dashboard-stats">
         <div className="stat-card highlight">
           <ShoppingBag size={19} />
@@ -348,7 +341,7 @@ function Dashboard({
       <div className="dashboard-columns">
         <section className="admin-box">
           <div className="admin-box-head">
-            <h2>El ritmo de las ventas</h2>
+            <h2>Ventas</h2>
             <span>ÚLTIMOS 30 DÍAS</span>
           </div>
           {data.sales.length ? (
@@ -381,7 +374,7 @@ function Dashboard({
         </section>
         <section className="admin-box">
           <div className="admin-box-head">
-            <h2>Antes de abrir la batea</h2>
+            <h2>Gestión de la tienda</h2>
           </div>
           <div className="admin-task">
             <Package size={20} />
@@ -1715,7 +1708,7 @@ function Configuration({
     <>
       <PageHeader
         eyebrow="CONFIGURACIÓN / LO ESENCIAL"
-        title="El rincón a tu manera"
+        title="Configuración de la tienda"
       />
       {error && <p className="error">{error}</p>}
       {!data ? (

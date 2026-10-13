@@ -1105,8 +1105,9 @@ async function page(req: Request, env: AppEnv) {
       `<article class="ssr-product"><h1>${escapeHtml(p.artist)} — ${escapeHtml(p.title)}</h1><p>${escapeHtml(description)}</p></article>`,
     );
   }
-  if (path === "/tienda") title = "La batea · Catálogo real de vinilos y CDs";
-  if (path === "/nosotros") title = "Nuestro rincón · Disquería en Concepción";
+  if (path === "/tienda")
+    title = "Catálogo de vinilos y CDs · El Rinconcito del Rock";
+  if (path === "/nosotros") title = "La tienda · El Rinconcito del Rock";
   if (
     path.startsWith("/admin") ||
     path.startsWith("/pedido/") ||

@@ -70,6 +70,27 @@ export const money = (n: number) =>
     currency: "CLP",
     maximumFractionDigits: 0,
   }).format(n);
+export const formatLabel = (p: Pick<Product, "content">) => {
+  const value = p.content.toUpperCase().replace(/\s/g, "");
+  const labels: Record<string, string> = {
+    "1VIN": "Vinilo",
+    VIN: "Vinilo",
+    "1CD": "CD",
+    CD: "CD",
+    BOX: "Box",
+    "1CS": "Cassette",
+    "1BLURAY": "Blu-ray",
+  };
+  return (
+    labels[value] ||
+    value
+      .replace(/VIN/g, "LP")
+      .replace(/CDS/g, "CD")
+      .replace(/BLURAY/g, "Blu-ray")
+      .replace(/(\d)(LP|CD|DVD)/g, "$1 $2")
+      .replace(/\+/g, " + ")
+  );
+};
 export const normal = (s: string) =>
   s
     .normalize("NFD")
@@ -81,8 +102,20 @@ export const normal = (s: string) =>
     .trim();
 export const displayTitle = (s: string) =>
   s
+    .trim()
     .toLocaleLowerCase("es-CL")
-    .replace(/(^|\s|[(/])\p{L}/gu, (c) => c.toLocaleUpperCase("es-CL"));
+    .replace(/(^|\s|[(/])\p{L}/gu, (c) => c.toLocaleUpperCase("es-CL"))
+    .replace(
+      /\b(And|Of|To|For|A|An|In|On|At|The|With|From|El|La|Los|Las|De|Del|Y|En|Con)\b/g,
+      (word, _group: string, offset: number) =>
+        offset === 0 ? word : word.toLowerCase(),
+    )
+    .replace(
+      /\b(ac\s*\/\s*dc|r\.e\.m\.|abba|inxs|ufo|nofx|ep|lp|cd|dvd|mtv|ii|iii|iv|vi|vii|viii|ix)\b/gi,
+      (word) => word.toUpperCase(),
+    )
+    .replace(/\br\.e\.m\./gi, "R.E.M.")
+    .replace(/\bZz\b/g, "ZZ");
 export const statusName: Record<string, string> = {
   pending: "Por confirmar",
   confirmed: "Confirmado",

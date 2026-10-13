@@ -29,7 +29,8 @@ import {
   Printer,
   Clock,
   Mail,
-  Music2,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import { api, readLocal, storeLocal } from "./api";
 import {
@@ -44,6 +45,7 @@ import {
 } from "./components";
 import {
   displayTitle,
+  formatLabel,
   money,
   statusName,
   type Product,
@@ -119,6 +121,26 @@ export function App() {
     window.addEventListener("popstate", pop);
     return () => window.removeEventListener("popstate", pop);
   }, []);
+
+  useEffect(() => {
+    if (!mobileMenu) return;
+    const dismiss = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMobileMenu(false);
+        document.querySelector<HTMLButtonElement>(".mobile-toggle")?.focus();
+      }
+    };
+    const outside = (event: PointerEvent) => {
+      if (event.target instanceof Element && !event.target.closest(".header"))
+        setMobileMenu(false);
+    };
+    document.addEventListener("keydown", dismiss);
+    document.addEventListener("pointerdown", outside);
+    return () => {
+      document.removeEventListener("keydown", dismiss);
+      document.removeEventListener("pointerdown", outside);
+    };
+  }, [mobileMenu]);
   async function loadStore() {
     try {
       const r = await api<{ settings: StoreSettings; stats: Stats }>(
@@ -145,8 +167,8 @@ export function App() {
     if (path.startsWith("/admin") || path.startsWith("/pedido/")) return;
     const names: Record<string, string> = {
       "/": "El Rinconcito del Rock · Vinilos y CDs en Concepción",
-      "/tienda": "La batea · El Rinconcito del Rock",
-      "/nosotros": "Nuestro rincón · El Rinconcito del Rock",
+      "/tienda": "Catálogo · El Rinconcito del Rock",
+      "/nosotros": "La tienda · El Rinconcito del Rock",
       "/favoritos": "Tus favoritos · El Rinconcito del Rock",
       "/ayuda": "Preguntas y entregas · El Rinconcito del Rock",
     };
@@ -157,14 +179,14 @@ export function App() {
     setBag((prev) => {
       const current = prev.find((i) => i.p.id === p.id);
       if ((current?.qty || 0) >= Math.min(p.stock, 20)) {
-        setToast("Ya tienes el stock disponible en tu bolsa.");
+        setToast("Ya agregaste todas las unidades disponibles.");
         return prev;
       }
       if (!current && prev.length >= 40) {
         setToast("Tu bolsa admite hasta 40 discos diferentes.");
         return prev;
       }
-      setToast(displayTitle(p.title) + " va a tu bolsa.");
+      setToast(displayTitle(p.title) + " agregado a la bolsa.");
       return current
         ? prev.map((i) => (i.p.id === p.id ? { p, qty: i.qty + 1 } : i))
         : [...prev, { p, qty: 1 }];
@@ -182,6 +204,7 @@ export function App() {
       <a
         href={href}
         onClick={(e) => {
+          if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
           e.preventDefault();
           navigate(href);
         }}
@@ -198,7 +221,7 @@ export function App() {
   };
   const count = bag.reduce((n, i) => n + i.qty, 0);
   return (
-    <>
+    <div className={path.startsWith("/admin") ? "admin-mode" : "storefront"}>
       {path.startsWith("/admin") ? (
         <Suspense fallback={<Loading />}>
           <Admin onExit={() => navigate("/")} onStoreChange={loadStore} />
@@ -209,31 +232,39 @@ export function App() {
             Saltar al contenido
           </a>
           <div className="top-strip">
-            <span>DESDE CONCEPCIÓN. PARA TU COLECCIÓN.</span>
-            <span>
-              <Truck size={13} /> ENVÍOS A TODO CHILE
-            </span>
+            <a href={cfg.maps} target="_blank" rel="noopener noreferrer">
+              <MapPin size={12} />
+              {cfg.address}, {cfg.city}
+            </a>
+            {cfg.shippingEnabled && (
+              <span>
+                <Truck size={13} />
+                Envíos a todo Chile
+              </span>
+            )}
           </div>
           <header className="header">
+            <nav className="desktop-nav" aria-label="Navegación principal">
+              {link("/tienda?format=vinilo", "Vinilos")}
+              {link("/tienda?format=cd", "CDs")}
+              {link("/tienda", "Catálogo")}
+              {link("/nosotros", "La tienda")}
+            </nav>
             <a
               className="logo-link"
               href="/"
               aria-label="El Rinconcito del Rock, inicio"
               onClick={(e) => {
+                if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
                 e.preventDefault();
                 navigate("/");
               }}
             >
               <Logo />
             </a>
-            <nav aria-label="Navegación principal">
-              {link("/tienda", "La batea")}
-              {link("/tienda?language=es", "En español")}
-              {link("/nosotros", "Nuestro rincón")}
-            </nav>
             <div className="header-actions">
               <button
-                className="icon-button"
+                className="icon-button header-search"
                 aria-label="Buscar discos"
                 onClick={() => navigate("/tienda?focus=1")}
               >
@@ -253,31 +284,38 @@ export function App() {
                   setCheckout(false);
                   setBagOpen(true);
                 }}
-                aria-label={`Abrir bolsa, ${count} discos`}
+                aria-label={"Abrir bolsa, " + count + " discos"}
               >
-                <ShoppingBag size={20} />
-                <span>BOLSA</span>
+                <ShoppingBag size={21} />
+                <span>Bolsa</span>
                 <b aria-live="polite">{count}</b>
               </button>
-              <button
-                className="icon-button mobile-toggle"
-                aria-label="Menú"
-                aria-expanded={mobileMenu}
-                onClick={() => setMobileMenu(!mobileMenu)}
-              >
-                {mobileMenu ? <X /> : <Menu />}
-              </button>
             </div>
+            <button
+              className="icon-button mobile-toggle"
+              aria-label={mobileMenu ? "Cerrar menú" : "Abrir menú"}
+              aria-expanded={mobileMenu}
+              aria-controls="mobile-menu"
+              onClick={() => setMobileMenu(!mobileMenu)}
+            >
+              {mobileMenu ? <X size={23} /> : <Menu size={23} />}
+            </button>
+            {mobileMenu && (
+              <nav
+                id="mobile-menu"
+                className="mobile-nav"
+                aria-label="Menú móvil"
+              >
+                {link("/tienda", "Todos los discos")}
+                {link("/tienda?format=vinilo", "Vinilos")}
+                {link("/tienda?format=cd", "CDs")}
+                {link("/tienda?category=Rock%20chileno", "Rock chileno")}
+                {link("/favoritos", "Favoritos")}
+                {link("/nosotros", "La tienda")}
+                {link("/ayuda", "Entregas y ayuda")}
+              </nav>
+            )}
           </header>
-          {mobileMenu && (
-            <nav className="mobile-nav" aria-label="Menú móvil">
-              {link("/tienda", "Explorar la batea")}
-              {link("/tienda?language=es", "Discos en español")}
-              {link("/nosotros", "Nuestro rincón")}
-              {link("/favoritos", "Mis favoritos")}
-              {link("/ayuda", "Ayuda y entregas")}
-            </nav>
-          )}
           {storeError && (
             <div className="connection-notice" role="alert">
               No pudimos actualizar la tienda.{" "}
@@ -319,7 +357,7 @@ export function App() {
             ) : ["/ayuda", "/privacidad", "/condiciones"].includes(path) ? (
               <InfoPage page={path} cfg={cfg} />
             ) : (
-              <Empty title="Este lado del disco está en blanco.">
+              <Empty title="Página no encontrada.">
                 <button className="button" onClick={() => navigate("/")}>
                   Volver al inicio
                 </button>
@@ -328,72 +366,73 @@ export function App() {
           </main>
           <footer>
             <div className="footer-top">
-              <div>
+              <div className="footer-brand">
                 <Logo />
                 <p>
-                  Un rincón en Conce.
+                  Vinilos y CDs
                   <br />
-                  Un lugar en tu colección.
+                  Concepción, Chile
                 </p>
               </div>
               <div>
-                <span className="eyebrow">EXPLORA</span>
-                {link("/tienda", "Todos los discos")}
+                <span className="eyebrow">Discos</span>
+                {link("/tienda", "Catálogo completo")}
                 {link("/tienda?format=vinilo", "Vinilos")}
                 {link("/tienda?format=cd", "CDs")}
-                {link("/favoritos", "Tus favoritos")}
+                {link("/tienda?category=Rock%20chileno", "Rock chileno")}
               </div>
               <div>
-                <span className="eyebrow">NOS ENCONTRAMOS</span>
+                <span className="eyebrow">La tienda</span>
+                {link("/nosotros", "Visítanos")}
                 <a href={cfg.maps} target="_blank" rel="noopener noreferrer">
-                  {cfg.address}, {cfg.city} <ArrowUpRight size={14} />
+                  {cfg.address}, {cfg.city}
+                  <ArrowUpRight size={14} />
                 </a>
-                <p>
-                  {cfg.hours}
-                  <br />
-                  Domingo cerrado
-                </p>
-                <External href={cfg.instagram}>@elrinconcitodelrock</External>
-              </div>
-              <div>
-                <span className="eyebrow">A TU LADO</span>
-                {link("/ayuda", "Entregas y preguntas")}
-                {link("/condiciones", "Condiciones de compra")}
-                {link("/privacidad", "Privacidad")}
+                <External href={cfg.instagram}>Instagram</External>
                 <button
                   className="text-link"
                   onClick={() => setRequestOpen(true)}
                 >
-                  Busco un disco <ArrowUpRight size={14} />
+                  Solicitar un disco
+                  <ArrowUpRight size={14} />
                 </button>
+              </div>
+              <div>
+                <span className="eyebrow">Ayuda</span>
+                {link("/ayuda", "Pedidos y entregas")}
+                {link("/condiciones", "Condiciones de compra")}
+                {link("/privacidad", "Privacidad")}
               </div>
             </div>
             <div className="footer-bottom">
-              <span>© {new Date().getFullYear()} EL RINCONCITO DEL ROCK.</span>
-              <span>HECHO PARA SONAR, DESDE CONCEPCIÓN.</span>
+              <span>© {new Date().getFullYear()} El Rinconcito del Rock</span>
+              <span>Precios en pesos chilenos</span>
               <a
                 href="/admin"
                 onClick={(e) => {
+                  if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
                   e.preventDefault();
                   navigate("/admin");
                 }}
               >
-                Administración <ArrowUpRight size={13} />
+                Administración
+                <ArrowUpRight size={13} />
               </a>
             </div>
           </footer>
         </>
       )}
       {quick && (
-        <Modal
-          title="UN DISCO. MIL HISTORIAS."
-          onClose={() => setQuick(null)}
-          wide
-        >
+        <Modal title="Detalle del disco" onClose={() => setQuick(null)} wide>
           <ProductDetail
             p={quick}
             cfg={cfg}
-            onAdd={add}
+            onAdd={(p) => {
+              add(p);
+              setQuick(null);
+              setCheckout(false);
+              setBagOpen(true);
+            }}
             onFavorite={favorite}
             favorite={favorites.includes(quick.id)}
             onFull={() => {
@@ -405,7 +444,7 @@ export function App() {
       )}
       {bagOpen && (
         <Modal
-          title={checkout ? "RESERVA TUS DISCOS" : "TU BOLSA · LADO A"}
+          title={checkout ? "Tu pedido" : "Tu bolsa"}
           onClose={() => setBagOpen(false)}
           drawer
         >
@@ -443,10 +482,7 @@ export function App() {
         </Modal>
       )}
       {requestOpen && (
-        <Modal
-          title="ESA JOYA QUE NO APARECE"
-          onClose={() => setRequestOpen(false)}
-        >
+        <Modal title="Solicitar un disco" onClose={() => setRequestOpen(false)}>
           <RequestForm />
         </Modal>
       )}
@@ -472,7 +508,7 @@ export function App() {
           </button>
         </div>
       )}
-    </>
+    </div>
   );
 }
 function Home({
@@ -488,197 +524,194 @@ function Home({
   navigate: (s: string) => void;
   onRequest: () => void;
 }) {
-  const [products, setProducts] = useState<Product[]>([]),
-    [error, setError] = useState("");
+  const [products, setProducts] = useState<Product[]>([]);
+  const [spotlights, setSpotlights] = useState<Product[]>([]);
+  const [selected, setSelected] = useState(0);
+  const [format, setFormat] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [revision, setRevision] = useState(0);
   useEffect(() => {
-    api<{ products: Product[] }>("/api/products?sort=featured&limit=8")
-      .then((r) => setProducts(r.products))
-      .catch((e) => setError(e.message));
-  }, []);
+    const controller = new AbortController();
+    setLoading(true);
+    setError("");
+    api<{ products: Product[] }>(
+      "/api/products?sort=featured&available=1&limit=8&format=" + format,
+      { signal: controller.signal },
+    )
+      .then((r) => {
+        setProducts(r.products);
+        if (!format) {
+          const selectedIds = ["ven-0509", "ves-0324", "ven-0573"];
+          const picks = selectedIds
+            .map((id) => r.products.find((p) => p.id === id))
+            .filter((p): p is Product => !!p);
+          setSpotlights(
+            picks.length
+              ? picks
+              : r.products.filter((p) => p.image).slice(0, 3),
+          );
+        }
+      })
+      .catch((e) => {
+        if (e.name !== "AbortError") setError(e.message);
+      })
+      .finally(() => {
+        if (!controller.signal.aborted) setLoading(false);
+      });
+    return () => controller.abort();
+  }, [format, revision]);
+  const spotlight = spotlights[selected % (spotlights.length || 1)];
+  function shopLink(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    e.preventDefault();
+    navigate(href);
+  }
   return (
     <>
       <section className="hero">
         <div className="hero-copy">
-          <p className="eyebrow">
-            <span className="little-star">✳</span> TIENDA INDEPENDIENTE DE
-            DISCOS / CONCEPCIÓN, CHILE
-          </p>
+          <p className="eyebrow">Tienda de discos · Concepción</p>
           <h1>
-            EL ROCK
+            VINILOS
             <br />
-            TIENE SU
-            <br />
-            <span>RINCÓN.</span>
+            <span>Y CDs.</span>
           </h1>
-          <p className="hero-description">
-            Para los que escuchan un disco completo.
-            <br />
-            Para los que siempre quieren uno más.
-          </p>
-          <div className="hero-ctas">
-            <a
-              className="button red"
-              href="/tienda"
-              onClick={(e) => {
-                e.preventDefault();
-                navigate("/tienda");
-              }}
-            >
-              Encuentra tu próximo disco <ArrowUpRight size={19} />
-            </a>
-            <a
-              className="underlined-link"
-              href="/tienda?format=vinilo"
-              onClick={(e) => {
-                e.preventDefault();
-                navigate("/tienda?format=vinilo");
-              }}
-            >
-              Soy de vinilos <ArrowRight size={16} />
-            </a>
-          </div>
-          <div className="hero-footnote">
-            <span className="signal-dot" />
+          <p className="hero-description">Rock, metal y música chilena.</p>
+          <a
+            className="button"
+            href="/tienda"
+            onClick={(e) => shopLink(e, "/tienda")}
+          >
+            Explorar catálogo
+            <ArrowRight size={19} />
+          </a>
+          <p className="hero-count">
             {stats
               ? stats.available.toLocaleString("es-CL") + " títulos disponibles"
-              : "Vinilos + CDs"}
-            <span className="hero-separator">/</span>
-            <span>STOCK REAL. BUENA MÚSICA.</span>
-          </div>
+              : ""}
+          </p>
         </div>
-        <div className="hero-art">
-          <div className="art-cross cross-one">+</div>
-          <div className="art-cross cross-two">+</div>
-          <span className="art-coordinates">36°49′S / 73°02′W</span>
-          <div className="record-stack">
-            <div className="paper-sleeve">
-              <span>EL RINCONCITO DEL ROCK PRESENTA</span>
-              <strong>
-                EL LADO
-                <br />
-                BUENO
-                <br />
-                DE LA VIDA.
-              </strong>
-              <div className="sleeve-wave">∿∿∿∿∿∿∿</div>
-              <span>VOL. 01 — SIEMPRE EN ROTACIÓN</span>
-            </div>
-            <Record className="hero-record" />
-            <img
-              className="hero-album"
-              src="/assets/covers/los-tres-la-espada-y-la-pared.webp"
-              alt="Carátula de La Espada y la Pared de Los Tres"
-              width="600"
-              height="600"
-              fetchPriority="high"
-            />
-            <span className="hero-ticket">
-              <span>
-                DE CONCE
-                <br />
-                CON AMOR.
-              </span>
-              <ArrowUpRight size={25} />
-              <small>
-                FREIRE 1119
-                <br />
-                VEN A REVOLVER LA BATEA
-              </small>
+        <div className="spotlight" aria-label="Discos destacados">
+          <div className="spotlight-top">
+            <span className="eyebrow">En la batea</span>
+            <span className="spotlight-number">
+              {String((selected % (spotlights.length || 1)) + 1).padStart(
+                2,
+                "0",
+              )}
+              <span> / {String(spotlights.length || 3).padStart(2, "0")}</span>
             </span>
           </div>
-          <span className="hero-caption">
-            <span>VINILOS / CDs / OBSESIÓN POR LA MÚSICA</span>
-            <span>33⅓ ↻</span>
-          </span>
-        </div>
-      </section>
-      <div className="ticker" aria-hidden="true">
-        <span>BAJA EL RUIDO. SUBE LA MÚSICA.</span>
-        <span>✳</span>
-        <span>DISCOS QUE SE QUEDAN CONTIGO.</span>
-        <span>✳</span>
-        <span>BAJA EL RUIDO. SUBE LA MÚSICA.</span>
-      </div>
-      <section className="format-section">
-        <div className="small-section-title">
-          <span className="eyebrow">01 / ELIGE TU LADO</span>
-          <span>El formato cambia. La emoción queda.</span>
-        </div>
-        <div className="format-grid">
-          <a
-            href="/tienda?format=vinilo"
-            className="format-tile vinyl-tile"
-            onClick={(e) => {
-              e.preventDefault();
-              navigate("/tienda?format=vinilo");
-            }}
-          >
-            <div>
-              <span className="eyebrow">EL RITUAL DE SIEMPRE</span>
-              <h2>
-                Vinilos<span> ↗</span>
-              </h2>
-              <p>
-                {stats
-                  ? stats.vinyl.toLocaleString("es-CL") + " títulos en la batea"
-                  : "Larga duración. Mucha historia."}
-              </p>
+          {spotlight ? (
+            <a
+              href={"/disco/" + spotlight.slug}
+              className="spotlight-stage"
+              aria-label={
+                "Ver " +
+                displayTitle(spotlight.title) +
+                " de " +
+                displayTitle(spotlight.artist)
+              }
+              onClick={(e) => {
+                if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+                e.preventDefault();
+                cards.onOpen(spotlight);
+              }}
+            >
+              {spotlight.format === "vinilo" && (
+                <Record className="spotlight-record" />
+              )}
+              <div className="spotlight-cover">
+                <Cover p={spotlight} eager />
+              </div>
+            </a>
+          ) : (
+            <div className="spotlight-stage spotlight-loading">
+              <Loading />
             </div>
-            <Record className="tile-record" label="LADO A / 33⅓" />
-          </a>
-          <a
-            href="/tienda?format=cd"
-            className="format-tile cd-tile"
-            onClick={(e) => {
-              e.preventDefault();
-              navigate("/tienda?format=cd");
-            }}
-          >
-            <div>
-              <span className="eyebrow">DALE PLAY A TU COLECCIÓN</span>
-              <h2>
-                CDs<span> ↗</span>
-              </h2>
-              <p>
-                {stats
-                  ? stats.cds.toLocaleString("es-CL") + " títulos disponibles"
-                  : "Compactos. Inagotables."}
-              </p>
+          )}
+          <div className="spotlight-bottom">
+            <div className="spotlight-description" aria-live="polite">
+              {spotlight && (
+                <>
+                  <strong>{displayTitle(spotlight.artist)}</strong>
+                  <span>
+                    {displayTitle(spotlight.title)}
+                    <i>·</i>
+                    {formatLabel(spotlight)}
+                    <i>·</i>
+                    {money(spotlight.price)}
+                  </span>
+                </>
+              )}
             </div>
-            <div className="compact-disc" aria-hidden="true">
-              <span>
-                EL RINCONCITO
-                <br />
-                COMPACT DISC
-              </span>
-              <i />
+            <div className="spotlight-controls">
+              <button
+                className="icon-button"
+                disabled={spotlights.length < 2}
+                aria-label="Disco destacado anterior"
+                onClick={() =>
+                  setSelected(
+                    (n) => (n - 1 + spotlights.length) % spotlights.length,
+                  )
+                }
+              >
+                <ChevronLeft size={20} />
+              </button>
+              <button
+                className="icon-button"
+                disabled={spotlights.length < 2}
+                aria-label="Siguiente disco destacado"
+                onClick={() => setSelected((n) => (n + 1) % spotlights.length)}
+              >
+                <ChevronRight size={20} />
+              </button>
             </div>
-          </a>
+          </div>
         </div>
       </section>
       <section className="section featured-section">
         <div className="section-head">
-          <div>
-            <p className="eyebrow">02 / PARA ABRIR LA BATEA</p>
-            <h2>
-              Discos con algo que decir<span>.</span>
-            </h2>
-          </div>
+          <h2>Una selección de la batea</h2>
           <a
             href="/tienda"
             className="text-link"
-            onClick={(e) => {
-              e.preventDefault();
-              navigate("/tienda");
-            }}
+            onClick={(e) => shopLink(e, "/tienda")}
           >
-            Ver todo el catálogo <ArrowUpRight size={19} />
+            Ver todo
+            <ArrowUpRight size={17} />
           </a>
+        </div>
+        <div
+          className="home-tabs"
+          role="group"
+          aria-label="Filtrar selección por formato"
+        >
+          {[
+            ["", "Todos"],
+            ["vinilo", "Vinilos"],
+            ["cd", "CDs"],
+          ].map(([v, l]) => (
+            <button
+              key={v}
+              className={v === format ? "selected" : ""}
+              aria-pressed={v === format}
+              onClick={() => setFormat(v)}
+            >
+              {l}
+            </button>
+          ))}
         </div>
         {error ? (
           <div className="error" role="alert">
             {error}
+            <button onClick={() => setRevision((n) => n + 1)}>
+              Reintentar
+            </button>
           </div>
+        ) : loading ? (
+          <Loading cards />
         ) : products.length ? (
           <div className="product-grid">
             {products.map((p, i) => (
@@ -692,87 +725,61 @@ function Home({
             ))}
           </div>
         ) : (
-          <Loading cards />
+          <Empty title="No hay discos disponibles en esta selección." />
         )}
-        <div className="catalogue-end">
-          <span>Ese disco que buscas. Ese que no sabías que buscabas.</span>
-          <a
-            className="button outline"
-            href="/tienda"
-            onClick={(e) => {
-              e.preventDefault();
-              navigate("/tienda");
-            }}
-          >
-            Seguir revolviendo <ArrowRight size={18} />
-          </a>
-        </div>
       </section>
-      <section className="chilean-section">
-        <div className="chilean-copy">
-          <p className="eyebrow">03 / HECHO DE ESTE LADO DEL MUNDO</p>
-          <h2>
-            DE CONCE.
-            <br />
-            DE CORAZÓN.
-          </h2>
-          <p>
-            Los Tres, Los Bunkers, Los Jaivas, Los Prisioneros.
-            <br />
-            La banda sonora que nos queda cerca.
-          </p>
-          <a
-            className="button cream"
-            href="/tienda?category=Rock%20chileno"
-            onClick={(e) => {
-              e.preventDefault();
-              navigate("/tienda?category=Rock%20chileno");
-            }}
-          >
-            Explorar música chilena <ArrowUpRight size={19} />
-          </a>
-        </div>
-        <div className="chilean-art" aria-hidden="true">
-          <span className="chilean-stamp">
-            SONIDO
-            <br />
-            LOCAL
-            <br />
-            <small>CONCEPCIÓN / CHILE</small>
-          </span>
-          <div className="chilean-cover">
-            <img
-              src="/assets/covers/los-bunkers-vida-de-perros.webp"
-              alt=""
-              width="600"
-              height="600"
-              loading="lazy"
-            />
-            <span>LOS BUNKERS / VIDA DE PERROS</span>
+      <section className="browse-section">
+        <a
+          href="/tienda?category=Rock%20%26%20metal"
+          onClick={(e) => shopLink(e, "/tienda?category=Rock%20%26%20metal")}
+          className="browse-tile"
+        >
+          <div>
+            <span className="eyebrow">Internacional</span>
+            <h2>Rock & metal</h2>
+            <span className="text-link">
+              Explorar
+              <ArrowUpRight size={17} />
+            </span>
           </div>
-          <div className="chilean-cover back-cover">
-            <img
-              src="/assets/covers/los-prisioneros-corazones.webp"
-              alt=""
-              width="600"
-              height="600"
-              loading="lazy"
-            />
+          <img
+            src="/assets/covers/nirvana-in-utero.webp"
+            alt=""
+            width="600"
+            height="600"
+            loading="lazy"
+          />
+        </a>
+        <a
+          href="/tienda?category=Rock%20chileno"
+          onClick={(e) => shopLink(e, "/tienda?category=Rock%20chileno")}
+          className="browse-tile"
+        >
+          <div>
+            <span className="eyebrow">Música de acá</span>
+            <h2>Rock chileno</h2>
+            <span className="text-link">
+              Explorar
+              <ArrowUpRight size={17} />
+            </span>
           </div>
-        </div>
+          <img
+            src="/assets/covers/los-tres-la-espada-y-la-pared.webp"
+            alt=""
+            width="600"
+            height="600"
+            loading="lazy"
+          />
+        </a>
       </section>
       <StoreVisit cfg={cfg} />
-      <section className="request-section">
-        <Music2 size={35} strokeWidth={1.3} />
-        <div>
-          <p className="eyebrow">TU PRÓXIMA OBSESIÓN</p>
-          <h2>¿Hay un disco que no te sacas de la cabeza?</h2>
-          <p>Cuéntanos cuál. Lo anotamos en nuestra lista de búsqueda.</p>
-        </div>
-        <button className="button" onClick={onRequest}>
-          Busco un disco <ArrowUpRight size={19} />
+      <div className="request-line">
+        <span>¿Buscas un disco que no aparece?</span>
+        <button className="text-link" onClick={onRequest}>
+          Déjanos tu búsqueda
+          <ArrowUpRight size={16} />
         </button>
-      </section>
+      </div>
     </>
   );
 }
@@ -792,10 +799,10 @@ function Catalogue({
     [format, setFormat] = useState(params.get("format") || ""),
     [language, setLanguage] = useState(params.get("language") || ""),
     [category, setCategory] = useState(params.get("category") || ""),
-    [sort, setSort] = useState("featured"),
-    [available, setAvailable] = useState(true),
-    [maxPrice, setMaxPrice] = useState(""),
-    [page, setPage] = useState(1),
+    [sort, setSort] = useState(params.get("sort") || "featured"),
+    [available, setAvailable] = useState(params.get("available") !== "0"),
+    [maxPrice, setMaxPrice] = useState(params.get("maxPrice") || ""),
+    [page, setPage] = useState(Math.max(1, Number(params.get("page")) || 1)),
     [products, setProducts] = useState<Product[]>([]),
     [total, setTotal] = useState(0),
     [loading, setLoading] = useState(true),
@@ -865,18 +872,13 @@ function Catalogue({
     <section className="section catalogue">
       <div className="catalogue-heading">
         <div>
-          <p className="eyebrow">LA TIENDA / EL CATÁLOGO COMPLETO</p>
-          <h1>
-            REVUELVE
-            <br />
-            LA BATEA<span>.</span>
-          </h1>
+          <p className="eyebrow">Vinilos y CDs</p>
+          <h1>Catálogo</h1>
         </div>
-        <p>
-          Por artista, por álbum, por esa canción
-          <br />
-          que se te quedó pegada.
-        </p>
+        <button className="text-link" onClick={onRequest}>
+          Solicitar un disco
+          <ArrowUpRight size={16} />
+        </button>
       </div>
       <div className="search-box">
         <Search size={23} />
@@ -904,12 +906,11 @@ function Catalogue({
             <X size={18} />
           </button>
         )}
-        <span>LA BUENA MÚSICA ESTÁ AQUÍ ↗</span>
       </div>
       <div className="catalogue-controls">
         <div className="chips" role="group" aria-label="Formato">
           {[
-            ["", "Toda la batea"],
+            ["", "Todos"],
             ["vinilo", "Vinilos"],
             ["cd", "CDs"],
           ].map(([v, l]) => (
@@ -1021,10 +1022,10 @@ function Catalogue({
       <div className="result-counter">
         <span>
           {loading
-            ? "Revisando la batea…"
-            : `${total.toLocaleString("es-CL")} discos ${q ? "para “" + q + "”" : "para descubrir"}`}
+            ? "Buscando…"
+            : `${total.toLocaleString("es-CL")} discos${q ? " para “" + q + "”" : ""}`}
         </span>
-        <span>PRECIOS EN PESOS CHILENOS / CLP</span>
+        <span>Precios en CLP</span>
       </div>
       {error ? (
         <div className="error" role="alert">
@@ -1083,10 +1084,11 @@ function Catalogue({
         </div>
       )}
       <p className="catalogue-note">
-        ¿Prefieres buscar con las manos?{" "}
+        Visítanos en tienda:{" "}
         <a
           href="/nosotros"
           onClick={(e) => {
+            if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
             e.preventDefault();
             navigate("/nosotros");
           }}
@@ -1127,12 +1129,8 @@ function Favorites({
   }, [cards.favorites]);
   return (
     <section className="section">
-      <p className="eyebrow">LOS QUE TE HICIERON OJITOS</p>
-      <h1 className="page-title">
-        TU LISTA.
-        <br />
-        TU PRÓXIMO PLAY<span>.</span>
-      </h1>
+      <p className="eyebrow">Tu selección</p>
+      <h1 className="page-title">Favoritos</h1>
       {error && <p className="error">{error}</p>}
       {loading ? (
         <Loading cards />
@@ -1143,14 +1141,14 @@ function Favorites({
           ))}
         </div>
       ) : (
-        <Empty title="Tu colección empieza con un flechazo.">
+        <Empty title="Aún no tienes favoritos.">
           <p>
             Guarda los discos que te gustan tocando el corazón.
             <br />
             Los favoritos quedan en este dispositivo.
           </p>
           <button className="button" onClick={() => navigate("/tienda")}>
-            Explorar la batea <ArrowRight size={17} />
+            Explorar catálogo <ArrowRight size={17} />
           </button>
         </Empty>
       )}
@@ -1178,20 +1176,14 @@ function ProductDetail({
       <div className="detail-image">
         <Cover p={p} eager />
         <p>
-          Carátula de referencia. La edición puede variar.
-          <br />
-          Consulta fotos del ejemplar antes de confirmar.
+          Carátula de referencia. Consulta la edición y fotos del ejemplar antes
+          de pagar.
         </p>
       </div>
       <div className="detail-copy">
-        <p className="eyebrow">
-          {p.format === "vinilo"
-            ? "VINILO / EL RITUAL COMPLETO"
-            : "CD / DALE PLAY"}{" "}
-          · {p.content}
-        </p>
-        <Heading>{displayTitle(p.artist)}</Heading>
-        <h3>{displayTitle(p.title)}</h3>
+        <p className="eyebrow">{formatLabel(p)}</p>
+        <p className="detail-artist">{displayTitle(p.artist)}</p>
+        <Heading>{displayTitle(p.title)}</Heading>
         <p className="detail-price">
           {money(p.price)} <span>CLP</span>
         </p>
@@ -1200,7 +1192,7 @@ function ProductDetail({
           {p.stock === 0
             ? "Agotado"
             : p.stock === 1
-              ? "Última unidad en la batea"
+              ? "Última unidad disponible"
               : `${p.stock} unidades disponibles`}
         </p>
         {p.description && <p className="detail-description">{p.description}</p>}
@@ -1228,7 +1220,7 @@ function ProductDetail({
         <dl className="specs">
           <div>
             <dt>Formato</dt>
-            <dd>{p.content}</dd>
+            <dd>{formatLabel(p)}</dd>
           </div>
           <div>
             <dt>Selección</dt>
@@ -1321,7 +1313,7 @@ function ProductPage({
   return (
     <section className="section">
       <button className="back-link" onClick={() => navigate("/tienda")}>
-        ← Volver a la batea
+        ← Volver al catálogo
       </button>
       {error ? (
         <Empty title={error}>
@@ -1385,11 +1377,7 @@ function Bag({
   const subtotal = bag.reduce((n, i) => n + i.p.price * i.qty, 0);
   return bag.length ? (
     <div className="bag-content">
-      <h2>
-        BUENOS DISCOS.
-        <br />
-        BUENA COMPAÑÍA<span>.</span>
-      </h2>
+      <h2>Tu selección</h2>
       <div className="bag-items">
         {bag.map(({ p, qty }) => (
           <div className="bag-item" key={p.id}>
@@ -1397,7 +1385,7 @@ function Bag({
               <Cover p={p} />
             </div>
             <div className="bag-item-info">
-              <span className="eyebrow">{p.content}</span>
+              <span className="eyebrow">{formatLabel(p)}</span>
               <strong>{displayTitle(p.artist)}</strong>
               <p>{displayTitle(p.title)}</p>
               <div className="quantity">
@@ -1445,23 +1433,19 @@ function Bag({
             : money(cfg.shippingCost) + "."}
         </p>
         <button className="button red" onClick={onCheckout}>
-          Reservar mis discos <ArrowRight size={19} />
+          Continuar con el pedido <ArrowRight size={19} />
         </button>
-        <small>
-          El stock se reserva al completar tu pedido.
-          <br />
-          Agregar a la bolsa no reserva una unidad.
-        </small>
+        <small>El stock queda reservado al confirmar el pedido.</small>
         <button className="text-link" onClick={onShop}>
-          Seguir mirando la batea <ArrowUpRight size={15} />
+          Seguir comprando <ArrowUpRight size={15} />
         </button>
       </div>
     </div>
   ) : (
-    <Empty title="Todavía no suena nada aquí.">
-      <p>Tu próximo disco está esperando en la batea.</p>
+    <Empty title="Tu bolsa está vacía.">
+      <p>Explora el catálogo para agregar discos.</p>
       <button className="button red" onClick={onShop}>
-        Encontrar un disco <ArrowRight size={17} />
+        Explorar catálogo <ArrowRight size={17} />
       </button>
     </Empty>
   );
@@ -1551,16 +1535,13 @@ function Checkout({
       <button type="button" className="back-link" onClick={onBack}>
         ← Volver a la bolsa
       </button>
-      <h2>
-        TUS DISCOS.
-        <br />A TU NOMBRE<span>.</span>
-      </h2>
+      <h2>Completa tu pedido</h2>
       <p className="muted">
         Reservamos tu selección por {cfg.reservationHours} horas. Coordinamos la
         entrega y el pago contigo.
       </p>
       <fieldset>
-        <legend>01 / ¿CON QUIÉN HABLAMOS?</legend>
+        <legend>1. Tus datos</legend>
         <label>
           Nombre y apellido
           <input
@@ -1599,7 +1580,7 @@ function Checkout({
         </div>
       </fieldset>
       <fieldset>
-        <legend>02 / ¿DÓNDE NOS ENCONTRAMOS?</legend>
+        <legend>2. Entrega</legend>
         <div className="delivery-options">
           {cfg.pickupEnabled && (
             <label className={delivery === "pickup" ? "checked" : ""}>
@@ -1813,7 +1794,7 @@ function OrderPage({
   }
   return (
     <section className="section order-page">
-      <p className="eyebrow">EL SIGUIENTE LADO DE TU COLECCIÓN</p>
+      <p className="eyebrow">Seguimiento del pedido</p>
       {error && !order ? (
         <Empty title="Tu pedido tiene un enlace privado.">
           <p>{error}</p>
@@ -1829,8 +1810,8 @@ function OrderPage({
             <div>
               <h1>
                 {["expired", "cancelled"].includes(order.status)
-                  ? "ESTADO DE TU PEDIDO."
-                  : "YA TIENES TU RINCÓN."}
+                  ? "Estado del pedido"
+                  : "Pedido registrado"}
               </h1>
               <p>
                 Pedido <strong>{order.code}</strong> ·{" "}
@@ -1844,7 +1825,7 @@ function OrderPage({
                 <span className="status-tag">{statusName[order.status]}</span>
                 <p>
                   {order.status === "pending"
-                    ? `Tu selección está reservada hasta el ${new Date(order.expires_at).toLocaleString("es-CL", { timeZone: "America/Santiago", dateStyle: "medium", timeStyle: "short" })}. Escribe a la tienda con tu número de pedido para coordinar el pago y la entrega.`
+                    ? `Tu selección está reservada hasta el ${new Date(order.expires_at).toLocaleString("es-CL", { timeZone: "America/Santiago", dateStyle: "medium", timeStyle: "short" }).replace(/\.$/, "")}. Escribe a la tienda con tu número de pedido para coordinar el pago y la entrega.`
                     : order.status === "expired"
                       ? "La reserva venció y los discos volvieron a estar disponibles. Puedes crear un nuevo pedido."
                       : order.status === "cancelled"
@@ -1914,11 +1895,7 @@ function OrderPage({
               </div>
             </div>
             <aside className="order-help">
-              <h2>
-                HABLEMOS
-                <br />
-                DE TUS DISCOS<span>.</span>
-              </h2>
+              <h2>Coordina tu pedido</h2>
               <p>
                 Menciona <strong>{order.code}</strong> al escribirnos.
               </p>
@@ -1941,7 +1918,7 @@ function OrderPage({
               </External>
               <button className="button outline" onClick={() => void copy()}>
                 <Copy size={17} />
-                {copied ? "Enlace copiado" : "Guardar enlace del pedido"}
+                {copied ? "Enlace copiado" : "Copiar enlace del pedido"}
               </button>
               <button className="text-link" onClick={() => window.print()}>
                 <Printer size={16} /> Imprimir resumen
@@ -1965,64 +1942,38 @@ function OrderPage({
 }
 function StoreVisit({ cfg }: { cfg: StoreSettings }) {
   return (
-    <section className="store-visit">
+    <section className="store-visit" aria-label="Visita la tienda">
       <div className="visit-copy">
-        <p className="eyebrow">04 / EL RINCÓN ESTÁ AQUÍ</p>
+        <p className="eyebrow">La tienda</p>
         <h2>
-          LO MEJOR DE UNA BATEA
-          <br />
-          ES PERDERSE EN ELLA<span>.</span>
+          {cfg.address}
+          <span>{cfg.city}</span>
         </h2>
-        <p>
-          Una conversación, un descubrimiento, un disco que se viene contigo.
-          Pasa por nuestro rincón en el centro de Concepción.
-        </p>
-        <div className="visit-address">
-          <MapPin size={22} />
-          <div>
-            <strong>
-              {cfg.address}, {cfg.city}
-            </strong>
-            <span>
-              {cfg.hours}
-              <br />
-              Domingo cerrado
-            </span>
-          </div>
-        </div>
-        <External href={cfg.maps} className="button outline">
-          Cómo llegar <ArrowUpRight size={18} />
+        <External href={cfg.maps} className="underlined-link">
+          Cómo llegar
         </External>
       </div>
-      <div className="map-art">
-        <div className="map-grid" aria-hidden="true">
-          <div className="map-road road-one" />
-          <div className="map-road road-two" />
-          <div className="map-road road-three" />
-          <div className="map-road road-four" />
-          <span className="map-street freire">FREIRE</span>
-          <span className="map-street tucapel">TUCAPEL</span>
-          <span className="map-street ohiggins">O’HIGGINS</span>
-          <span className="map-street centro">CENTRO DE CONCE</span>
-          <div className="map-marker">
-            <Disc3 size={25} />
-            <span>
-              ESTAMOS
-              <br />
-              AQUÍ.
-            </span>
-          </div>
-          <span className="map-north">N ↑</span>
-          <span className="map-caption">UN RINCÓN. MUCHOS DISCOS.</span>
+      <div className="visit-hours">
+        <Clock size={20} />
+        <div>
+          <h3>Horario de atención</h3>
+          <p>{cfg.hours}</p>
+          <small>Domingo cerrado</small>
         </div>
-        <a
-          href={cfg.maps}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="map-cta"
-        >
-          ABRIR UBICACIÓN EN GOOGLE MAPS <ArrowUpRight size={18} />
-        </a>
+      </div>
+      <div className="visit-contact">
+        <Instagram size={20} />
+        <div>
+          <h3>Hablemos de discos</h3>
+          <External href={cfg.instagram}>@elrinconcitodelrock</External>
+          {cfg.shippingEnabled && (
+            <p>
+              Entregas en Concepción.
+              <br />
+              Envíos a todo Chile.
+            </p>
+          )}
+        </div>
       </div>
     </section>
   );
@@ -2038,68 +1989,43 @@ function About({
     <>
       <section className="section about-hero">
         <div>
-          <p className="eyebrow">EL RINCONCITO DEL ROCK / CONCEPCIÓN</p>
-          <h1>
-            NO ES SOLO
-            <br />
-            UN DISCO<span>.</span>
-          </h1>
+          <p className="eyebrow">Concepción, Chile</p>
+          <h1>La tienda.</h1>
           <p className="intro">
-            Es el viaje de vuelta a esa canción.
-            <br />
-            Es la portada que te sabes de memoria.
-            <br />
-            Es una historia que todavía tiene otro lado.
+            Somos El Rinconcito del Rock. Vinilos, CDs y música que se lleva a
+            casa.
           </p>
-        </div>
-        <div className="about-badge">
-          <img
-            src="/assets/logo.jpg"
-            alt="Logo oficial de El Rinconcito del Rock"
-            width="150"
-            height="150"
-          />
-          <span>FREIRE 1119 / CONCEPCIÓN</span>
-        </div>
-      </section>
-      <section className="about-story">
-        <span className="eyebrow">NUESTRO RINCÓN</span>
-        <div>
-          <h2>
-            Discos, conversación
-            <br />y un gusto que se contagia.
-          </h2>
-          <p>
-            Somos El Rinconcito del Rock, una disquería independiente de
-            Concepción. Nuestra batea reúne vinilos y CDs, música chilena e
-            internacional, clásicos y descubrimientos.
-          </p>
-          <p>
-            Nos encuentras en Freire 1119 y en @elrinconcitodelrock. Hacemos
-            entregas en Concepción y alrededores, y enviamos discos a todo
-            Chile. El siguiente puede ser el tuyo.
+          <p className="muted">
+            Visítanos en {cfg.address} o encuentra tu próximo disco en nuestro
+            catálogo. Hacemos entregas en Concepción y alrededores, y envíos a
+            todo Chile.
           </p>
           <a
-            className="text-link"
+            className="button"
             href="/tienda"
             onClick={(e) => {
+              if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
               e.preventDefault();
               navigate("/tienda");
             }}
           >
-            Echar un vistazo a la batea <ArrowUpRight size={18} />
+            Explorar catálogo
+            <ArrowRight size={18} />
           </a>
+        </div>
+        <div className="about-badge">
+          <Logo />
         </div>
       </section>
       <StoreVisit cfg={cfg} />
       <section className="instagram-banner">
-        <Instagram size={30} />
+        <Instagram size={26} />
         <div>
-          <h2>El rincón también vive en Instagram.</h2>
-          <p>Discos, novedades y la vida de nuestra tienda.</p>
+          <h2>Lo nuevo está en Instagram.</h2>
+          <p>Discos, novedades y fotos de la tienda.</p>
         </div>
-        <External href={cfg.instagram} className="button cream">
-          @elrinconcitodelrock
+        <External href={cfg.instagram} className="button outline">
+          Ver publicaciones
         </External>
       </section>
     </>
@@ -2143,12 +2069,8 @@ function RequestForm() {
     </Empty>
   ) : (
     <form className="request-form" onSubmit={submit}>
-      <h2>
-        BUSCO
-        <br />
-        UN DISCO<span>.</span>
-      </h2>
-      <p>No prometemos milagros. Sí una buena búsqueda.</p>
+      <h2>¿Qué disco buscas?</h2>
+      <p>Cuéntanos el artista y álbum. Te contactaremos si lo encontramos.</p>
       <div className="form-row">
         <label>
           Artista
@@ -2231,7 +2153,7 @@ function InfoPage({ page, cfg }: { page: string; cfg: StoreSettings }) {
     ],
     [
       "¿Las fotos son del ejemplar?",
-      "Las carátulas se usan como referencia del álbum. La edición, presentación y condición del ejemplar pueden variar. Pide fotos y los detalles del disco a la tienda antes de confirmar la compra. Las portadas ilustrativas se identifican como tales.",
+      "Las carátulas se usan como referencia del álbum. La edición, presentación y condición del ejemplar pueden variar. Pide fotos y los detalles del disco a la tienda antes de confirmar la compra. Los discos sin carátula verificada muestran un marcador sin imagen.",
     ],
     [
       "¿Qué pasa si un disco se agota?",
@@ -2245,13 +2167,13 @@ function InfoPage({ page, cfg }: { page: string; cfg: StoreSettings }) {
   ];
   return (
     <section className="section info-page">
-      <p className="eyebrow">A TU LADO / EL RINCONCITO DEL ROCK</p>
+      <p className="eyebrow">Información</p>
       <h1>
         {help
-          ? "SIN RUIDO.\nSIN DUDAS."
+          ? "Pedidos y entregas"
           : privacy
-            ? "TUS DATOS.\nTU PRIVACIDAD."
-            : "ANTES DE\nDARLE PLAY."}
+            ? "Privacidad"
+            : "Condiciones de compra"}
       </h1>
       {help ? (
         <div className="faq-list">
@@ -2321,11 +2243,10 @@ function InfoPage({ page, cfg }: { page: string; cfg: StoreSettings }) {
           </p>
           <h2>Edición y condición</h2>
           <p>
-            Las imágenes son carátulas de referencia o portadas ilustrativas.
-            Para conocer edición, origen, condición y presentación exacta,
-            solicita los detalles y fotos del ejemplar antes de pagar. No se
-            atribuye una condición de conservación que no haya sido confirmada
-            por la tienda.
+            Las imágenes son carátulas de referencia. Para conocer edición,
+            origen, condición y presentación exacta, solicita los detalles y
+            fotos del ejemplar antes de pagar. No se atribuye una condición de
+            conservación que no haya sido confirmada por la tienda.
           </p>
           <h2>Pago y entrega</h2>
           <p>
@@ -2349,7 +2270,7 @@ function InfoPage({ page, cfg }: { page: string; cfg: StoreSettings }) {
         <Mail size={24} />
         <div>
           <strong>¿Te quedó otra duda?</strong>
-          <p>Hablemos de tus discos.</p>
+          <p>Contáctanos por Instagram.</p>
         </div>
         <External className="button outline" href={cfg.instagram}>
           Escribir por Instagram
