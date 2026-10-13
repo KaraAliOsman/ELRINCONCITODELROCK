@@ -1,0 +1,2774 @@
+[
+  {
+    "sku": "ven-0672",
+    "artist": "Queen",
+    "album": "Flash Gordon (Original Soundtrack - Deluxe Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/flash-gordon-original-soundtrack-deluxe-edition/6781023023?uo=4",
+    "image": "/assets/covers/album-6781023023.jpg"
+  },
+  {
+    "sku": "ven-0674",
+    "artist": "Queen",
+    "album": "Made In Heaven (Deluxe Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/made-in-heaven-deluxe-edition/6781076648?uo=4",
+    "image": "/assets/covers/album-6781076648.jpg"
+  },
+  {
+    "sku": "ven-0676",
+    "artist": "Queen",
+    "album": "Innuendo (Deluxe Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/innuendo-deluxe-edition/6781078872?uo=4",
+    "image": "/assets/covers/album-6781078872.jpg"
+  },
+  {
+    "sku": "ven-0627",
+    "artist": "Pink Floyd",
+    "album": "Meddle (2016 Remaster)",
+    "collectionUrl": "https://music.apple.com/cl/album/meddle-2016-remaster/1065973614?uo=4",
+    "image": "/assets/covers/album-1065973614.jpg"
+  },
+  {
+    "sku": "ven-0629",
+    "artist": "Pink Floyd",
+    "album": "Atom Heart Mother",
+    "collectionUrl": "https://music.apple.com/cl/album/atom-heart-mother/1065975345?uo=4",
+    "image": "/assets/covers/album-1065975345.jpg"
+  },
+  {
+    "sku": "ven-0633",
+    "artist": "Pink Floyd",
+    "album": "Obscured By Clouds",
+    "collectionUrl": "https://music.apple.com/cl/album/obscured-by-clouds/1065975350?uo=4",
+    "image": "/assets/covers/album-1065975350.jpg"
+  },
+  {
+    "sku": "ven-0635",
+    "artist": "Pink Floyd",
+    "album": "The Wall",
+    "collectionUrl": "https://music.apple.com/cl/album/the-wall/1065975633?uo=4",
+    "image": "/assets/covers/album-1065975633.jpg"
+  },
+  {
+    "sku": "ven-0679",
+    "artist": "Queen",
+    "album": "Queen (Deluxe Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/queen-deluxe-edition/6781079599?uo=4",
+    "image": "/assets/covers/album-6781079599.jpg"
+  },
+  {
+    "sku": "ven-0680",
+    "artist": "Queen",
+    "album": "On Air",
+    "collectionUrl": "https://music.apple.com/cl/album/on-air/6781081887?uo=4",
+    "image": "/assets/covers/album-6781081887.jpg"
+  },
+  {
+    "sku": "ven-0640",
+    "artist": "Pink Floyd",
+    "album": "Relics",
+    "collectionUrl": "https://music.apple.com/cl/album/relics/1065974496?uo=4",
+    "image": "/assets/covers/album-1065974496.jpg"
+  },
+  {
+    "sku": "cen-0952",
+    "artist": "Queen",
+    "album": "A Kind Of Magic (Deluxe Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/a-kind-of-magic-deluxe-edition/6781023865?uo=4",
+    "image": "/assets/covers/album-6781023865.jpg"
+  },
+  {
+    "sku": "ven-0641",
+    "artist": "Pink Floyd",
+    "album": "Ummagumma",
+    "collectionUrl": "https://music.apple.com/cl/album/ummagumma/1065978159?uo=4",
+    "image": "/assets/covers/album-1065978159.jpg"
+  },
+  {
+    "sku": "cen-0916",
+    "artist": "Pink Floyd",
+    "album": "Obscured By Clouds",
+    "collectionUrl": "https://music.apple.com/cl/album/obscured-by-clouds/1065975350?uo=4",
+    "image": "/assets/covers/album-1065975350.jpg"
+  },
+  {
+    "sku": "cen-0917",
+    "artist": "Pink Floyd",
+    "album": "Meddle (2016 Remaster)",
+    "collectionUrl": "https://music.apple.com/cl/album/meddle-2016-remaster/1065973614?uo=4",
+    "image": "/assets/covers/album-1065973614.jpg"
+  },
+  {
+    "sku": "cen-0919",
+    "artist": "Pink Floyd",
+    "album": "The Wall",
+    "collectionUrl": "https://music.apple.com/cl/album/the-wall/1065975633?uo=4",
+    "image": "/assets/covers/album-1065975633.jpg"
+  },
+  {
+    "sku": "cen-0924",
+    "artist": "Pink Floyd",
+    "album": "The Later Years",
+    "collectionUrl": "https://music.apple.com/cl/album/the-later-years/1490675340?uo=4",
+    "image": "/assets/covers/album-1490675340.jpg"
+  },
+  {
+    "sku": "cen-0925",
+    "artist": "Pink Floyd",
+    "album": "Ummagumma",
+    "collectionUrl": "https://music.apple.com/cl/album/ummagumma/1065978159?uo=4",
+    "image": "/assets/covers/album-1065978159.jpg"
+  },
+  {
+    "sku": "cen-0927",
+    "artist": "Pink Floyd",
+    "album": "Atom Heart Mother",
+    "collectionUrl": "https://music.apple.com/cl/album/atom-heart-mother/1065975345?uo=4",
+    "image": "/assets/covers/album-1065975345.jpg"
+  },
+  {
+    "sku": "ven-0357",
+    "artist": "Iron Maiden",
+    "album": "Virtual XI",
+    "collectionUrl": "https://music.apple.com/cl/album/virtual-xi/979928434?uo=4",
+    "image": "/assets/covers/album-979928434.jpg"
+  },
+  {
+    "sku": "ven-0358",
+    "artist": "Iron Maiden",
+    "album": "Somewhere In Time",
+    "collectionUrl": "https://music.apple.com/cl/album/somewhere-in-time/979949262?uo=4",
+    "image": "/assets/covers/album-979949262.jpg"
+  },
+  {
+    "sku": "ven-0361",
+    "artist": "Iron Maiden",
+    "album": "The Final Frontier",
+    "collectionUrl": "https://music.apple.com/cl/album/the-final-frontier/979933119?uo=4",
+    "image": "/assets/covers/album-979933119.jpg"
+  },
+  {
+    "sku": "cen-0953",
+    "artist": "Queen",
+    "album": "The Miracle",
+    "collectionUrl": "https://music.apple.com/cl/album/the-miracle/6781075161?uo=4",
+    "image": "/assets/covers/album-6781075161.jpg"
+  },
+  {
+    "sku": "ven-0362",
+    "artist": "Iron Maiden",
+    "album": "Powerslave",
+    "collectionUrl": "https://music.apple.com/cl/album/powerslave/980112277?uo=4",
+    "image": "/assets/covers/album-980112277.jpg"
+  },
+  {
+    "sku": "cen-0954",
+    "artist": "Queen",
+    "album": "The Game (Deluxe Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/the-game-deluxe-edition/6781076388?uo=4",
+    "image": "/assets/covers/album-6781076388.jpg"
+  },
+  {
+    "sku": "cen-0959",
+    "artist": "Queen",
+    "album": "Hot Space (Deluxe Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/hot-space-deluxe-edition/6781024053?uo=4",
+    "image": "/assets/covers/album-6781024053.jpg"
+  },
+  {
+    "sku": "cen-0960",
+    "artist": "Queen",
+    "album": "Jazz (Deluxe Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/jazz-deluxe-edition/6781079346?uo=4",
+    "image": "/assets/covers/album-6781079346.jpg"
+  },
+  {
+    "sku": "cen-0962",
+    "artist": "Queen",
+    "album": "Sheer Heart Attack",
+    "collectionUrl": "https://music.apple.com/cl/album/sheer-heart-attack/6781078143?uo=4",
+    "image": "/assets/covers/album-6781078143.jpg"
+  },
+  {
+    "sku": "cen-0964",
+    "artist": "Queen",
+    "album": "Made In Heaven (Deluxe Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/made-in-heaven-deluxe-edition/6781076648?uo=4",
+    "image": "/assets/covers/album-6781076648.jpg"
+  },
+  {
+    "sku": "cen-0966",
+    "artist": "Queen",
+    "album": "A Night At The Odeon",
+    "collectionUrl": "https://music.apple.com/cl/album/a-night-at-the-odeon/6781023931?uo=4",
+    "image": "/assets/covers/album-6781023931.jpg"
+  },
+  {
+    "sku": "cen-0967",
+    "artist": "Queen",
+    "album": "Queen (Deluxe Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/queen-deluxe-edition/6781079599?uo=4",
+    "image": "/assets/covers/album-6781079599.jpg"
+  },
+  {
+    "sku": "cen-0968",
+    "artist": "Queen",
+    "album": "Flash Gordon (Original Soundtrack - Deluxe Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/flash-gordon-original-soundtrack-deluxe-edition/6781023023?uo=4",
+    "image": "/assets/covers/album-6781023023.jpg"
+  },
+  {
+    "sku": "ven-0363",
+    "artist": "Iron Maiden",
+    "album": "Dance of Death",
+    "collectionUrl": "https://music.apple.com/cl/album/dance-of-death/979930404?uo=4",
+    "image": "/assets/covers/album-979930404.jpg"
+  },
+  {
+    "sku": "ven-0364",
+    "artist": "Iron Maiden",
+    "album": "Senjutsu",
+    "collectionUrl": "https://music.apple.com/cl/album/senjutsu/1576510536?uo=4",
+    "image": "/assets/covers/album-1576510536.jpg"
+  },
+  {
+    "sku": "ven-0365",
+    "artist": "Iron Maiden",
+    "album": "A Matter of Life and Death",
+    "collectionUrl": "https://music.apple.com/cl/album/a-matter-of-life-and-death/979959071?uo=4",
+    "image": "/assets/covers/album-979959071.jpg"
+  },
+  {
+    "sku": "ven-0369",
+    "artist": "Iron Maiden",
+    "album": "Iron Maiden",
+    "collectionUrl": "https://music.apple.com/cl/album/iron-maiden/979942735?uo=4",
+    "image": "/assets/covers/album-979942735.jpg"
+  },
+  {
+    "sku": "ven-0370",
+    "artist": "Iron Maiden",
+    "album": "Live After Death",
+    "collectionUrl": "https://music.apple.com/cl/album/live-after-death/980120380?uo=4",
+    "image": "/assets/covers/album-980120380.jpg"
+  },
+  {
+    "sku": "ven-0371",
+    "artist": "Iron Maiden",
+    "album": "Seventh Son of a Seventh Son",
+    "collectionUrl": "https://music.apple.com/cl/album/seventh-son-of-a-seventh-son/979945054?uo=4",
+    "image": "/assets/covers/album-979945054.jpg"
+  },
+  {
+    "sku": "cen-0517",
+    "artist": "Iron Maiden",
+    "album": "Somewhere In Time",
+    "collectionUrl": "https://music.apple.com/cl/album/somewhere-in-time/979949262?uo=4",
+    "image": "/assets/covers/album-979949262.jpg"
+  },
+  {
+    "sku": "cen-0520",
+    "artist": "Iron Maiden",
+    "album": "Live After Death",
+    "collectionUrl": "https://music.apple.com/cl/album/live-after-death/980120380?uo=4",
+    "image": "/assets/covers/album-980120380.jpg"
+  },
+  {
+    "sku": "cen-0525",
+    "artist": "Iron Maiden",
+    "album": "Iron Maiden",
+    "collectionUrl": "https://music.apple.com/cl/album/iron-maiden/979942735?uo=4",
+    "image": "/assets/covers/album-979942735.jpg"
+  },
+  {
+    "sku": "cen-0526",
+    "artist": "Iron Maiden",
+    "album": "Killers",
+    "collectionUrl": "https://music.apple.com/cl/album/killers/979953381?uo=4",
+    "image": "/assets/covers/album-979953381.jpg"
+  },
+  {
+    "sku": "cen-0527",
+    "artist": "Iron Maiden",
+    "album": "Virtual XI",
+    "collectionUrl": "https://music.apple.com/cl/album/virtual-xi/979928434?uo=4",
+    "image": "/assets/covers/album-979928434.jpg"
+  },
+  {
+    "sku": "cen-0530",
+    "artist": "Iron Maiden",
+    "album": "Senjutsu",
+    "collectionUrl": "https://music.apple.com/cl/album/senjutsu/1576510536?uo=4",
+    "image": "/assets/covers/album-1576510536.jpg"
+  },
+  {
+    "sku": "cen-0531",
+    "artist": "Iron Maiden",
+    "album": "A Matter of Life and Death",
+    "collectionUrl": "https://music.apple.com/cl/album/a-matter-of-life-and-death/979959071?uo=4",
+    "image": "/assets/covers/album-979959071.jpg"
+  },
+  {
+    "sku": "cen-0532",
+    "artist": "Iron Maiden",
+    "album": "The Final Frontier",
+    "collectionUrl": "https://music.apple.com/cl/album/the-final-frontier/979933119?uo=4",
+    "image": "/assets/covers/album-979933119.jpg"
+  },
+  {
+    "sku": "cen-0535",
+    "artist": "Iron Maiden",
+    "album": "Dance of Death",
+    "collectionUrl": "https://music.apple.com/cl/album/dance-of-death/979930404?uo=4",
+    "image": "/assets/covers/album-979930404.jpg"
+  },
+  {
+    "sku": "cen-0536",
+    "artist": "Iron Maiden",
+    "album": "The X Factor",
+    "collectionUrl": "https://music.apple.com/cl/album/the-x-factor/979960213?uo=4",
+    "image": "/assets/covers/album-979960213.jpg"
+  },
+  {
+    "sku": "cen-0537",
+    "artist": "Iron Maiden",
+    "album": "Piece of Mind",
+    "collectionUrl": "https://music.apple.com/cl/album/piece-of-mind/979936834?uo=4",
+    "image": "/assets/covers/album-979936834.jpg"
+  },
+  {
+    "sku": "cen-0538",
+    "artist": "Iron Maiden",
+    "album": "Brave New World",
+    "collectionUrl": "https://music.apple.com/cl/album/brave-new-world/980114883?uo=4",
+    "image": "/assets/covers/album-980114883.jpg"
+  },
+  {
+    "sku": "ven-0845",
+    "artist": "The Beatles",
+    "album": "Help!",
+    "collectionUrl": "https://music.apple.com/cl/album/help/1441164524?uo=4",
+    "image": "/assets/covers/album-1441164524.jpg"
+  },
+  {
+    "sku": "ven-0846",
+    "artist": "The Beatles",
+    "album": "Yellow Submarine",
+    "collectionUrl": "https://music.apple.com/cl/album/yellow-submarine/1441164525?uo=4",
+    "image": "/assets/covers/album-1441164525.jpg"
+  },
+  {
+    "sku": "cen-1205",
+    "artist": "The Beatles",
+    "album": "With The Beatles",
+    "collectionUrl": "https://music.apple.com/cl/album/with-the-beatles/1441164362?uo=4",
+    "image": "/assets/covers/album-1441164362.jpg"
+  },
+  {
+    "sku": "cen-1207",
+    "artist": "The Beatles",
+    "album": "Yellow Submarine",
+    "collectionUrl": "https://music.apple.com/cl/album/yellow-submarine/1441164525?uo=4",
+    "image": "/assets/covers/album-1441164525.jpg"
+  },
+  {
+    "sku": "cen-1208",
+    "artist": "The Beatles",
+    "album": "Love",
+    "collectionUrl": "https://music.apple.com/cl/album/love/1441133389?uo=4",
+    "image": "/assets/covers/album-1441133389.jpg"
+  },
+  {
+    "sku": "cen-1217",
+    "artist": "The Beatles",
+    "album": "Please Please Me",
+    "collectionUrl": "https://music.apple.com/cl/album/please-please-me/1441164816?uo=4",
+    "image": "/assets/covers/album-1441164816.jpg"
+  },
+  {
+    "sku": "cen-1223",
+    "artist": "The Beatles",
+    "album": "On Air: Live at the BBC, Vol. 2",
+    "collectionUrl": "https://music.apple.com/cl/album/on-air-live-at-the-bbc-vol-2/1440831973?uo=4",
+    "image": "/assets/covers/album-1440831973.jpg"
+  },
+  {
+    "sku": "cen-1224",
+    "artist": "The Beatles",
+    "album": "Let It Be",
+    "collectionUrl": "https://music.apple.com/cl/album/let-it-be/1441164495?uo=4",
+    "image": "/assets/covers/album-1441164495.jpg"
+  },
+  {
+    "sku": "cen-1225",
+    "artist": "The Beatles",
+    "album": "Let It Be... Naked",
+    "collectionUrl": "https://music.apple.com/cl/album/let-it-be-naked/1441132606?uo=4",
+    "image": "/assets/covers/album-1441132606.jpg"
+  },
+  {
+    "sku": "ven-0171",
+    "artist": "David Bowie",
+    "album": "Never Let Me Down (Japan Edition) [2019 Remaster]",
+    "collectionUrl": "https://music.apple.com/cl/album/never-let-me-down-japan-edition-2019-remaster/1447701346?uo=4",
+    "image": "/assets/covers/album-1447701346.jpg"
+  },
+  {
+    "sku": "ven-0173",
+    "artist": "David Bowie",
+    "album": "Diamond Dogs (2016 Remaster)",
+    "collectionUrl": "https://music.apple.com/cl/album/diamond-dogs-2016-remaster/1195107058?uo=4",
+    "image": "/assets/covers/album-1195107058.jpg"
+  },
+  {
+    "sku": "ven-0175",
+    "artist": "David Bowie",
+    "album": "The Man Who Sold the World (2015 Remaster)",
+    "collectionUrl": "https://music.apple.com/cl/album/the-man-who-sold-the-world-2015-remaster/1039798902?uo=4",
+    "image": "/assets/covers/album-1039798902.jpg"
+  },
+  {
+    "sku": "ven-0177",
+    "artist": "David Bowie",
+    "album": "David Bowie",
+    "collectionUrl": "https://music.apple.com/cl/album/david-bowie/1435196634?uo=4",
+    "image": "/assets/covers/album-1435196634.jpg"
+  },
+  {
+    "sku": "cen-0254",
+    "artist": "David Bowie",
+    "album": "Diamond Dogs (2016 Remaster)",
+    "collectionUrl": "https://music.apple.com/cl/album/diamond-dogs-2016-remaster/1195107058?uo=4",
+    "image": "/assets/covers/album-1195107058.jpg"
+  },
+  {
+    "sku": "ven-0811",
+    "artist": "The Cure",
+    "album": "Paris (Live At Le Zenith 1992 / 30th Anniversary Expanded Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/paris-live-at-le-zenith-1992-30th-anniversary-expanded/1725301129?uo=4",
+    "image": "/assets/covers/album-1725301129.jpg"
+  },
+  {
+    "sku": "ven-0817",
+    "artist": "The Cure",
+    "album": "Pornography",
+    "collectionUrl": "https://music.apple.com/cl/album/pornography/1443463308?uo=4",
+    "image": "/assets/covers/album-1443463308.jpg"
+  },
+  {
+    "sku": "ven-0818",
+    "artist": "The Cure",
+    "album": "Faith (Deluxe Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/faith-deluxe-edition/1445870376?uo=4",
+    "image": "/assets/covers/album-1445870376.jpg"
+  },
+  {
+    "sku": "cen-1232",
+    "artist": "The Cure",
+    "album": "Paris (Live At Le Zenith 1992 / 30th Anniversary Expanded Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/paris-live-at-le-zenith-1992-30th-anniversary-expanded/1725301129?uo=4",
+    "image": "/assets/covers/album-1725301129.jpg"
+  },
+  {
+    "sku": "cen-1233",
+    "artist": "The Cure",
+    "album": "Japanese Whispers",
+    "collectionUrl": "https://music.apple.com/cl/album/japanese-whispers/1443749459?uo=4",
+    "image": "/assets/covers/album-1443749459.jpg"
+  },
+  {
+    "sku": "cen-1235",
+    "artist": "The Cure",
+    "album": "Bloodflowers",
+    "collectionUrl": "https://music.apple.com/cl/album/bloodflowers/1443258653?uo=4",
+    "image": "/assets/covers/album-1443258653.jpg"
+  },
+  {
+    "sku": "cen-1236",
+    "artist": "The Cure",
+    "album": "Wish",
+    "collectionUrl": "https://music.apple.com/cl/album/wish/1440932104?uo=4",
+    "image": "/assets/covers/album-1440932104.jpg"
+  },
+  {
+    "sku": "cen-1238",
+    "artist": "The Cure",
+    "album": "Faith (Deluxe Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/faith-deluxe-edition/1445870376?uo=4",
+    "image": "/assets/covers/album-1445870376.jpg"
+  },
+  {
+    "sku": "cen-1239",
+    "artist": "The Cure",
+    "album": "Pornography",
+    "collectionUrl": "https://music.apple.com/cl/album/pornography/1443463308?uo=4",
+    "image": "/assets/covers/album-1443463308.jpg"
+  },
+  {
+    "sku": "cen-1242",
+    "artist": "The Cure",
+    "album": "Three Imaginary Boys (Deluxe Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/three-imaginary-boys-deluxe-edition/1444156804?uo=4",
+    "image": "/assets/covers/album-1444156804.jpg"
+  },
+  {
+    "sku": "cen-1244",
+    "artist": "The Cure",
+    "album": "The Head On the Door",
+    "collectionUrl": "https://music.apple.com/cl/album/the-head-on-the-door/1443833316?uo=4",
+    "image": "/assets/covers/album-1443833316.jpg"
+  },
+  {
+    "sku": "cen-1247",
+    "artist": "The Cure",
+    "album": "The Top (Deluxe Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/the-top-deluxe-edition/1442389627?uo=4",
+    "image": "/assets/covers/album-1442389627.jpg"
+  },
+  {
+    "sku": "cen-1250",
+    "artist": "The Cure",
+    "album": "4:13 Dream",
+    "collectionUrl": "https://music.apple.com/cl/album/4-13-dream/1443618164?uo=4",
+    "image": "/assets/covers/album-1443618164.jpg"
+  },
+  {
+    "sku": "ves-0320",
+    "artist": "Los Tres",
+    "album": "Se Remata el Siglo",
+    "collectionUrl": "https://music.apple.com/cl/album/se-remata-el-siglo/682123035?uo=4",
+    "image": "/assets/covers/album-682123035.jpg"
+  },
+  {
+    "sku": "ves-0322",
+    "artist": "Los Tres",
+    "album": "Revuelta En Vivo",
+    "collectionUrl": "https://music.apple.com/cl/album/revuelta-en-vivo/1803501068?uo=4",
+    "image": "/assets/covers/album-1803501068.jpg"
+  },
+  {
+    "sku": "ves-0327",
+    "artist": "Los Tres",
+    "album": "La Sangre en el Cuerpo",
+    "collectionUrl": "https://music.apple.com/cl/album/la-sangre-en-el-cuerpo/682175018?uo=4",
+    "image": "/assets/covers/album-682175018.jpg"
+  },
+  {
+    "sku": "ves-0330",
+    "artist": "Los Tres",
+    "album": "Coliumo",
+    "collectionUrl": "https://music.apple.com/cl/album/coliumo/1790276057?uo=4",
+    "image": "/assets/covers/album-1790276057.jpg"
+  },
+  {
+    "sku": "ves-0332",
+    "artist": "Los Tres",
+    "album": "Hágalo Usted Mismo",
+    "collectionUrl": "https://music.apple.com/cl/album/h%C3%A1galo-usted-mismo/1790529847?uo=4",
+    "image": "/assets/covers/album-1790529847.jpg"
+  },
+  {
+    "sku": "ves-0333",
+    "artist": "Los Tres",
+    "album": "XCLNT",
+    "collectionUrl": "https://music.apple.com/cl/album/xclnt/1886615506?uo=4",
+    "image": "/assets/covers/album-1886615506.jpg"
+  },
+  {
+    "sku": "ves-0334",
+    "artist": "Los Tres",
+    "album": "Arena",
+    "collectionUrl": "https://music.apple.com/cl/album/arena/1791139052?uo=4",
+    "image": "/assets/covers/album-1791139052.jpg"
+  },
+  {
+    "sku": "ces-0314",
+    "artist": "Los Tres",
+    "album": "XCLNT",
+    "collectionUrl": "https://music.apple.com/cl/album/xclnt/1886615506?uo=4",
+    "image": "/assets/covers/album-1886615506.jpg"
+  },
+  {
+    "sku": "ces-0315",
+    "artist": "Los Tres",
+    "album": "Revuelta En Vivo",
+    "collectionUrl": "https://music.apple.com/cl/album/revuelta-en-vivo/1803501068?uo=4",
+    "image": "/assets/covers/album-1803501068.jpg"
+  },
+  {
+    "sku": "ces-0319",
+    "artist": "Los Tres",
+    "album": "Arena",
+    "collectionUrl": "https://music.apple.com/cl/album/arena/1791139052?uo=4",
+    "image": "/assets/covers/album-1791139052.jpg"
+  },
+  {
+    "sku": "ces-0324",
+    "artist": "Los Tres",
+    "album": "La Sangre en el Cuerpo",
+    "collectionUrl": "https://music.apple.com/cl/album/la-sangre-en-el-cuerpo/682175018?uo=4",
+    "image": "/assets/covers/album-682175018.jpg"
+  },
+  {
+    "sku": "cen-0257",
+    "artist": "David Bowie",
+    "album": "Black Tie White Noise (2021 Remaster)",
+    "collectionUrl": "https://music.apple.com/cl/album/black-tie-white-noise-2021-remaster/1745518415?uo=4",
+    "image": "/assets/covers/album-1745518415.jpg"
+  },
+  {
+    "sku": "cen-0262",
+    "artist": "David Bowie",
+    "album": "PinUps (2015 Remaster)",
+    "collectionUrl": "https://music.apple.com/cl/album/pinups-2015-remaster/1039794844?uo=4",
+    "image": "/assets/covers/album-1039794844.jpg"
+  },
+  {
+    "sku": "cen-0268",
+    "artist": "David Bowie",
+    "album": "David Bowie",
+    "collectionUrl": "https://music.apple.com/cl/album/david-bowie/1435196634?uo=4",
+    "image": "/assets/covers/album-1435196634.jpg"
+  },
+  {
+    "sku": "cen-0271",
+    "artist": "David Bowie",
+    "album": "'Hours...'",
+    "collectionUrl": "https://music.apple.com/cl/album/hours/1053991355?uo=4",
+    "image": "/assets/covers/album-1053991355.jpg"
+  },
+  {
+    "sku": "ven-0132",
+    "artist": "Coldplay",
+    "album": "Viva La Vida or Death and All His Friends",
+    "collectionUrl": "https://music.apple.com/cl/album/viva-la-vida-or-death-and-all-his-friends/1122773394?uo=4",
+    "image": "/assets/covers/album-1122773394.jpg"
+  },
+  {
+    "sku": "ven-0135",
+    "artist": "Coldplay",
+    "album": "Moon Music",
+    "collectionUrl": "https://music.apple.com/cl/album/moon-music/1751728791?uo=4",
+    "image": "/assets/covers/album-1751728791.jpg"
+  },
+  {
+    "sku": "ven-0137",
+    "artist": "Coldplay",
+    "album": "A Head Full of Dreams",
+    "collectionUrl": "https://music.apple.com/cl/album/a-head-full-of-dreams/1053933969?uo=4",
+    "image": "/assets/covers/album-1053933969.jpg"
+  },
+  {
+    "sku": "ven-0139",
+    "artist": "Coldplay",
+    "album": "A Rush of Blood to the Head",
+    "collectionUrl": "https://music.apple.com/cl/album/a-rush-of-blood-to-the-head/1122775993?uo=4",
+    "image": "/assets/covers/album-1122775993.jpg"
+  },
+  {
+    "sku": "ven-0140",
+    "artist": "Coldplay",
+    "album": "Ghost Stories",
+    "collectionUrl": "https://music.apple.com/cl/album/ghost-stories/829909653?uo=4",
+    "image": "/assets/covers/album-829909653.jpg"
+  },
+  {
+    "sku": "cen-0190",
+    "artist": "Coldplay",
+    "album": "Music Of The Spheres",
+    "collectionUrl": "https://music.apple.com/cl/album/music-of-the-spheres/1591893573?uo=4",
+    "image": "/assets/covers/album-1591893573.jpg"
+  },
+  {
+    "sku": "cen-0191",
+    "artist": "Coldplay",
+    "album": "X&Y",
+    "collectionUrl": "https://music.apple.com/cl/album/x-y/1123076757?uo=4",
+    "image": "/assets/covers/album-1123076757.jpg"
+  },
+  {
+    "sku": "cen-0192",
+    "artist": "Coldplay",
+    "album": "Everyday Life",
+    "collectionUrl": "https://music.apple.com/cl/album/everyday-life/1484143521?uo=4",
+    "image": "/assets/covers/album-1484143521.jpg"
+  },
+  {
+    "sku": "cen-0194",
+    "artist": "Coldplay",
+    "album": "A Rush of Blood to the Head",
+    "collectionUrl": "https://music.apple.com/cl/album/a-rush-of-blood-to-the-head/1122775993?uo=4",
+    "image": "/assets/covers/album-1122775993.jpg"
+  },
+  {
+    "sku": "cen-0198",
+    "artist": "Coldplay",
+    "album": "Ghost Stories: Live 2014",
+    "collectionUrl": "https://music.apple.com/cl/album/ghost-stories-live-2014/928168764?uo=4",
+    "image": "/assets/covers/album-928168764.jpg"
+  },
+  {
+    "sku": "cen-0199",
+    "artist": "Coldplay",
+    "album": "Ghost Stories",
+    "collectionUrl": "https://music.apple.com/cl/album/ghost-stories/829909653?uo=4",
+    "image": "/assets/covers/album-829909653.jpg"
+  },
+  {
+    "sku": "cen-0200",
+    "artist": "Coldplay",
+    "album": "Parachutes",
+    "collectionUrl": "https://music.apple.com/cl/album/parachutes/1122782080?uo=4",
+    "image": "/assets/covers/album-1122782080.jpg"
+  },
+  {
+    "sku": "cen-0202",
+    "artist": "Coldplay",
+    "album": "Moon Music",
+    "collectionUrl": "https://music.apple.com/cl/album/moon-music/1751728791?uo=4",
+    "image": "/assets/covers/album-1751728791.jpg"
+  },
+  {
+    "sku": "ven-0576",
+    "artist": "Nirvana",
+    "album": "Bleach (Deluxe Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/bleach-deluxe-edition/669728060?uo=4",
+    "image": "/assets/covers/album-669728060.jpg"
+  },
+  {
+    "sku": "cen-0690",
+    "artist": "Nirvana",
+    "album": "Nirvana",
+    "collectionUrl": "https://music.apple.com/cl/album/nirvana/1413920644?uo=4",
+    "image": "/assets/covers/album-1413920644.jpg"
+  },
+  {
+    "sku": "ven-0697",
+    "artist": "Ramones",
+    "album": "Leave Home (40th Anniversary Deluxe Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/leave-home-40th-anniversary-deluxe-edition/1245181325?uo=4",
+    "image": "/assets/covers/album-1245181325.jpg"
+  },
+  {
+    "sku": "ven-0698",
+    "artist": "Ramones",
+    "album": "Subterranean Jungle (Deluxe Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/subterranean-jungle-deluxe-edition/78977970?uo=4",
+    "image": "/assets/covers/album-78977970.jpg"
+  },
+  {
+    "sku": "ven-0702",
+    "artist": "Ramones",
+    "album": "Road to Ruin",
+    "collectionUrl": "https://music.apple.com/cl/album/road-to-ruin/847960892?uo=4",
+    "image": "/assets/covers/album-847960892.jpg"
+  },
+  {
+    "sku": "cen-0987",
+    "artist": "Ramones",
+    "album": "Leave Home (40th Anniversary Deluxe Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/leave-home-40th-anniversary-deluxe-edition/1245181325?uo=4",
+    "image": "/assets/covers/album-1245181325.jpg"
+  },
+  {
+    "sku": "cen-0988",
+    "artist": "Ramones",
+    "album": "End of the Century (Deluxe Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/end-of-the-century-deluxe-edition/78977744?uo=4",
+    "image": "/assets/covers/album-78977744.jpg"
+  },
+  {
+    "sku": "cen-0989",
+    "artist": "Ramones",
+    "album": "Too Tough to Die (Deluxe Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/too-tough-to-die-deluxe-edition/78978286?uo=4",
+    "image": "/assets/covers/album-78978286.jpg"
+  },
+  {
+    "sku": "cen-0990",
+    "artist": "Ramones",
+    "album": "Brain Drain",
+    "collectionUrl": "https://music.apple.com/cl/album/brain-drain/697679798?uo=4",
+    "image": "/assets/covers/album-697679798.jpg"
+  },
+  {
+    "sku": "cen-0995",
+    "artist": "Ramones",
+    "album": "Halfway to Sanity",
+    "collectionUrl": "https://music.apple.com/cl/album/halfway-to-sanity/847938294?uo=4",
+    "image": "/assets/covers/album-847938294.jpg"
+  },
+  {
+    "sku": "ven-0191",
+    "artist": "Deftones",
+    "album": "Diamond Eyes",
+    "collectionUrl": "https://music.apple.com/cl/album/diamond-eyes/368559138?uo=4",
+    "image": "/assets/covers/album-368559138.jpg"
+  },
+  {
+    "sku": "cen-0301",
+    "artist": "Deftones",
+    "album": "Diamond Eyes",
+    "collectionUrl": "https://music.apple.com/cl/album/diamond-eyes/368559138?uo=4",
+    "image": "/assets/covers/album-368559138.jpg"
+  },
+  {
+    "sku": "cen-0997",
+    "artist": "Ramones",
+    "album": "Loco Live",
+    "collectionUrl": "https://music.apple.com/cl/album/loco-live/697253264?uo=4",
+    "image": "/assets/covers/album-697253264.jpg"
+  },
+  {
+    "sku": "cen-0998",
+    "artist": "Ramones",
+    "album": "Road to Ruin",
+    "collectionUrl": "https://music.apple.com/cl/album/road-to-ruin/847960892?uo=4",
+    "image": "/assets/covers/album-847960892.jpg"
+  },
+  {
+    "sku": "ves-0483",
+    "artist": "Soda Stereo",
+    "album": "Soda Stereo",
+    "collectionUrl": "https://music.apple.com/cl/album/soda-stereo/321883646?uo=4",
+    "image": "/assets/covers/album-321883646.jpg"
+  },
+  {
+    "sku": "ves-0488",
+    "artist": "Soda Stereo",
+    "album": "Sueño Stereo",
+    "collectionUrl": "https://music.apple.com/cl/album/sue%C3%B1o-stereo/309452426?uo=4",
+    "image": "/assets/covers/album-309452426.jpg"
+  },
+  {
+    "sku": "ces-0526",
+    "artist": "Soda Stereo",
+    "album": "Soda Stereo",
+    "collectionUrl": "https://music.apple.com/cl/album/soda-stereo/321883646?uo=4",
+    "image": "/assets/covers/album-321883646.jpg"
+  },
+  {
+    "sku": "ces-0527",
+    "artist": "Soda Stereo",
+    "album": "Rex Mix",
+    "collectionUrl": "https://music.apple.com/cl/album/rex-mix/321882065?uo=4",
+    "image": "/assets/covers/album-321882065.jpg"
+  },
+  {
+    "sku": "ves-0283",
+    "artist": "Los Bunkers",
+    "album": "La Culpa",
+    "collectionUrl": "https://music.apple.com/cl/album/la-culpa/321580925?uo=4",
+    "image": "/assets/covers/album-321580925.jpg"
+  },
+  {
+    "sku": "ves-0284",
+    "artist": "Los Bunkers",
+    "album": "La Velocidad de la Luz",
+    "collectionUrl": "https://music.apple.com/cl/album/la-velocidad-de-la-luz/1398637829?uo=4",
+    "image": "/assets/covers/album-1398637829.jpg"
+  },
+  {
+    "sku": "ves-0285",
+    "artist": "Los Bunkers",
+    "album": "Música Libre",
+    "collectionUrl": "https://music.apple.com/cl/album/m%C3%BAsica-libre/1443644653?uo=4",
+    "image": "/assets/covers/album-1443644653.jpg"
+  },
+  {
+    "sku": "ves-0289",
+    "artist": "Los Bunkers",
+    "album": "Canción de Lejos",
+    "collectionUrl": "https://music.apple.com/cl/album/canci%C3%B3n-de-lejos/578030715?uo=4",
+    "image": "/assets/covers/album-578030715.jpg"
+  },
+  {
+    "sku": "ves-0290",
+    "artist": "Los Bunkers",
+    "album": "Noviembre",
+    "collectionUrl": "https://music.apple.com/cl/album/noviembre/1710437651?uo=4",
+    "image": "/assets/covers/album-1710437651.jpg"
+  },
+  {
+    "sku": "ves-0291",
+    "artist": "Los Bunkers",
+    "album": "Los Bunkers",
+    "collectionUrl": "https://music.apple.com/cl/album/los-bunkers/1540234422?uo=4",
+    "image": "/assets/covers/album-1540234422.jpg"
+  },
+  {
+    "sku": "ves-0292",
+    "artist": "Los Bunkers",
+    "album": "En Vivo",
+    "collectionUrl": "https://music.apple.com/cl/album/en-vivo/1777361481?uo=4",
+    "image": "/assets/covers/album-1777361481.jpg"
+  },
+  {
+    "sku": "ces-0339",
+    "artist": "Los Bunkers",
+    "album": "Noviembre",
+    "collectionUrl": "https://music.apple.com/cl/album/noviembre/1710437651?uo=4",
+    "image": "/assets/covers/album-1710437651.jpg"
+  },
+  {
+    "sku": "ces-0345",
+    "artist": "Los Bunkers",
+    "album": "La Velocidad de la Luz",
+    "collectionUrl": "https://music.apple.com/cl/album/la-velocidad-de-la-luz/1398637829?uo=4",
+    "image": "/assets/covers/album-1398637829.jpg"
+  },
+  {
+    "sku": "ven-0275",
+    "artist": "Elvis Presley",
+    "album": "Elvis Presley",
+    "collectionUrl": "https://music.apple.com/cl/album/elvis-presley/671019373?uo=4",
+    "image": "/assets/covers/album-671019373.jpg"
+  },
+  {
+    "sku": "ven-0278",
+    "artist": "Elvis Presley",
+    "album": "Something for Everybody",
+    "collectionUrl": "https://music.apple.com/cl/album/something-for-everybody/949547579?uo=4",
+    "image": "/assets/covers/album-949547579.jpg"
+  },
+  {
+    "sku": "ven-0524",
+    "artist": "Michael Jackson",
+    "album": "Bad",
+    "collectionUrl": "https://music.apple.com/cl/album/bad/559334659?uo=4",
+    "image": "/assets/covers/album-559334659.jpg"
+  },
+  {
+    "sku": "cen-0798",
+    "artist": "Michael Jackson",
+    "album": "XSCAPE (Deluxe)",
+    "collectionUrl": "https://music.apple.com/cl/album/xscape-deluxe/850697616?uo=4",
+    "image": "/assets/covers/album-850697616.jpg"
+  },
+  {
+    "sku": "ven-0280",
+    "artist": "Elvis Presley",
+    "album": "His Hand In Mine",
+    "collectionUrl": "https://music.apple.com/cl/album/his-hand-in-mine/949549398?uo=4",
+    "image": "/assets/covers/album-949549398.jpg"
+  },
+  {
+    "sku": "cen-0374",
+    "artist": "Elvis Presley",
+    "album": "Something for Everybody",
+    "collectionUrl": "https://music.apple.com/cl/album/something-for-everybody/949547579?uo=4",
+    "image": "/assets/covers/album-949547579.jpg"
+  },
+  {
+    "sku": "cen-0377",
+    "artist": "Elvis Presley",
+    "album": "His Hand In Mine",
+    "collectionUrl": "https://music.apple.com/cl/album/his-hand-in-mine/949549398?uo=4",
+    "image": "/assets/covers/album-949549398.jpg"
+  },
+  {
+    "sku": "cen-0793",
+    "artist": "Metallica",
+    "album": "Metallica (Remastered)",
+    "collectionUrl": "https://music.apple.com/cl/album/metallica-remastered/1571968136?uo=4",
+    "image": "/assets/covers/album-1571968136.jpg"
+  },
+  {
+    "sku": "ves-0032",
+    "artist": "Andrés Calamaro",
+    "album": "El Cantante",
+    "collectionUrl": "https://music.apple.com/cl/album/el-cantante/101256642?uo=4",
+    "image": "/assets/covers/album-101256642.jpg"
+  },
+  {
+    "sku": "ves-0033",
+    "artist": "Andrés Calamaro",
+    "album": "La Lengua Popular",
+    "collectionUrl": "https://music.apple.com/cl/album/la-lengua-popular/263048621?uo=4",
+    "image": "/assets/covers/album-263048621.jpg"
+  },
+  {
+    "sku": "ves-0034",
+    "artist": "Andrés Calamaro",
+    "album": "Bohemio",
+    "collectionUrl": "https://music.apple.com/cl/album/bohemio/687059565?uo=4",
+    "image": "/assets/covers/album-687059565.jpg"
+  },
+  {
+    "sku": "ves-0035",
+    "artist": "Andrés Calamaro",
+    "album": "Alta Suciedad",
+    "collectionUrl": "https://music.apple.com/cl/album/alta-suciedad/101375497?uo=4",
+    "image": "/assets/covers/album-101375497.jpg"
+  },
+  {
+    "sku": "ves-0036",
+    "artist": "Andrés Calamaro",
+    "album": "El Regreso",
+    "collectionUrl": "https://music.apple.com/cl/album/el-regreso/89605475?uo=4",
+    "image": "/assets/covers/album-89605475.jpg"
+  },
+  {
+    "sku": "ves-0037",
+    "artist": "Andrés Calamaro",
+    "album": "Tinta Roja",
+    "collectionUrl": "https://music.apple.com/cl/album/tinta-roja/156874032?uo=4",
+    "image": "/assets/covers/album-156874032.jpg"
+  },
+  {
+    "sku": "ces-0022",
+    "artist": "Andrés Calamaro",
+    "album": "Volumen 11",
+    "collectionUrl": "https://music.apple.com/cl/album/volumen-11/1178063930?uo=4",
+    "image": "/assets/covers/album-1178063930.jpg"
+  },
+  {
+    "sku": "ces-0023",
+    "artist": "Andrés Calamaro",
+    "album": "Tinta Roja",
+    "collectionUrl": "https://music.apple.com/cl/album/tinta-roja/156874032?uo=4",
+    "image": "/assets/covers/album-156874032.jpg"
+  },
+  {
+    "sku": "ces-0024",
+    "artist": "Andrés Calamaro",
+    "album": "Cargar La Suerte",
+    "collectionUrl": "https://music.apple.com/cl/album/cargar-la-suerte/1439534124?uo=4",
+    "image": "/assets/covers/album-1439534124.jpg"
+  },
+  {
+    "sku": "ces-0025",
+    "artist": "Andrés Calamaro",
+    "album": "Romaphonic Sessions",
+    "collectionUrl": "https://music.apple.com/cl/album/romaphonic-sessions/1083245975?uo=4",
+    "image": "/assets/covers/album-1083245975.jpg"
+  },
+  {
+    "sku": "ces-0027",
+    "artist": "Andrés Calamaro",
+    "album": "Honestidad Brutal",
+    "collectionUrl": "https://music.apple.com/cl/album/honestidad-brutal/101053346?uo=4",
+    "image": "/assets/covers/album-101053346.jpg"
+  },
+  {
+    "sku": "ces-0028",
+    "artist": "Andrés Calamaro",
+    "album": "Bohemia",
+    "collectionUrl": "https://music.apple.com/cl/album/bohemia/875917028?uo=4",
+    "image": "/assets/covers/album-875917028.jpg"
+  },
+  {
+    "sku": "ces-0313",
+    "artist": "Los Prisioneros",
+    "album": "Manzana",
+    "collectionUrl": "https://music.apple.com/cl/album/manzana/1482955002?uo=4",
+    "image": "/assets/covers/album-1482955002.jpg"
+  },
+  {
+    "sku": "ven-0875",
+    "artist": "The Doors",
+    "album": "Strange Days",
+    "collectionUrl": "https://music.apple.com/cl/album/strange-days/1622362830?uo=4",
+    "image": "/assets/covers/album-1622362830.jpg"
+  },
+  {
+    "sku": "ven-0877",
+    "artist": "The Doors",
+    "album": "The Soft Parade",
+    "collectionUrl": "https://music.apple.com/cl/album/the-soft-parade/1622365586?uo=4",
+    "image": "/assets/covers/album-1622365586.jpg"
+  },
+  {
+    "sku": "ven-0878",
+    "artist": "The Doors",
+    "album": "L.A. Woman",
+    "collectionUrl": "https://music.apple.com/cl/album/l-a-woman/1622471682?uo=4",
+    "image": "/assets/covers/album-1622471682.jpg"
+  },
+  {
+    "sku": "ces-0029",
+    "artist": "Andrés Calamaro",
+    "album": "El Palacio de las Flores",
+    "collectionUrl": "https://music.apple.com/cl/album/el-palacio-de-las-flores/205565773?uo=4",
+    "image": "/assets/covers/album-205565773.jpg"
+  },
+  {
+    "sku": "ces-0030",
+    "artist": "Andrés Calamaro",
+    "album": "Alta Suciedad",
+    "collectionUrl": "https://music.apple.com/cl/album/alta-suciedad/101375497?uo=4",
+    "image": "/assets/covers/album-101375497.jpg"
+  },
+  {
+    "sku": "ces-0032",
+    "artist": "Andrés Calamaro",
+    "album": "El Cantante",
+    "collectionUrl": "https://music.apple.com/cl/album/el-cantante/101256642?uo=4",
+    "image": "/assets/covers/album-101256642.jpg"
+  },
+  {
+    "sku": "ven-0879",
+    "artist": "The Doors",
+    "album": "Waiting For The Sun",
+    "collectionUrl": "https://music.apple.com/cl/album/waiting-for-the-sun/1622361522?uo=4",
+    "image": "/assets/covers/album-1622361522.jpg"
+  },
+  {
+    "sku": "ven-0880",
+    "artist": "The Doors",
+    "album": "Absolutely Live",
+    "collectionUrl": "https://music.apple.com/cl/album/absolutely-live/200538932?uo=4",
+    "image": "/assets/covers/album-200538932.jpg"
+  },
+  {
+    "sku": "ven-0881",
+    "artist": "The Doors",
+    "album": "The Doors",
+    "collectionUrl": "https://music.apple.com/cl/album/the-doors/1622368510?uo=4",
+    "image": "/assets/covers/album-1622368510.jpg"
+  },
+  {
+    "sku": "ven-0882",
+    "artist": "The Doors",
+    "album": "The Doors",
+    "collectionUrl": "https://music.apple.com/cl/album/the-doors/1622368510?uo=4",
+    "image": "/assets/covers/album-1622368510.jpg"
+  },
+  {
+    "sku": "cen-1187",
+    "artist": "The Doors",
+    "album": "Morrison Hotel",
+    "collectionUrl": "https://music.apple.com/cl/album/morrison-hotel/1622467535?uo=4",
+    "image": "/assets/covers/album-1622467535.jpg"
+  },
+  {
+    "sku": "cen-1188",
+    "artist": "The Doors",
+    "album": "The Soft Parade",
+    "collectionUrl": "https://music.apple.com/cl/album/the-soft-parade/1622365586?uo=4",
+    "image": "/assets/covers/album-1622365586.jpg"
+  },
+  {
+    "sku": "ves-0086",
+    "artist": "Charly Garcia",
+    "album": "Parte de la Religión",
+    "collectionUrl": "https://music.apple.com/cl/album/parte-de-la-religi%C3%B3n/321799872?uo=4",
+    "image": "/assets/covers/album-321799872.jpg"
+  },
+  {
+    "sku": "ves-0087",
+    "artist": "Charly Garcia",
+    "album": "Piano Bar",
+    "collectionUrl": "https://music.apple.com/cl/album/piano-bar/1421884385?uo=4",
+    "image": "/assets/covers/album-1421884385.jpg"
+  },
+  {
+    "sku": "ves-0094",
+    "artist": "Charly Garcia",
+    "album": "Como Conseguir Chicas",
+    "collectionUrl": "https://music.apple.com/cl/album/como-conseguir-chicas/321702877?uo=4",
+    "image": "/assets/covers/album-321702877.jpg"
+  },
+  {
+    "sku": "ces-0124",
+    "artist": "Charly Garcia",
+    "album": "Unplugged",
+    "collectionUrl": "https://music.apple.com/cl/album/unplugged/326701372?uo=4",
+    "image": "/assets/covers/album-326701372.jpg"
+  },
+  {
+    "sku": "ces-0126",
+    "artist": "Charly Garcia",
+    "album": "Filosofia Barata y Zapatos de Goma",
+    "collectionUrl": "https://music.apple.com/cl/album/filosofia-barata-y-zapatos-de-goma/321704992?uo=4",
+    "image": "/assets/covers/album-321704992.jpg"
+  },
+  {
+    "sku": "ces-0128",
+    "artist": "Charly Garcia",
+    "album": "Parte de la Religión",
+    "collectionUrl": "https://music.apple.com/cl/album/parte-de-la-religi%C3%B3n/321799872?uo=4",
+    "image": "/assets/covers/album-321799872.jpg"
+  },
+  {
+    "sku": "ces-0129",
+    "artist": "Charly Garcia",
+    "album": "Como Conseguir Chicas",
+    "collectionUrl": "https://music.apple.com/cl/album/como-conseguir-chicas/321702877?uo=4",
+    "image": "/assets/covers/album-321702877.jpg"
+  },
+  {
+    "sku": "ven-0447",
+    "artist": "LINKIN PARK",
+    "album": "LIVING THINGS",
+    "collectionUrl": "https://music.apple.com/cl/album/living-things/518869932?uo=4",
+    "image": "/assets/covers/album-518869932.jpg"
+  },
+  {
+    "sku": "ces-0137",
+    "artist": "Charly Garcia",
+    "album": "Random",
+    "collectionUrl": "https://music.apple.com/cl/album/random/1204527614?uo=4",
+    "image": "/assets/covers/album-1204527614.jpg"
+  },
+  {
+    "sku": "ven-0449",
+    "artist": "LINKIN PARK",
+    "album": "Hybrid Theory (Deluxe Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/hybrid-theory-deluxe-edition/590431776?uo=4",
+    "image": "/assets/covers/album-590431776.jpg"
+  },
+  {
+    "sku": "ven-0450",
+    "artist": "LINKIN PARK",
+    "album": "Hybrid Theory (Deluxe Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/hybrid-theory-deluxe-edition/590431776?uo=4",
+    "image": "/assets/covers/album-590431776.jpg"
+  },
+  {
+    "sku": "ven-0451",
+    "artist": "LINKIN PARK",
+    "album": "Minutes to Midnight (Deluxe Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/minutes-to-midnight-deluxe-edition/1622310678?uo=4",
+    "image": "/assets/covers/album-1622310678.jpg"
+  },
+  {
+    "sku": "ven-0453",
+    "artist": "LINKIN PARK",
+    "album": "Meteora",
+    "collectionUrl": "https://music.apple.com/cl/album/meteora/528435845?uo=4",
+    "image": "/assets/covers/album-528435845.jpg"
+  },
+  {
+    "sku": "cen-0656",
+    "artist": "LINKIN PARK",
+    "album": "LIVING THINGS",
+    "collectionUrl": "https://music.apple.com/cl/album/living-things/518869932?uo=4",
+    "image": "/assets/covers/album-518869932.jpg"
+  },
+  {
+    "sku": "cen-0659",
+    "artist": "LINKIN PARK",
+    "album": "Hybrid Theory (Deluxe Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/hybrid-theory-deluxe-edition/590431776?uo=4",
+    "image": "/assets/covers/album-590431776.jpg"
+  },
+  {
+    "sku": "cen-0661",
+    "artist": "LINKIN PARK",
+    "album": "RECHARGED",
+    "collectionUrl": "https://music.apple.com/cl/album/recharged/701162375?uo=4",
+    "image": "/assets/covers/album-701162375.jpg"
+  },
+  {
+    "sku": "cen-0664",
+    "artist": "LINKIN PARK",
+    "album": "Meteora",
+    "collectionUrl": "https://music.apple.com/cl/album/meteora/528435845?uo=4",
+    "image": "/assets/covers/album-528435845.jpg"
+  },
+  {
+    "sku": "ven-0828",
+    "artist": "The Smiths",
+    "album": "Strangeways, Here We Come",
+    "collectionUrl": "https://music.apple.com/cl/album/strangeways-here-we-come/799980711?uo=4",
+    "image": "/assets/covers/album-799980711.jpg"
+  },
+  {
+    "sku": "ven-0830",
+    "artist": "The Smiths",
+    "album": "The Smiths",
+    "collectionUrl": "https://music.apple.com/cl/album/the-smiths/799995884?uo=4",
+    "image": "/assets/covers/album-799995884.jpg"
+  },
+  {
+    "sku": "ven-0831",
+    "artist": "The Smiths",
+    "album": "Meat Is Murder",
+    "collectionUrl": "https://music.apple.com/cl/album/meat-is-murder/799986977?uo=4",
+    "image": "/assets/covers/album-799986977.jpg"
+  },
+  {
+    "sku": "ven-0832",
+    "artist": "The Smiths",
+    "album": "Hatful of Hollow",
+    "collectionUrl": "https://music.apple.com/cl/album/hatful-of-hollow/799969670?uo=4",
+    "image": "/assets/covers/album-799969670.jpg"
+  },
+  {
+    "sku": "cen-1270",
+    "artist": "The Smiths",
+    "album": "Strangeways, Here We Come",
+    "collectionUrl": "https://music.apple.com/cl/album/strangeways-here-we-come/799980711?uo=4",
+    "image": "/assets/covers/album-799980711.jpg"
+  },
+  {
+    "sku": "cen-1274",
+    "artist": "The Smiths",
+    "album": "The Smiths",
+    "collectionUrl": "https://music.apple.com/cl/album/the-smiths/799995884?uo=4",
+    "image": "/assets/covers/album-799995884.jpg"
+  },
+  {
+    "sku": "cen-1275",
+    "artist": "The Smiths",
+    "album": "Hatful of Hollow",
+    "collectionUrl": "https://music.apple.com/cl/album/hatful-of-hollow/799969670?uo=4",
+    "image": "/assets/covers/album-799969670.jpg"
+  },
+  {
+    "sku": "ven-0318",
+    "artist": "Gorillaz",
+    "album": "Demon Days",
+    "collectionUrl": "https://music.apple.com/cl/album/demon-days/850571319?uo=4",
+    "image": "/assets/covers/album-850571319.jpg"
+  },
+  {
+    "sku": "ven-0319",
+    "artist": "Gorillaz",
+    "album": "Plastic Beach (Deluxe Version)",
+    "collectionUrl": "https://music.apple.com/cl/album/plastic-beach-deluxe-version/859841880?uo=4",
+    "image": "/assets/covers/album-859841880.jpg"
+  },
+  {
+    "sku": "cen-0451",
+    "artist": "Gorillaz",
+    "album": "Plastic Beach (Deluxe Version)",
+    "collectionUrl": "https://music.apple.com/cl/album/plastic-beach-deluxe-version/859841880?uo=4",
+    "image": "/assets/covers/album-859841880.jpg"
+  },
+  {
+    "sku": "cen-0455",
+    "artist": "Gorillaz",
+    "album": "G Sides",
+    "collectionUrl": "https://music.apple.com/cl/album/g-sides/884147414?uo=4",
+    "image": "/assets/covers/album-884147414.jpg"
+  },
+  {
+    "sku": "cen-0456",
+    "artist": "Gorillaz",
+    "album": "The Fall",
+    "collectionUrl": "https://music.apple.com/cl/album/the-fall/850585388?uo=4",
+    "image": "/assets/covers/album-850585388.jpg"
+  },
+  {
+    "sku": "cen-0460",
+    "artist": "Gorillaz",
+    "album": "Demon Days",
+    "collectionUrl": "https://music.apple.com/cl/album/demon-days/850571319?uo=4",
+    "image": "/assets/covers/album-850571319.jpg"
+  },
+  {
+    "sku": "cen-0468",
+    "artist": "Green Day",
+    "album": "¡Uno!",
+    "collectionUrl": "https://music.apple.com/cl/album/uno/543017209?uo=4",
+    "image": "/assets/covers/album-543017209.jpg"
+  },
+  {
+    "sku": "cen-0469",
+    "artist": "Green Day",
+    "album": "¡Dos!",
+    "collectionUrl": "https://music.apple.com/cl/album/dos/569284187?uo=4",
+    "image": "/assets/covers/album-569284187.jpg"
+  },
+  {
+    "sku": "ves-0142",
+    "artist": "Extremoduro",
+    "album": "Deltoya",
+    "collectionUrl": "https://music.apple.com/cl/album/deltoya/403721236?uo=4",
+    "image": "/assets/covers/album-403721236.jpg"
+  },
+  {
+    "sku": "ven-0235",
+    "artist": "Dream Theater",
+    "album": "Images and Words",
+    "collectionUrl": "https://music.apple.com/cl/album/images-and-words/282703578?uo=4",
+    "image": "/assets/covers/album-282703578.jpg"
+  },
+  {
+    "sku": "ven-0236",
+    "artist": "Dream Theater",
+    "album": "Awake",
+    "collectionUrl": "https://music.apple.com/cl/album/awake/282819302?uo=4",
+    "image": "/assets/covers/album-282819302.jpg"
+  },
+  {
+    "sku": "cen-0335",
+    "artist": "Dream Theater",
+    "album": "Octavarium",
+    "collectionUrl": "https://music.apple.com/cl/album/octavarium/65615441?uo=4",
+    "image": "/assets/covers/album-65615441.jpg"
+  },
+  {
+    "sku": "cen-0341",
+    "artist": "Dream Theater",
+    "album": "Dream Theater",
+    "collectionUrl": "https://music.apple.com/cl/album/dream-theater/676891642?uo=4",
+    "image": "/assets/covers/album-676891642.jpg"
+  },
+  {
+    "sku": "cen-0343",
+    "artist": "Dream Theater",
+    "album": "Falling Into Infinity",
+    "collectionUrl": "https://music.apple.com/cl/album/falling-into-infinity/219377752?uo=4",
+    "image": "/assets/covers/album-219377752.jpg"
+  },
+  {
+    "sku": "cen-0344",
+    "artist": "Dream Theater",
+    "album": "Black Clouds & Silver Linings (Special Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/black-clouds-silver-linings-special-edition/319394419?uo=4",
+    "image": "/assets/covers/album-319394419.jpg"
+  },
+  {
+    "sku": "ves-0143",
+    "artist": "Extremoduro",
+    "album": "Dónde Están Mis Amigos",
+    "collectionUrl": "https://music.apple.com/cl/album/d%C3%B3nde-est%C3%A1n-mis-amigos/403721438?uo=4",
+    "image": "/assets/covers/album-403721438.jpg"
+  },
+  {
+    "sku": "ves-0144",
+    "artist": "Extremoduro",
+    "album": "Material Defectuoso",
+    "collectionUrl": "https://music.apple.com/cl/album/material-defectuoso/436726144?uo=4",
+    "image": "/assets/covers/album-436726144.jpg"
+  },
+  {
+    "sku": "ves-0145",
+    "artist": "Extremoduro",
+    "album": "Rock Transgresivo",
+    "collectionUrl": "https://music.apple.com/cl/album/rock-transgresivo/403720861?uo=4",
+    "image": "/assets/covers/album-403720861.jpg"
+  },
+  {
+    "sku": "ves-0146",
+    "artist": "Extremoduro",
+    "album": "Canciones Prohibidas",
+    "collectionUrl": "https://music.apple.com/cl/album/canciones-prohibidas/403729813?uo=4",
+    "image": "/assets/covers/album-403729813.jpg"
+  },
+  {
+    "sku": "ces-0164",
+    "artist": "Extremoduro",
+    "album": "Grandes Exitos y Fracasos",
+    "collectionUrl": "https://music.apple.com/cl/album/grandes-exitos-y-fracasos/42019175?uo=4",
+    "image": "/assets/covers/album-42019175.jpg"
+  },
+  {
+    "sku": "ces-0166",
+    "artist": "Extremoduro",
+    "album": "Para todos los públicos",
+    "collectionUrl": "https://music.apple.com/cl/album/para-todos-los-p%C3%BAblicos/727042203?uo=4",
+    "image": "/assets/covers/album-727042203.jpg"
+  },
+  {
+    "sku": "ces-0168",
+    "artist": "Extremoduro",
+    "album": "Rock Transgresivo",
+    "collectionUrl": "https://music.apple.com/cl/album/rock-transgresivo/403720861?uo=4",
+    "image": "/assets/covers/album-403720861.jpg"
+  },
+  {
+    "sku": "ces-0169",
+    "artist": "Extremoduro",
+    "album": "Canciones Prohibidas",
+    "collectionUrl": "https://music.apple.com/cl/album/canciones-prohibidas/403729813?uo=4",
+    "image": "/assets/covers/album-403729813.jpg"
+  },
+  {
+    "sku": "ces-0171",
+    "artist": "Extremoduro",
+    "album": "Dónde Están Mis Amigos",
+    "collectionUrl": "https://music.apple.com/cl/album/d%C3%B3nde-est%C3%A1n-mis-amigos/403721438?uo=4",
+    "image": "/assets/covers/album-403721438.jpg"
+  },
+  {
+    "sku": "ces-0172",
+    "artist": "Extremoduro",
+    "album": "Iros Todos a Tomar por Culo",
+    "collectionUrl": "https://music.apple.com/cl/album/iros-todos-a-tomar-por-culo/65133837?uo=4",
+    "image": "/assets/covers/album-65133837.jpg"
+  },
+  {
+    "sku": "ven-0488",
+    "artist": "Madonna",
+    "album": "Something to Remember",
+    "collectionUrl": "https://music.apple.com/cl/album/something-to-remember/80815051?uo=4",
+    "image": "/assets/covers/album-80815051.jpg"
+  },
+  {
+    "sku": "ven-0489",
+    "artist": "Madonna",
+    "album": "Madonna",
+    "collectionUrl": "https://music.apple.com/cl/album/madonna/80815644?uo=4",
+    "image": "/assets/covers/album-80815644.jpg"
+  },
+  {
+    "sku": "ven-0490",
+    "artist": "Madonna",
+    "album": "Finally Enough Love!",
+    "collectionUrl": "https://music.apple.com/cl/album/finally-enough-love/1622105005?uo=4",
+    "image": "/assets/covers/album-1622105005.jpg"
+  },
+  {
+    "sku": "ven-0491",
+    "artist": "Madonna",
+    "album": "Like a Virgin",
+    "collectionUrl": "https://music.apple.com/cl/album/like-a-virgin/80815235?uo=4",
+    "image": "/assets/covers/album-80815235.jpg"
+  },
+  {
+    "sku": "cen-0711",
+    "artist": "Madonna",
+    "album": "Madonna",
+    "collectionUrl": "https://music.apple.com/cl/album/madonna/80815644?uo=4",
+    "image": "/assets/covers/album-80815644.jpg"
+  },
+  {
+    "sku": "cen-0714",
+    "artist": "Madonna",
+    "album": "American Life",
+    "collectionUrl": "https://music.apple.com/cl/album/american-life/80815713?uo=4",
+    "image": "/assets/covers/album-80815713.jpg"
+  },
+  {
+    "sku": "cen-0717",
+    "artist": "Madonna",
+    "album": "Erotica",
+    "collectionUrl": "https://music.apple.com/cl/album/erotica/80814958?uo=4",
+    "image": "/assets/covers/album-80814958.jpg"
+  },
+  {
+    "sku": "ces-0173",
+    "artist": "Extremoduro",
+    "album": "Somos Unos Ánimales",
+    "collectionUrl": "https://music.apple.com/cl/album/somos-unos-%C3%A1nimales/403721084?uo=4",
+    "image": "/assets/covers/album-403721084.jpg"
+  },
+  {
+    "sku": "ces-0174",
+    "artist": "Extremoduro",
+    "album": "Material Defectuoso",
+    "collectionUrl": "https://music.apple.com/cl/album/material-defectuoso/436726144?uo=4",
+    "image": "/assets/covers/album-436726144.jpg"
+  },
+  {
+    "sku": "cen-0718",
+    "artist": "Madonna",
+    "album": "Ray of Light",
+    "collectionUrl": "https://music.apple.com/cl/album/ray-of-light/952887?uo=4",
+    "image": "/assets/covers/album-952887.jpg"
+  },
+  {
+    "sku": "cen-0719",
+    "artist": "Madonna",
+    "album": "Like a Virgin",
+    "collectionUrl": "https://music.apple.com/cl/album/like-a-virgin/80815235?uo=4",
+    "image": "/assets/covers/album-80815235.jpg"
+  },
+  {
+    "sku": "cen-0721",
+    "artist": "Madonna",
+    "album": "Hard Candy",
+    "collectionUrl": "https://music.apple.com/cl/album/hard-candy/279401085?uo=4",
+    "image": "/assets/covers/album-279401085.jpg"
+  },
+  {
+    "sku": "ven-0587",
+    "artist": "Obituary",
+    "album": "Frozen In Time (Bonus Track Version)",
+    "collectionUrl": "https://music.apple.com/cl/album/frozen-in-time-bonus-track-version/305683682?uo=4",
+    "image": "/assets/covers/album-305683682.jpg"
+  },
+  {
+    "sku": "ven-0588",
+    "artist": "Obituary",
+    "album": "Cause of Death: Live Infection (Bonus Track Version)",
+    "collectionUrl": "https://music.apple.com/cl/album/cause-of-death-live-infection-bonus-track-version/1624113348?uo=4",
+    "image": "/assets/covers/album-1624113348.jpg"
+  },
+  {
+    "sku": "ven-0591",
+    "artist": "Obituary",
+    "album": "Obituary",
+    "collectionUrl": "https://music.apple.com/cl/album/obituary/1192795829?uo=4",
+    "image": "/assets/covers/album-1192795829.jpg"
+  },
+  {
+    "sku": "cen-0844",
+    "artist": "Obituary",
+    "album": "Slowly We Rot",
+    "collectionUrl": "https://music.apple.com/cl/album/slowly-we-rot/214477843?uo=4",
+    "image": "/assets/covers/album-214477843.jpg"
+  },
+  {
+    "sku": "ven-0099",
+    "artist": "Black Sabbath",
+    "album": "Black Sabbath (Remastered)",
+    "collectionUrl": "https://music.apple.com/cl/album/black-sabbath-remastered/1438648677?uo=4",
+    "image": "/assets/covers/album-1438648677.jpg"
+  },
+  {
+    "sku": "ven-0100",
+    "artist": "Black Sabbath",
+    "album": "Sabotage",
+    "collectionUrl": "https://music.apple.com/cl/album/sabotage/1439820520?uo=4",
+    "image": "/assets/covers/album-1439820520.jpg"
+  },
+  {
+    "sku": "ven-0101",
+    "artist": "Black Sabbath",
+    "album": "Never Say Die!",
+    "collectionUrl": "https://music.apple.com/cl/album/never-say-die/1439832154?uo=4",
+    "image": "/assets/covers/album-1439832154.jpg"
+  },
+  {
+    "sku": "ven-0102",
+    "artist": "Black Sabbath",
+    "album": "Sabbath Bloody Sabbath",
+    "collectionUrl": "https://music.apple.com/cl/album/sabbath-bloody-sabbath/1440228485?uo=4",
+    "image": "/assets/covers/album-1440228485.jpg"
+  },
+  {
+    "sku": "ven-0103",
+    "artist": "Black Sabbath",
+    "album": "Master of Reality",
+    "collectionUrl": "https://music.apple.com/cl/album/master-of-reality/1440217659?uo=4",
+    "image": "/assets/covers/album-1440217659.jpg"
+  },
+  {
+    "sku": "ven-0106",
+    "artist": "Black Sabbath",
+    "album": "Greatest Hits",
+    "collectionUrl": "https://music.apple.com/cl/album/greatest-hits/1439794095?uo=4",
+    "image": "/assets/covers/album-1439794095.jpg"
+  },
+  {
+    "sku": "cen-0137",
+    "artist": "Black Sabbath",
+    "album": "Black Sabbath (Remastered)",
+    "collectionUrl": "https://music.apple.com/cl/album/black-sabbath-remastered/1438648677?uo=4",
+    "image": "/assets/covers/album-1438648677.jpg"
+  },
+  {
+    "sku": "cen-0138",
+    "artist": "Black Sabbath",
+    "album": "Live Evil",
+    "collectionUrl": "https://music.apple.com/cl/album/live-evil/1440341206?uo=4",
+    "image": "/assets/covers/album-1440341206.jpg"
+  },
+  {
+    "sku": "cen-0139",
+    "artist": "Black Sabbath",
+    "album": "Born Again (Deluxe Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/born-again-deluxe-edition/1439557061?uo=4",
+    "image": "/assets/covers/album-1439557061.jpg"
+  },
+  {
+    "sku": "cen-0141",
+    "artist": "Black Sabbath",
+    "album": "Sabbath Bloody Sabbath",
+    "collectionUrl": "https://music.apple.com/cl/album/sabbath-bloody-sabbath/1440228485?uo=4",
+    "image": "/assets/covers/album-1440228485.jpg"
+  },
+  {
+    "sku": "cen-0143",
+    "artist": "Black Sabbath",
+    "album": "13 (Deluxe Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/13-deluxe-edition/1422699813?uo=4",
+    "image": "/assets/covers/album-1422699813.jpg"
+  },
+  {
+    "sku": "cen-0845",
+    "artist": "Obituary",
+    "album": "World Demise",
+    "collectionUrl": "https://music.apple.com/cl/album/world-demise/214473854?uo=4",
+    "image": "/assets/covers/album-214473854.jpg"
+  },
+  {
+    "sku": "cen-0846",
+    "artist": "Obituary",
+    "album": "Obituary",
+    "collectionUrl": "https://music.apple.com/cl/album/obituary/1192795829?uo=4",
+    "image": "/assets/covers/album-1192795829.jpg"
+  },
+  {
+    "sku": "cen-0848",
+    "artist": "Obituary",
+    "album": "Inked In Blood (Bonus Track Version)",
+    "collectionUrl": "https://music.apple.com/cl/album/inked-in-blood-bonus-track-version/910307193?uo=4",
+    "image": "/assets/covers/album-910307193.jpg"
+  },
+  {
+    "sku": "cen-0849",
+    "artist": "Obituary",
+    "album": "Frozen In Time (Bonus Track Version)",
+    "collectionUrl": "https://music.apple.com/cl/album/frozen-in-time-bonus-track-version/305683682?uo=4",
+    "image": "/assets/covers/album-305683682.jpg"
+  },
+  {
+    "sku": "cen-0851",
+    "artist": "Obituary",
+    "album": "Cause of Death: Live Infection (Bonus Track Version)",
+    "collectionUrl": "https://music.apple.com/cl/album/cause-of-death-live-infection-bonus-track-version/1624113348?uo=4",
+    "image": "/assets/covers/album-1624113348.jpg"
+  },
+  {
+    "sku": "cen-0852",
+    "artist": "Obituary",
+    "album": "Cause of Death (Bonus Track Version)",
+    "collectionUrl": "https://music.apple.com/cl/album/cause-of-death-bonus-track-version/214354437?uo=4",
+    "image": "/assets/covers/album-214354437.jpg"
+  },
+  {
+    "sku": "ven-0418",
+    "artist": "Kiss",
+    "album": "Kiss",
+    "collectionUrl": "https://music.apple.com/cl/album/kiss/1440823022?uo=4",
+    "image": "/assets/covers/album-1440823022.jpg"
+  },
+  {
+    "sku": "ven-0419",
+    "artist": "Kiss",
+    "album": "Alive! (Live/1975 - 2025 Remaster)",
+    "collectionUrl": "https://music.apple.com/cl/album/alive-live-1975-2025-remaster/1853653621?uo=4",
+    "image": "/assets/covers/album-1853653621.jpg"
+  },
+  {
+    "sku": "cen-0606",
+    "artist": "Kiss",
+    "album": "Crazy Nights",
+    "collectionUrl": "https://music.apple.com/cl/album/crazy-nights/1440819307?uo=4",
+    "image": "/assets/covers/album-1440819307.jpg"
+  },
+  {
+    "sku": "ven-0286",
+    "artist": "Fleetwood Mac",
+    "album": "Say You Will",
+    "collectionUrl": "https://music.apple.com/cl/album/say-you-will/1054305?uo=4",
+    "image": "/assets/covers/album-1054305.jpg"
+  },
+  {
+    "sku": "ven-0289",
+    "artist": "Fleetwood Mac",
+    "album": "Then Play On (Expanded Edition) [2013 Remaster]",
+    "collectionUrl": "https://music.apple.com/cl/album/then-play-on-expanded-edition-2013-remaster/1441329962?uo=4",
+    "image": "/assets/covers/album-1441329962.jpg"
+  },
+  {
+    "sku": "ven-0290",
+    "artist": "Fleetwood Mac",
+    "album": "Greatest Hits",
+    "collectionUrl": "https://music.apple.com/cl/album/greatest-hits/202271826?uo=4",
+    "image": "/assets/covers/album-202271826.jpg"
+  },
+  {
+    "sku": "cen-0411",
+    "artist": "Fleetwood Mac",
+    "album": "Then Play On (Expanded Edition) [2013 Remaster]",
+    "collectionUrl": "https://music.apple.com/cl/album/then-play-on-expanded-edition-2013-remaster/1441329962?uo=4",
+    "image": "/assets/covers/album-1441329962.jpg"
+  },
+  {
+    "sku": "cen-0412",
+    "artist": "Fleetwood Mac",
+    "album": "Fleetwood Mac (Bonus Tracks) [2004 Remaster]",
+    "collectionUrl": "https://music.apple.com/cl/album/fleetwood-mac-bonus-tracks-2004-remaster/1332166720?uo=4",
+    "image": "/assets/covers/album-1332166720.jpg"
+  },
+  {
+    "sku": "cen-0414",
+    "artist": "Fleetwood Mac",
+    "album": "Behind the Mask",
+    "collectionUrl": "https://music.apple.com/cl/album/behind-the-mask/322024616?uo=4",
+    "image": "/assets/covers/album-322024616.jpg"
+  },
+  {
+    "sku": "cen-0607",
+    "artist": "Kiss",
+    "album": "Alive II",
+    "collectionUrl": "https://music.apple.com/cl/album/alive-ii/1440856259?uo=4",
+    "image": "/assets/covers/album-1440856259.jpg"
+  },
+  {
+    "sku": "cen-0608",
+    "artist": "Kiss",
+    "album": "Alive! (Live/1975 - 2025 Remaster)",
+    "collectionUrl": "https://music.apple.com/cl/album/alive-live-1975-2025-remaster/1853653621?uo=4",
+    "image": "/assets/covers/album-1853653621.jpg"
+  },
+  {
+    "sku": "cen-0612",
+    "artist": "Kiss",
+    "album": "Greatest Kiss",
+    "collectionUrl": "https://music.apple.com/cl/album/greatest-kiss/1440853387?uo=4",
+    "image": "/assets/covers/album-1440853387.jpg"
+  },
+  {
+    "sku": "cen-0614",
+    "artist": "Kiss",
+    "album": "Rock and Roll Over",
+    "collectionUrl": "https://music.apple.com/cl/album/rock-and-roll-over/1440851319?uo=4",
+    "image": "/assets/covers/album-1440851319.jpg"
+  },
+  {
+    "sku": "cen-0615",
+    "artist": "Kiss",
+    "album": "Kiss",
+    "collectionUrl": "https://music.apple.com/cl/album/kiss/1440823022?uo=4",
+    "image": "/assets/covers/album-1440823022.jpg"
+  },
+  {
+    "sku": "cen-0415",
+    "artist": "Fleetwood Mac",
+    "album": "Bare Trees",
+    "collectionUrl": "https://music.apple.com/cl/album/bare-trees/1217910932?uo=4",
+    "image": "/assets/covers/album-1217910932.jpg"
+  },
+  {
+    "sku": "cen-0416",
+    "artist": "Fleetwood Mac",
+    "album": "Greatest Hits",
+    "collectionUrl": "https://music.apple.com/cl/album/greatest-hits/202271826?uo=4",
+    "image": "/assets/covers/album-202271826.jpg"
+  },
+  {
+    "sku": "ven-0107",
+    "artist": "Blur",
+    "album": "13",
+    "collectionUrl": "https://music.apple.com/cl/album/13/699610409?uo=4",
+    "image": "/assets/covers/album-699610409.jpg"
+  },
+  {
+    "sku": "ven-0108",
+    "artist": "Blur",
+    "album": "The Ballad of Darren",
+    "collectionUrl": "https://music.apple.com/cl/album/the-ballad-of-darren/1697159903?uo=4",
+    "image": "/assets/covers/album-1697159903.jpg"
+  },
+  {
+    "sku": "ven-0109",
+    "artist": "Blur",
+    "album": "Leisure (Special Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/leisure-special-edition/699689006?uo=4",
+    "image": "/assets/covers/album-699689006.jpg"
+  },
+  {
+    "sku": "cen-0150",
+    "artist": "Blur",
+    "album": "Think Tank (Special Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/think-tank-special-edition/726424272?uo=4",
+    "image": "/assets/covers/album-726424272.jpg"
+  },
+  {
+    "sku": "cen-0151",
+    "artist": "Blur",
+    "album": "The Ballad of Darren",
+    "collectionUrl": "https://music.apple.com/cl/album/the-ballad-of-darren/1697159903?uo=4",
+    "image": "/assets/covers/album-1697159903.jpg"
+  },
+  {
+    "sku": "cen-0155",
+    "artist": "Blur",
+    "album": "Leisure (Special Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/leisure-special-edition/699689006?uo=4",
+    "image": "/assets/covers/album-699689006.jpg"
+  },
+  {
+    "sku": "cen-0156",
+    "artist": "Blur",
+    "album": "Modern Life Is Rubbish",
+    "collectionUrl": "https://music.apple.com/cl/album/modern-life-is-rubbish/726407617?uo=4",
+    "image": "/assets/covers/album-726407617.jpg"
+  },
+  {
+    "sku": "cen-0157",
+    "artist": "Blur",
+    "album": "13",
+    "collectionUrl": "https://music.apple.com/cl/album/13/699610409?uo=4",
+    "image": "/assets/covers/album-699610409.jpg"
+  },
+  {
+    "sku": "cen-0159",
+    "artist": "Blur",
+    "album": "The Great Escape",
+    "collectionUrl": "https://music.apple.com/cl/album/the-great-escape/699808759?uo=4",
+    "image": "/assets/covers/album-699808759.jpg"
+  },
+  {
+    "sku": "cen-0160",
+    "artist": "Blur",
+    "album": "The Magic Whip",
+    "collectionUrl": "https://music.apple.com/cl/album/the-magic-whip/966943210?uo=4",
+    "image": "/assets/covers/album-966943210.jpg"
+  },
+  {
+    "sku": "ven-0412",
+    "artist": "King Crimson",
+    "album": "Beat (Expanded Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/beat-expanded-edition/1090454400?uo=4",
+    "image": "/assets/covers/album-1090454400.jpg"
+  },
+  {
+    "sku": "ven-0413",
+    "artist": "King Crimson",
+    "album": "Red (Expanded Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/red-expanded-edition/918614446?uo=4",
+    "image": "/assets/covers/album-918614446.jpg"
+  },
+  {
+    "sku": "ven-0417",
+    "artist": "King Crimson",
+    "album": "In the Wake of Poseidon (Expanded Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/in-the-wake-of-poseidon-expanded-edition/978458457?uo=4",
+    "image": "/assets/covers/album-978458457.jpg"
+  },
+  {
+    "sku": "cen-0616",
+    "artist": "King Crimson",
+    "album": "In the Court of the Crimson King (Expanded Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/in-the-court-of-the-crimson-king-expanded-edition/918534711?uo=4",
+    "image": "/assets/covers/album-918534711.jpg"
+  },
+  {
+    "sku": "cen-0618",
+    "artist": "King Crimson",
+    "album": "Red (Expanded Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/red-expanded-edition/918614446?uo=4",
+    "image": "/assets/covers/album-918614446.jpg"
+  },
+  {
+    "sku": "cen-0772",
+    "artist": "Megadeth",
+    "album": "Youthanasia (Remastered)",
+    "collectionUrl": "https://music.apple.com/cl/album/youthanasia-remastered/723943316?uo=4",
+    "image": "/assets/covers/album-723943316.jpg"
+  },
+  {
+    "sku": "cen-0773",
+    "artist": "Megadeth",
+    "album": "Risk (Remastered)",
+    "collectionUrl": "https://music.apple.com/cl/album/risk-remastered/724934886?uo=4",
+    "image": "/assets/covers/album-724934886.jpg"
+  },
+  {
+    "sku": "cen-0485",
+    "artist": "Guns N' Roses",
+    "album": "Live Era '87-'93",
+    "collectionUrl": "https://music.apple.com/cl/album/live-era-87-93/1452868521?uo=4",
+    "image": "/assets/covers/album-1452868521.jpg"
+  },
+  {
+    "sku": "cen-0776",
+    "artist": "Megadeth",
+    "album": "Megadeth",
+    "collectionUrl": "https://music.apple.com/cl/album/megadeth/1840222160?uo=4",
+    "image": "/assets/covers/album-1840222160.jpg"
+  },
+  {
+    "sku": "cen-0777",
+    "artist": "Megadeth",
+    "album": "Rust In Peace",
+    "collectionUrl": "https://music.apple.com/cl/album/rust-in-peace/724648893?uo=4",
+    "image": "/assets/covers/album-724648893.jpg"
+  },
+  {
+    "sku": "ven-0715",
+    "artist": "Rod Stewart",
+    "album": "Foot Loose & Fancy Free",
+    "collectionUrl": "https://music.apple.com/cl/album/foot-loose-fancy-free/269193705?uo=4",
+    "image": "/assets/covers/album-269193705.jpg"
+  },
+  {
+    "sku": "ven-0716",
+    "artist": "Rod Stewart",
+    "album": "Body Wishes",
+    "collectionUrl": "https://music.apple.com/cl/album/body-wishes/295536989?uo=4",
+    "image": "/assets/covers/album-295536989.jpg"
+  },
+  {
+    "sku": "ven-0717",
+    "artist": "Rod Stewart",
+    "album": "Blondes Have More Fun",
+    "collectionUrl": "https://music.apple.com/cl/album/blondes-have-more-fun/295535859?uo=4",
+    "image": "/assets/covers/album-295535859.jpg"
+  },
+  {
+    "sku": "ven-0718",
+    "artist": "Rod Stewart",
+    "album": "Atlantic Crossing",
+    "collectionUrl": "https://music.apple.com/cl/album/atlantic-crossing/295535955?uo=4",
+    "image": "/assets/covers/album-295535955.jpg"
+  },
+  {
+    "sku": "ven-0721",
+    "artist": "Rod Stewart",
+    "album": "Blood Red Roses (Deluxe Version)",
+    "collectionUrl": "https://music.apple.com/cl/album/blood-red-roses-deluxe-version/1412760617?uo=4",
+    "image": "/assets/covers/album-1412760617.jpg"
+  },
+  {
+    "sku": "cen-1024",
+    "artist": "Rod Stewart",
+    "album": "Absolutely Live",
+    "collectionUrl": "https://music.apple.com/cl/album/absolutely-live/295536347?uo=4",
+    "image": "/assets/covers/album-295536347.jpg"
+  },
+  {
+    "sku": "cen-1025",
+    "artist": "Rod Stewart",
+    "album": "Foot Loose & Fancy Free",
+    "collectionUrl": "https://music.apple.com/cl/album/foot-loose-fancy-free/269193705?uo=4",
+    "image": "/assets/covers/album-269193705.jpg"
+  },
+  {
+    "sku": "cen-1026",
+    "artist": "Rod Stewart",
+    "album": "Atlantic Crossing",
+    "collectionUrl": "https://music.apple.com/cl/album/atlantic-crossing/295535955?uo=4",
+    "image": "/assets/covers/album-295535955.jpg"
+  },
+  {
+    "sku": "cen-1028",
+    "artist": "Rod Stewart",
+    "album": "A Night On the Town",
+    "collectionUrl": "https://music.apple.com/cl/album/a-night-on-the-town/269186704?uo=4",
+    "image": "/assets/covers/album-269186704.jpg"
+  },
+  {
+    "sku": "ces-0346",
+    "artist": "La Polla Records",
+    "album": "14 Años de la Polla",
+    "collectionUrl": "https://music.apple.com/cl/album/14-a%C3%B1os-de-la-polla/1416757529?uo=4",
+    "image": "/assets/covers/album-1416757529.jpg"
+  },
+  {
+    "sku": "ven-0558",
+    "artist": "New Order",
+    "album": "Power, Corruption & Lies",
+    "collectionUrl": "https://music.apple.com/cl/album/power-corruption-lies/1040981945?uo=4",
+    "image": "/assets/covers/album-1040981945.jpg"
+  },
+  {
+    "sku": "cen-1133",
+    "artist": "Slayer",
+    "album": "World Painted Blood",
+    "collectionUrl": "https://music.apple.com/cl/album/world-painted-blood/1440827937?uo=4",
+    "image": "/assets/covers/album-1440827937.jpg"
+  },
+  {
+    "sku": "ces-0347",
+    "artist": "La Polla Records",
+    "album": "Negro",
+    "collectionUrl": "https://music.apple.com/cl/album/negro/1416757344?uo=4",
+    "image": "/assets/covers/album-1416757344.jpg"
+  },
+  {
+    "sku": "ces-0348",
+    "artist": "La Polla Records",
+    "album": "Revolución",
+    "collectionUrl": "https://music.apple.com/cl/album/revoluci%C3%B3n/1416753170?uo=4",
+    "image": "/assets/covers/album-1416753170.jpg"
+  },
+  {
+    "sku": "cen-0684",
+    "artist": "New Order",
+    "album": "Lost Sirens",
+    "collectionUrl": "https://music.apple.com/cl/album/lost-sirens/586305449?uo=4",
+    "image": "/assets/covers/album-586305449.jpg"
+  },
+  {
+    "sku": "cen-0685",
+    "artist": "New Order",
+    "album": "Power, Corruption & Lies",
+    "collectionUrl": "https://music.apple.com/cl/album/power-corruption-lies/1040981945?uo=4",
+    "image": "/assets/covers/album-1040981945.jpg"
+  },
+  {
+    "sku": "cen-0686",
+    "artist": "New Order",
+    "album": "Singles",
+    "collectionUrl": "https://music.apple.com/cl/album/singles/1129721479?uo=4",
+    "image": "/assets/covers/album-1129721479.jpg"
+  },
+  {
+    "sku": "cen-0687",
+    "artist": "New Order",
+    "album": "Movement",
+    "collectionUrl": "https://music.apple.com/cl/album/movement/1040982031?uo=4",
+    "image": "/assets/covers/album-1040982031.jpg"
+  },
+  {
+    "sku": "ves-0040",
+    "artist": "Alejandro Sanz",
+    "album": "¿Y ahora qué +?",
+    "collectionUrl": "https://music.apple.com/cl/album/y-ahora-qu%C3%A9/1847924845?uo=4",
+    "image": "/assets/covers/album-1847924845.jpg"
+  },
+  {
+    "sku": "ves-0042",
+    "artist": "Alejandro Sanz",
+    "album": "Más",
+    "collectionUrl": "https://music.apple.com/cl/album/m%C3%A1s/150326044?uo=4",
+    "image": "/assets/covers/album-150326044.jpg"
+  },
+  {
+    "sku": "ves-0043",
+    "artist": "Alejandro Sanz",
+    "album": "Sanz",
+    "collectionUrl": "https://music.apple.com/cl/album/sanz/1592713422?uo=4",
+    "image": "/assets/covers/album-1592713422.jpg"
+  },
+  {
+    "sku": "ces-0041",
+    "artist": "Alejandro Sanz",
+    "album": "El Tren de los Momentos",
+    "collectionUrl": "https://music.apple.com/cl/album/el-tren-de-los-momentos/202964451?uo=4",
+    "image": "/assets/covers/album-202964451.jpg"
+  },
+  {
+    "sku": "ces-0043",
+    "artist": "Alejandro Sanz",
+    "album": "¿Y ahora qué +?",
+    "collectionUrl": "https://music.apple.com/cl/album/y-ahora-qu%C3%A9/1847924845?uo=4",
+    "image": "/assets/covers/album-1847924845.jpg"
+  },
+  {
+    "sku": "ces-0349",
+    "artist": "La Polla Records",
+    "album": "Dónde Se Habla",
+    "collectionUrl": "https://music.apple.com/cl/album/d%C3%B3nde-se-habla/1416755543?uo=4",
+    "image": "/assets/covers/album-1416755543.jpg"
+  },
+  {
+    "sku": "ves-0179",
+    "artist": "Fito Páez",
+    "album": "Giros",
+    "collectionUrl": "https://music.apple.com/cl/album/giros/723789679?uo=4",
+    "image": "/assets/covers/album-723789679.jpg"
+  },
+  {
+    "sku": "ves-0180",
+    "artist": "Fito Páez",
+    "album": "Del 63",
+    "collectionUrl": "https://music.apple.com/cl/album/del-63/724883572?uo=4",
+    "image": "/assets/covers/album-724883572.jpg"
+  },
+  {
+    "sku": "ves-0181",
+    "artist": "Fito Páez",
+    "album": "Rey Sol",
+    "collectionUrl": "https://music.apple.com/cl/album/rey-sol/201555867?uo=4",
+    "image": "/assets/covers/album-201555867.jpg"
+  },
+  {
+    "sku": "ces-0190",
+    "artist": "Fito Páez",
+    "album": "Tercer Mundo",
+    "collectionUrl": "https://music.apple.com/cl/album/tercer-mundo/201533334?uo=4",
+    "image": "/assets/covers/album-201533334.jpg"
+  },
+  {
+    "sku": "ces-0191",
+    "artist": "Fito Páez",
+    "album": "Cronica",
+    "collectionUrl": "https://music.apple.com/cl/album/cronica/723784104?uo=4",
+    "image": "/assets/covers/album-723784104.jpg"
+  },
+  {
+    "sku": "ces-0194",
+    "artist": "Fito Páez",
+    "album": "Ey!",
+    "collectionUrl": "https://music.apple.com/cl/album/ey/713514813?uo=4",
+    "image": "/assets/covers/album-713514813.jpg"
+  },
+  {
+    "sku": "ces-0195",
+    "artist": "Fito Páez",
+    "album": "Giros",
+    "collectionUrl": "https://music.apple.com/cl/album/giros/723789679?uo=4",
+    "image": "/assets/covers/album-723789679.jpg"
+  },
+  {
+    "sku": "ces-0196",
+    "artist": "Fito Páez",
+    "album": "Ciudad de Pobres Corazones",
+    "collectionUrl": "https://music.apple.com/cl/album/ciudad-de-pobres-corazones/723797966?uo=4",
+    "image": "/assets/covers/album-723797966.jpg"
+  },
+  {
+    "sku": "ces-0046",
+    "artist": "Alejandro Sanz",
+    "album": "Paraíso Express",
+    "collectionUrl": "https://music.apple.com/cl/album/para%C3%ADso-express/404481097?uo=4",
+    "image": "/assets/covers/album-404481097.jpg"
+  },
+  {
+    "sku": "ces-0047",
+    "artist": "Alejandro Sanz",
+    "album": "Básico",
+    "collectionUrl": "https://music.apple.com/cl/album/b%C3%A1sico/256627951?uo=4",
+    "image": "/assets/covers/album-256627951.jpg"
+  },
+  {
+    "sku": "ves-0208",
+    "artist": "Héroes del Silencio",
+    "album": "Avalancha",
+    "collectionUrl": "https://music.apple.com/cl/album/avalancha/695669039?uo=4",
+    "image": "/assets/covers/album-695669039.jpg"
+  },
+  {
+    "sku": "ves-0209",
+    "artist": "Héroes del Silencio",
+    "album": "Senderos de Traición",
+    "collectionUrl": "https://music.apple.com/cl/album/senderos-de-traici%C3%B3n/697634139?uo=4",
+    "image": "/assets/covers/album-697634139.jpg"
+  },
+  {
+    "sku": "ves-0210",
+    "artist": "Héroes del Silencio",
+    "album": "El Mar No Cesa",
+    "collectionUrl": "https://music.apple.com/cl/album/el-mar-no-cesa/696838920?uo=4",
+    "image": "/assets/covers/album-696838920.jpg"
+  },
+  {
+    "sku": "ces-0227",
+    "artist": "Héroes del Silencio",
+    "album": "Senderos de Traición",
+    "collectionUrl": "https://music.apple.com/cl/album/senderos-de-traici%C3%B3n/697634139?uo=4",
+    "image": "/assets/covers/album-697634139.jpg"
+  },
+  {
+    "sku": "ces-0228",
+    "artist": "Héroes del Silencio",
+    "album": "El Mar No Cesa",
+    "collectionUrl": "https://music.apple.com/cl/album/el-mar-no-cesa/696838920?uo=4",
+    "image": "/assets/covers/album-696838920.jpg"
+  },
+  {
+    "sku": "ces-0350",
+    "artist": "La Polla Records",
+    "album": "En Directo",
+    "collectionUrl": "https://music.apple.com/cl/album/en-directo/1417225884?uo=4",
+    "image": "/assets/covers/album-1417225884.jpg"
+  },
+  {
+    "sku": "ces-0048",
+    "artist": "Alejandro Sanz",
+    "album": "Sirope Vivo",
+    "collectionUrl": "https://music.apple.com/cl/album/sirope-vivo/1443120816?uo=4",
+    "image": "/assets/covers/album-1443120816.jpg"
+  },
+  {
+    "sku": "ces-0229",
+    "artist": "Héroes del Silencio",
+    "album": "Rarezas",
+    "collectionUrl": "https://music.apple.com/cl/album/rarezas/696082341?uo=4",
+    "image": "/assets/covers/album-696082341.jpg"
+  },
+  {
+    "sku": "ces-0232",
+    "artist": "Héroes del Silencio",
+    "album": "Senda '91",
+    "collectionUrl": "https://music.apple.com/cl/album/senda-91/726155375?uo=4",
+    "image": "/assets/covers/album-726155375.jpg"
+  },
+  {
+    "sku": "ces-0351",
+    "artist": "La Polla Records",
+    "album": "Hoy Es el Futuro",
+    "collectionUrl": "https://music.apple.com/cl/album/hoy-es-el-futuro/1416755460?uo=4",
+    "image": "/assets/covers/album-1416755460.jpg"
+  },
+  {
+    "sku": "ces-0352",
+    "artist": "La Polla Records",
+    "album": "Los Jubilados",
+    "collectionUrl": "https://music.apple.com/cl/album/los-jubilados/1416749180?uo=4",
+    "image": "/assets/covers/album-1416749180.jpg"
+  },
+  {
+    "sku": "ces-0353",
+    "artist": "La Polla Records",
+    "album": "¡Carne para la Picadora!",
+    "collectionUrl": "https://music.apple.com/cl/album/carne-para-la-picadora/1393007691?uo=4",
+    "image": "/assets/covers/album-1393007691.jpg"
+  },
+  {
+    "sku": "ces-0354",
+    "artist": "La Polla Records",
+    "album": "Bajo Presión",
+    "collectionUrl": "https://music.apple.com/cl/album/bajo-presi%C3%B3n/1416758244?uo=4",
+    "image": "/assets/covers/album-1416758244.jpg"
+  },
+  {
+    "sku": "ves-0371",
+    "artist": "Maná",
+    "album": "Noches De Cantina",
+    "collectionUrl": "https://music.apple.com/cl/album/noches-de-cantina/1814893156?uo=4",
+    "image": "/assets/covers/album-1814893156.jpg"
+  },
+  {
+    "sku": "ves-0373",
+    "artist": "Maná",
+    "album": "Revolución de Amor",
+    "collectionUrl": "https://music.apple.com/cl/album/revoluci%C3%B3n-de-amor/258905983?uo=4",
+    "image": "/assets/covers/album-258905983.jpg"
+  },
+  {
+    "sku": "ces-0394",
+    "artist": "Maná",
+    "album": "Revolución de Amor",
+    "collectionUrl": "https://music.apple.com/cl/album/revoluci%C3%B3n-de-amor/258905983?uo=4",
+    "image": "/assets/covers/album-258905983.jpg"
+  },
+  {
+    "sku": "ces-0395",
+    "artist": "Maná",
+    "album": "Cama Incendiada",
+    "collectionUrl": "https://music.apple.com/cl/album/cama-incendiada/981703550?uo=4",
+    "image": "/assets/covers/album-981703550.jpg"
+  },
+  {
+    "sku": "ces-0396",
+    "artist": "Maná",
+    "album": "¿Dónde Jugarán los Niños?",
+    "collectionUrl": "https://music.apple.com/cl/album/d%C3%B3nde-jugar%C3%A1n-los-ni%C3%B1os/358348982?uo=4",
+    "image": "/assets/covers/album-358348982.jpg"
+  },
+  {
+    "sku": "ces-0398",
+    "artist": "Maná",
+    "album": "Drama y Luz (Edición Deluxe)",
+    "collectionUrl": "https://music.apple.com/cl/album/drama-y-luz-edici%C3%B3n-deluxe/475864314?uo=4",
+    "image": "/assets/covers/album-475864314.jpg"
+  },
+  {
+    "sku": "ces-0399",
+    "artist": "Maná",
+    "album": "Drama y Luz (Edición Deluxe)",
+    "collectionUrl": "https://music.apple.com/cl/album/drama-y-luz-edici%C3%B3n-deluxe/475864314?uo=4",
+    "image": "/assets/covers/album-475864314.jpg"
+  },
+  {
+    "sku": "ces-0400",
+    "artist": "Maná",
+    "album": "Noches De Cantina",
+    "collectionUrl": "https://music.apple.com/cl/album/noches-de-cantina/1814893156?uo=4",
+    "image": "/assets/covers/album-1814893156.jpg"
+  },
+  {
+    "sku": "ces-0401",
+    "artist": "Maná",
+    "album": "Cuando los Ángeles Lloran",
+    "collectionUrl": "https://music.apple.com/cl/album/cuando-los-%C3%A1ngeles-lloran/307806378?uo=4",
+    "image": "/assets/covers/album-307806378.jpg"
+  },
+  {
+    "sku": "ces-0403",
+    "artist": "Maná",
+    "album": "Amar Es Combatir (Deluxe Version)",
+    "collectionUrl": "https://music.apple.com/cl/album/amar-es-combatir-deluxe-version/219381180?uo=4",
+    "image": "/assets/covers/album-219381180.jpg"
+  },
+  {
+    "sku": "ven-0612",
+    "artist": "Pet Shop Boys",
+    "album": "Fundamental (2017 Remaster)",
+    "collectionUrl": "https://music.apple.com/cl/album/fundamental-2017-remaster/1645237185?uo=4",
+    "image": "/assets/covers/album-1645237185.jpg"
+  },
+  {
+    "sku": "ven-0613",
+    "artist": "Pet Shop Boys",
+    "album": "Please (2018 Remaster)",
+    "collectionUrl": "https://music.apple.com/cl/album/please-2018-remaster/1645128742?uo=4",
+    "image": "/assets/covers/album-1645128742.jpg"
+  },
+  {
+    "sku": "ven-0614",
+    "artist": "Pet Shop Boys",
+    "album": "Nonetheless",
+    "collectionUrl": "https://music.apple.com/cl/album/nonetheless/1726963941?uo=4",
+    "image": "/assets/covers/album-1726963941.jpg"
+  },
+  {
+    "sku": "ven-0615",
+    "artist": "Pet Shop Boys",
+    "album": "Yes",
+    "collectionUrl": "https://music.apple.com/cl/album/yes/732051448?uo=4",
+    "image": "/assets/covers/album-732051448.jpg"
+  },
+  {
+    "sku": "cen-0900",
+    "artist": "Pet Shop Boys",
+    "album": "Bilingual (2018 Remaster)",
+    "collectionUrl": "https://music.apple.com/cl/album/bilingual-2018-remaster/1645123644?uo=4",
+    "image": "/assets/covers/album-1645123644.jpg"
+  },
+  {
+    "sku": "cen-0901",
+    "artist": "Pet Shop Boys",
+    "album": "Behaviour (2018 Remaster)",
+    "collectionUrl": "https://music.apple.com/cl/album/behaviour-2018-remaster/1645126133?uo=4",
+    "image": "/assets/covers/album-1645126133.jpg"
+  },
+  {
+    "sku": "cen-0902",
+    "artist": "Pet Shop Boys",
+    "album": "Disco 5",
+    "collectionUrl": "https://music.apple.com/cl/album/disco-5/1857689832?uo=4",
+    "image": "/assets/covers/album-1857689832.jpg"
+  },
+  {
+    "sku": "cen-0903",
+    "artist": "Pet Shop Boys",
+    "album": "Very (2018 Remaster)",
+    "collectionUrl": "https://music.apple.com/cl/album/very-2018-remaster/1645236674?uo=4",
+    "image": "/assets/covers/album-1645236674.jpg"
+  },
+  {
+    "sku": "cen-0904",
+    "artist": "Pet Shop Boys",
+    "album": "SMASH – The Singles 1985 – 2020 (2023 Remaster)",
+    "collectionUrl": "https://music.apple.com/cl/album/smash-the-singles-1985-2020-2023-remaster/1678986191?uo=4",
+    "image": "/assets/covers/album-1678986191.jpg"
+  },
+  {
+    "sku": "cen-0905",
+    "artist": "Pet Shop Boys",
+    "album": "Please (2018 Remaster)",
+    "collectionUrl": "https://music.apple.com/cl/album/please-2018-remaster/1645128742?uo=4",
+    "image": "/assets/covers/album-1645128742.jpg"
+  },
+  {
+    "sku": "cen-0906",
+    "artist": "Pet Shop Boys",
+    "album": "Actually (2018 Remaster)",
+    "collectionUrl": "https://music.apple.com/cl/album/actually-2018-remaster/1645128416?uo=4",
+    "image": "/assets/covers/album-1645128416.jpg"
+  },
+  {
+    "sku": "ven-0685",
+    "artist": "Radiohead",
+    "album": "A Moon Shaped Pool",
+    "collectionUrl": "https://music.apple.com/cl/album/a-moon-shaped-pool/1111577743?uo=4",
+    "image": "/assets/covers/album-1111577743.jpg"
+  },
+  {
+    "sku": "cen-0979",
+    "artist": "Radiohead",
+    "album": "The Bends",
+    "collectionUrl": "https://music.apple.com/cl/album/the-bends/1097862703?uo=4",
+    "image": "/assets/covers/album-1097862703.jpg"
+  },
+  {
+    "sku": "cen-0980",
+    "artist": "Radiohead",
+    "album": "Amnesiac",
+    "collectionUrl": "https://music.apple.com/cl/album/amnesiac/1097864180?uo=4",
+    "image": "/assets/covers/album-1097864180.jpg"
+  },
+  {
+    "sku": "cen-0908",
+    "artist": "Pet Shop Boys",
+    "album": "Disco",
+    "collectionUrl": "https://music.apple.com/cl/album/disco/696398563?uo=4",
+    "image": "/assets/covers/album-696398563.jpg"
+  },
+  {
+    "sku": "ves-0362",
+    "artist": "Lucybell",
+    "album": "Lucybell",
+    "collectionUrl": "https://music.apple.com/cl/album/lucybell/713596215?uo=4",
+    "image": "/assets/covers/album-713596215.jpg"
+  },
+  {
+    "sku": "ves-0363",
+    "artist": "Lucybell",
+    "album": "Viajar",
+    "collectionUrl": "https://music.apple.com/cl/album/viajar/713608002?uo=4",
+    "image": "/assets/covers/album-713608002.jpg"
+  },
+  {
+    "sku": "ves-0365",
+    "artist": "Lucybell",
+    "album": "Mil Caminos",
+    "collectionUrl": "https://music.apple.com/cl/album/mil-caminos/1532083250?uo=4",
+    "image": "/assets/covers/album-1532083250.jpg"
+  },
+  {
+    "sku": "ves-0366",
+    "artist": "Lucybell",
+    "album": "Amanece",
+    "collectionUrl": "https://music.apple.com/cl/album/amanece/250984238?uo=4",
+    "image": "/assets/covers/album-250984238.jpg"
+  },
+  {
+    "sku": "ces-0327",
+    "artist": "Lucybell",
+    "album": "Mil Caminos",
+    "collectionUrl": "https://music.apple.com/cl/album/mil-caminos/1532083250?uo=4",
+    "image": "/assets/covers/album-1532083250.jpg"
+  },
+  {
+    "sku": "ces-0329",
+    "artist": "Lucybell",
+    "album": "Todos Sus Éxitos",
+    "collectionUrl": "https://music.apple.com/cl/album/todos-sus-%C3%A9xitos/714138361?uo=4",
+    "image": "/assets/covers/album-714138361.jpg"
+  },
+  {
+    "sku": "ces-0330",
+    "artist": "Lucybell",
+    "album": "Amanece",
+    "collectionUrl": "https://music.apple.com/cl/album/amanece/250984238?uo=4",
+    "image": "/assets/covers/album-250984238.jpg"
+  },
+  {
+    "sku": "ven-0380",
+    "artist": "Jethro Tull",
+    "album": "Benefit (Collector's Edition) [2013 Steven Wilson Stereo Mix]",
+    "collectionUrl": "https://music.apple.com/cl/album/benefit-collectors-edition-2013-steven-wilson-stereo-mix/711544493?uo=4",
+    "image": "/assets/covers/album-711544493.jpg"
+  },
+  {
+    "sku": "ven-0441",
+    "artist": "Lana Del Rey",
+    "album": "Born To Die",
+    "collectionUrl": "https://music.apple.com/cl/album/born-to-die/1779781213?uo=4",
+    "image": "/assets/covers/album-1779781213.jpg"
+  },
+  {
+    "sku": "cen-0636",
+    "artist": "Lana Del Rey",
+    "album": "Born To Die",
+    "collectionUrl": "https://music.apple.com/cl/album/born-to-die/1779781213?uo=4",
+    "image": "/assets/covers/album-1779781213.jpg"
+  },
+  {
+    "sku": "ven-0381",
+    "artist": "Jethro Tull",
+    "album": "A (2004 Remaster)",
+    "collectionUrl": "https://music.apple.com/cl/album/a-2004-remaster/699727798?uo=4",
+    "image": "/assets/covers/album-699727798.jpg"
+  },
+  {
+    "sku": "cen-0560",
+    "artist": "Jethro Tull",
+    "album": "Aqualung (2016 Steven Wilson Remaster of 2011 Mix)",
+    "collectionUrl": "https://music.apple.com/cl/album/aqualung-2016-steven-wilson-remaster-of-2011-mix/993447560?uo=4",
+    "image": "/assets/covers/album-993447560.jpg"
+  },
+  {
+    "sku": "cen-0561",
+    "artist": "Jethro Tull",
+    "album": "Essential",
+    "collectionUrl": "https://music.apple.com/cl/album/essential/693295805?uo=4",
+    "image": "/assets/covers/album-693295805.jpg"
+  },
+  {
+    "sku": "cen-0562",
+    "artist": "Jethro Tull",
+    "album": "Benefit (Collector's Edition) [2013 Steven Wilson Stereo Mix]",
+    "collectionUrl": "https://music.apple.com/cl/album/benefit-collectors-edition-2013-steven-wilson-stereo-mix/711544493?uo=4",
+    "image": "/assets/covers/album-711544493.jpg"
+  },
+  {
+    "sku": "cen-0563",
+    "artist": "Jethro Tull",
+    "album": "This Was (50th Anniversary Edition) [2018 Steven Wilson Stereo Remix]",
+    "collectionUrl": "https://music.apple.com/cl/album/this-was-50th-anniversary-edition-2018-steven-wilson/1450519020?uo=4",
+    "image": "/assets/covers/album-1450519020.jpg"
+  },
+  {
+    "sku": "ves-0200",
+    "artist": "Gustavo Cerati",
+    "album": "Bocanada",
+    "collectionUrl": "https://music.apple.com/cl/album/bocanada/304792998?uo=4",
+    "image": "/assets/covers/album-304792998.jpg"
+  },
+  {
+    "sku": "ves-0201",
+    "artist": "Gustavo Cerati",
+    "album": "Fuerza Natural",
+    "collectionUrl": "https://music.apple.com/cl/album/fuerza-natural/1358493163?uo=4",
+    "image": "/assets/covers/album-1358493163.jpg"
+  },
+  {
+    "sku": "ves-0203",
+    "artist": "Gustavo Cerati",
+    "album": "Amor Amarillo",
+    "collectionUrl": "https://music.apple.com/cl/album/amor-amarillo/325221745?uo=4",
+    "image": "/assets/covers/album-325221745.jpg"
+  },
+  {
+    "sku": "ves-0205",
+    "artist": "Gustavo Cerati",
+    "album": "Siempre Es Hoy",
+    "collectionUrl": "https://music.apple.com/cl/album/siempre-es-hoy/325223569?uo=4",
+    "image": "/assets/covers/album-325223569.jpg"
+  },
+  {
+    "sku": "ces-0217",
+    "artist": "Gustavo Cerati",
+    "album": "Infinito",
+    "collectionUrl": "https://music.apple.com/cl/album/infinito/995653195?uo=4",
+    "image": "/assets/covers/album-995653195.jpg"
+  },
+  {
+    "sku": "ces-0218",
+    "artist": "Gustavo Cerati",
+    "album": "Fuerza Natural",
+    "collectionUrl": "https://music.apple.com/cl/album/fuerza-natural/1358493163?uo=4",
+    "image": "/assets/covers/album-1358493163.jpg"
+  },
+  {
+    "sku": "cen-0564",
+    "artist": "Jethro Tull",
+    "album": "Stormwatch (2004 Bonus Tracks Edition)",
+    "collectionUrl": "https://music.apple.com/cl/album/stormwatch-2004-bonus-tracks-edition/726158739?uo=4",
+    "image": "/assets/covers/album-726158739.jpg"
+  },
+  {
+    "sku": "cen-0565",
+    "artist": "Jethro Tull",
+    "album": "Catfish Rising",
+    "collectionUrl": "https://music.apple.com/cl/album/catfish-rising/699835718?uo=4",
+    "image": "/assets/covers/album-699835718.jpg"
+  },
+  {
+    "sku": "cen-0566",
+    "artist": "Jethro Tull",
+    "album": "Living In the Past",
+    "collectionUrl": "https://music.apple.com/cl/album/living-in-the-past/726426747?uo=4",
+    "image": "/assets/covers/album-726426747.jpg"
+  },
+  {
+    "sku": "ven-0910",
+    "artist": "Van Halen",
+    "album": "5150",
+    "collectionUrl": "https://music.apple.com/cl/album/5150/319402847?uo=4",
+    "image": "/assets/covers/album-319402847.jpg"
+  },
+  {
+    "sku": "ven-0911",
+    "artist": "Van Halen",
+    "album": "1984",
+    "collectionUrl": "https://music.apple.com/cl/album/1984/976831013?uo=4",
+    "image": "/assets/covers/album-976831013.jpg"
+  },
+  {
+    "sku": "ven-0912",
+    "artist": "Van Halen",
+    "album": "Van Halen",
+    "collectionUrl": "https://music.apple.com/cl/album/van-halen/976820530?uo=4",
+    "image": "/assets/covers/album-976820530.jpg"
+  },
+  {
+    "sku": "cen-1324",
+    "artist": "Van Halen",
+    "album": "1984",
+    "collectionUrl": "https://music.apple.com/cl/album/1984/976831013?uo=4",
+    "image": "/assets/covers/album-976831013.jpg"
+  },
+  {
+    "sku": "cen-1328",
+    "artist": "Van Halen",
+    "album": "OU812",
+    "collectionUrl": "https://music.apple.com/cl/album/ou812/303734077?uo=4",
+    "image": "/assets/covers/album-303734077.jpg"
+  },
+  {
+    "sku": "cen-1329",
+    "artist": "Van Halen",
+    "album": "Balance",
+    "collectionUrl": "https://music.apple.com/cl/album/balance/367960619?uo=4",
+    "image": "/assets/covers/album-367960619.jpg"
+  },
+  {
+    "sku": "cen-1330",
+    "artist": "Van Halen",
+    "album": "Diver Down",
+    "collectionUrl": "https://music.apple.com/cl/album/diver-down/976818440?uo=4",
+    "image": "/assets/covers/album-976818440.jpg"
+  },
+  {
+    "sku": "cen-0066",
+    "artist": "Alice In Chains",
+    "album": "Rainier Fog",
+    "collectionUrl": "https://music.apple.com/cl/album/rainier-fog/1398087293?uo=4",
+    "image": "/assets/covers/album-1398087293.jpg"
+  },
+  {
+    "sku": "ven-0082",
+    "artist": "blink-182",
+    "album": "Blink-182",
+    "collectionUrl": "https://music.apple.com/cl/album/blink-182/1442997224?uo=4",
+    "image": "/assets/covers/album-1442997224.jpg"
+  },
+  {
+    "sku": "cen-0146",
+    "artist": "blink-182",
+    "album": "Enema of the State",
+    "collectionUrl": "https://music.apple.com/cl/album/enema-of-the-state/1444118632?uo=4",
+    "image": "/assets/covers/album-1444118632.jpg"
+  },
+  {
+    "sku": "cen-0148",
+    "artist": "blink-182",
+    "album": "California",
+    "collectionUrl": "https://music.apple.com/cl/album/california/1763615125?uo=4",
+    "image": "/assets/covers/album-1763615125.jpg"
+  },
+  {
+    "sku": "ven-0298",
+    "artist": "Foreigner",
+    "album": "Agent Provocateur",
+    "collectionUrl": "https://music.apple.com/cl/album/agent-provocateur/216663946?uo=4",
+    "image": "/assets/covers/album-216663946.jpg"
+  },
+  {
+    "sku": "ven-0299",
+    "artist": "Foreigner",
+    "album": "Foreigner (Deluxe Version)",
+    "collectionUrl": "https://music.apple.com/cl/album/foreigner-deluxe-version/309576627?uo=4",
+    "image": "/assets/covers/album-309576627.jpg"
+  },
+  {
+    "sku": "cen-0441",
+    "artist": "Foreigner",
+    "album": "4 (Expanded Version) [2002 Remaster]",
+    "collectionUrl": "https://music.apple.com/cl/album/4-expanded-version-2002-remaster/285143156?uo=4",
+    "image": "/assets/covers/album-285143156.jpg"
+  },
+  {
+    "sku": "cen-0443",
+    "artist": "Foreigner",
+    "album": "Agent Provocateur",
+    "collectionUrl": "https://music.apple.com/cl/album/agent-provocateur/216663946?uo=4",
+    "image": "/assets/covers/album-216663946.jpg"
+  },
+  {
+    "sku": "ces-0001",
+    "artist": "2 Minutos",
+    "album": "Valentin Alsina",
+    "collectionUrl": "https://music.apple.com/cl/album/valentin-alsina/1443713718?uo=4",
+    "image": "/assets/covers/album-1443713718.jpg"
+  },
+  {
+    "sku": "cen-1256",
+    "artist": "The Monkees",
+    "album": "Greatest Hits",
+    "collectionUrl": "https://music.apple.com/cl/album/greatest-hits/1128139305?uo=4",
+    "image": "/assets/covers/album-1128139305.jpg"
+  },
+  {
+    "sku": "ces-0055",
+    "artist": "Américo",
+    "album": "Américo",
+    "collectionUrl": "https://music.apple.com/cl/album/am%C3%A9rico/1194430193?uo=4",
+    "image": "/assets/covers/album-1194430193.jpg"
+  }
+]

@@ -1,0 +1,64 @@
+{
+  "source": "STOCK TIENDA 1.xlsx",
+  "imported": 3378,
+  "available": 2845,
+  "units": 4431,
+  "artwork": 467,
+  "sheets": {
+    "VINILOS EN ESPAÑOL": {
+      "productos": 524,
+      "disponibles": 469
+    },
+    "VINILOS INGLES": {
+      "productos": 924,
+      "disponibles": 753
+    },
+    "CDS ESPAÑOL": {
+      "productos": 569,
+      "disponibles": 500
+    },
+    "CDS INGLES": {
+      "productos": 1361,
+      "disponibles": 1123
+    }
+  },
+  "excluded": [
+    {
+      "hoja": "VINILOS EN ESPAÑOL",
+      "fila_no_vacia": 113,
+      "artista": "CELIA CRUZ",
+      "album": "THE QUEEN OF SALSA",
+      "motivo": "Precio o cantidad inválidos; no publicado"
+    },
+    {
+      "hoja": "VINILOS EN ESPAÑOL",
+      "fila_no_vacia": 411,
+      "artista": "NINO BRAVO",
+      "album": "MI TIERRA",
+      "motivo": "Precio o cantidad inválidos; no publicado"
+    },
+    {
+      "hoja": "VINILOS INGLES",
+      "fila_no_vacia": 77,
+      "artista": "BILLIE JOE ARMSTRONG",
+      "album": "NO FUN MONDAYS",
+      "motivo": "Precio o cantidad inválidos; no publicado"
+    },
+    {
+      "hoja": "VINILOS INGLES",
+      "fila_no_vacia": 394,
+      "artista": "JHON COLTRANE",
+      "album": "NOW PLAYING",
+      "motivo": "Precio o cantidad inválidos; no publicado"
+    },
+    {
+      "hoja": "VINILOS INGLES",
+      "fila_no_vacia": 442,
+      "artista": "LCD SOUNDSYSTEM",
+      "album": "NEW BODY RUMBA",
+      "motivo": "Precio o cantidad inválidos; no publicado"
+    }
+  ],
+  "accounting_sheet_excluded": true,
+  "source_sha256": "46172358fe60b16a0e89d69a125be3ec6c4bc887944c38c9dd4e353fc9444579"
+}
