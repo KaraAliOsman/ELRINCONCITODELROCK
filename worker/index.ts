@@ -36,6 +36,14 @@ const publicColumns =
   "id,slug,artist,title,format,content,language,category,price,stock,image,description,featured,active,version";
 const barcodeColumns =
   ",COALESCE((SELECT code FROM product_barcodes WHERE product_id=products.id AND kind='internal'),'') AS barcode,COALESCE((SELECT code FROM product_barcodes WHERE product_id=products.id AND kind='retail'),'') AS retail_barcode";
+const barcodeMatch =
+  "code=? OR (kind='retail' AND substr('00000000000000'||code,-14)=?)";
+const gtinKey = (code: string) =>
+  /^(\d{8}|\d{12}|\d{13}|\d{14})$/.test(code) ? code.padStart(14, "0") : "";
+const duplicateBarcode = (e: unknown) =>
+  e instanceof Error &&
+  (e.message.includes("product_barcodes.code") ||
+    e.message.includes("product_barcodes_gtin"));
 function retailBarcode(value: unknown) {
   if (value === undefined || value === null || value === "") return "";
   if (typeof value !== "string")
@@ -217,10 +225,10 @@ async function listProducts(url: URL, env: AppEnv, admin = false) {
     bindings.push(...words.map(likePattern));
     clauses.push(
       admin
-        ? `(( ${search} ) OR id=? OR id=(SELECT product_id FROM product_barcodes WHERE code=?))`
+        ? `(( ${search} ) OR id=? OR id=(SELECT product_id FROM product_barcodes WHERE ${barcodeMatch}))`
         : `(${search})`,
     );
-    if (admin) bindings.push(rawQuery, rawQuery);
+    if (admin) bindings.push(rawQuery, rawQuery, gtinKey(rawQuery));
   }
   const fmt = url.searchParams.get("format");
   if (fmt === "vinilo" || fmt === "cd") {
@@ -643,7 +651,7 @@ async function updateProduct(
       update,
     ]);
   } catch (e) {
-    if (e instanceof Error && e.message.includes("product_barcodes.code"))
+    if (duplicateBarcode(e))
       throw new HttpError(
         409,
         "Ese código ya está asignado a otro disco. Usa la etiqueta interna para distinguir ediciones.",
@@ -812,9 +820,9 @@ async function api(req: Request, env: AppEnv, ctx: ExecutionContext) {
       if (!code || code.length > 80)
         throw new HttpError(400, "Escanea o escribe un código válido.");
       const p = await env.DB.prepare(
-        `SELECT ${publicColumns}${barcodeColumns} FROM products WHERE id=(SELECT product_id FROM product_barcodes WHERE code=?)`,
+        `SELECT ${publicColumns}${barcodeColumns} FROM products WHERE id=(SELECT product_id FROM product_barcodes WHERE ${barcodeMatch})`,
       )
-        .bind(code)
+        .bind(code, gtinKey(code))
         .first<Product>();
       if (!p)
         throw new HttpError(
@@ -899,7 +907,7 @@ async function api(req: Request, env: AppEnv, ctx: ExecutionContext) {
           ).bind(retail, id, retail),
         ]);
       } catch (e) {
-        if (e instanceof Error && e.message.includes("product_barcodes.code"))
+        if (duplicateBarcode(e))
           throw new HttpError(409, "Ese código ya está asignado a otro disco.");
         throw e;
       }

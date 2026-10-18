@@ -473,6 +473,22 @@ try {
   );
   assert.equal((await get(barA.id)).stock, 3);
   ok("EAN/UPC checksum, leading zero preservation and exact inventory search");
+  assert.equal((await scan("0" + retail)).value.id, barA.id);
+  assert.equal((await scan("00" + retail)).value.id, barA.id);
+  assert.equal(
+    (await call("/api/admin/products?q=0" + retail, { admin: true })).value
+      .products[0].id,
+    barA.id,
+  );
+  assert.equal(
+    (await editBarcode(barB, "0" + retail, { stock: 10, price: 999 })).status,
+    409,
+  );
+  assert.equal((await get(barB.id)).stock, 3);
+  assert.equal((await get(barB.id)).price, barB.price);
+  ok(
+    "Equivalent UPC, EAN and GTIN scans resolve one product and cannot be assigned twice",
+  );
   const conflict = await editBarcode(barB, retail, { stock: 10, price: 999 });
   assert.equal(conflict.status, 409);
   assert.equal((await get(barB.id)).stock, 3);

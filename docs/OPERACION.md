@@ -28,7 +28,7 @@ Todos los títulos tienen un código interno estable **Code 128**. Cada ejemplar
 4. Imprimir al **100 %**, sin ajuste a página, encabezados ni pies del navegador. El A4 usa márgenes de 7 mm y separación horizontal de 2 mm; comprobar que coincidan con la hoja del local. En impresora térmica seleccionar también el tamaño de papel de 60 × 40 mm en su controlador.
 5. Probar una etiqueta con el lector antes de imprimir todo el lote. Pegar la etiqueta en una funda protectora, sin cubrir información del disco.
 
-Si el ejemplar ya tiene un **EAN o UPC de fábrica**, se puede escanear en **Editar disco → EAN / UPC de fábrica** y guardar. Se conserva como texto para respetar los ceros iniciales y se verifica su dígito de control. El sistema no identifica automáticamente códigos que aún no fueron vinculados. Si dos ediciones comparten EAN/UPC, usar las etiquetas internas de cada edición: el panel rechaza códigos duplicados.
+Si el ejemplar ya tiene un **EAN o UPC de fábrica**, se puede escanear en **Editar disco → EAN / UPC de fábrica** y guardar. Se conserva como texto para respetar los ceros iniciales y se verifica su dígito de control. UPC-A, EAN-13 y GTIN-14 equivalentes se reconocen aunque el lector agregue ceros al inicio; no pueden asignarse a discos distintos. El sistema no identifica automáticamente códigos que aún no fueron vinculados. Si dos ediciones comparten EAN/UPC, usar las etiquetas internas de cada edición: el panel rechaza códigos duplicados.
 
 **Vender con el lector:**
 
@@ -87,6 +87,6 @@ Las skills de Cloudflare están instaladas y su MCP registrado. La autorización
 
 ## Verificación realizada
 
-33 pruebas de integración contra Worker y D1 locales: acceso privado, origen, precios manipulados, reservas duplicadas, compradores concurrentes de última unidad, rollback de `D1.batch`, cancelación, vencimiento, pago, despacho, CSV, imágenes, solicitudes y ventas presenciales, EAN/UPC, códigos duplicados y simultáneos, historial y anulación de caja. Además: compilación TypeScript/Vite, dry-run de Wrangler y revisión del rediseño con el logo real. Se recorrieron catálogo, filtros, favoritos, ficha, bolsa, validación del formulario, reserva y cancelación locales, teclado y panel de administración. Se revisaron anchos de 320, 390, 768 y 1265 px. Las pruebas móviles fueron emuladas; no se dispuso de un teléfono físico conectado. Se verificaron rutas, SEO, inventario y acceso administrativo en producción.
+34 pruebas de integración contra Worker y D1 locales: acceso privado, origen, precios manipulados, reservas duplicadas, compradores concurrentes de última unidad, rollback de `D1.batch`, cancelación, vencimiento, pago, despacho, CSV, imágenes, solicitudes y ventas presenciales, EAN/UPC, códigos duplicados y simultáneos, historial y anulación de caja. Además: compilación TypeScript/Vite, dry-run de Wrangler y revisión del rediseño con el logo real. Se recorrieron catálogo, filtros, favoritos, ficha, bolsa, validación del formulario, reserva y cancelación locales, teclado y panel de administración. Se revisaron anchos de 320, 390, 768 y 1265 px. Las pruebas móviles fueron emuladas; no se dispuso de un teléfono físico conectado. Se verificaron rutas, SEO, inventario y acceso administrativo en producción.
 
 No se importaron pedidos ficticios a producción.
