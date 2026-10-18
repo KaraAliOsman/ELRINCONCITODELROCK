@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import {
   LayoutDashboard,
   Disc3,
@@ -18,7 +18,6 @@ import {
   MessageSquare,
   LockKeyhole,
   ArrowRight,
-  Minus,
   FileSpreadsheet,
   Camera,
   ChevronLeft,
@@ -38,6 +37,8 @@ import {
   type StoreSettings,
 } from "./types";
 import "./admin.css";
+import PointOfSale from "./PointOfSale";
+import { Barcode, BarcodeLabels } from "./Barcodes";
 type AdminProps = { onExit: () => void; onStoreChange: () => void };
 type Tab =
   "dashboard" | "orders" | "products" | "sales" | "requests" | "settings";
@@ -142,9 +143,9 @@ export default function Admin({ onExit, onStoreChange }: AdminProps) {
   const tabs: { id: Tab; label: string; icon: typeof Disc3 }[] = [
     { id: "dashboard", label: "Vista general", icon: LayoutDashboard },
     { id: "orders", label: "Pedidos", icon: ShoppingBag },
-    { id: "products", label: "La batea", icon: Disc3 },
-    { id: "sales", label: "Venta en tienda", icon: Store },
-    { id: "requests", label: "Discos buscados", icon: MessageSquare },
+    { id: "products", label: "Inventario", icon: Disc3 },
+    { id: "sales", label: "Caja", icon: Store },
+    { id: "requests", label: "Solicitudes", icon: MessageSquare },
     { id: "settings", label: "Configuración", icon: Settings },
   ];
   if (logged === null) return <Loading />;
@@ -161,7 +162,6 @@ export default function Admin({ onExit, onStoreChange }: AdminProps) {
           <LockKeyhole size={31} strokeWidth={1.3} />
           <p className="eyebrow">Acceso privado</p>
           <h1>Administración</h1>
-          <p>Acceso privado para gestionar discos, pedidos y ventas.</p>
           <label>
             Contraseña de administración
             <input
@@ -192,7 +192,7 @@ export default function Admin({ onExit, onStoreChange }: AdminProps) {
     <div className="admin-shell">
       <aside className="admin-sidebar">
         <Logo />
-        <span className="admin-label">ADMINISTRACIÓN / LA TIENDA</span>
+        <span className="admin-label">ADMINISTRACIÓN</span>
         <nav aria-label="Panel de administración">
           {tabs.map((t) => (
             <button
@@ -285,10 +285,7 @@ function PageHeader({
     <div className="admin-page-header">
       <div>
         <p className="eyebrow">{eyebrow}</p>
-        <h1>
-          {title}
-          <span>.</span>
-        </h1>
+        <h1>{title}</h1>
       </div>
       <div className="admin-header-buttons">{children}</div>
     </div>
@@ -305,7 +302,7 @@ function Dashboard({
   const max = Math.max(1, ...data.sales.map((s) => s.revenue));
   return (
     <>
-      <PageHeader eyebrow="Vista general" title="La tienda al día" />
+      <PageHeader eyebrow="Administración" title="Resumen" />
       <div className="dashboard-stats">
         <div className="stat-card highlight">
           <ShoppingBag size={19} />
@@ -444,7 +441,9 @@ function Inventory({
     [page, setPage] = useState(1),
     [edit, setEdit] = useState<Product | null>(null),
     [create, setCreate] = useState(false),
-    [importOpen, setImportOpen] = useState(false);
+    [importOpen, setImportOpen] = useState(false),
+    [selected, setSelected] = useState<Record<string, Product>>({}),
+    [labelsOpen, setLabelsOpen] = useState(false);
   const { data, error, loading } = useData<{
     products: Product[];
     total: number;
@@ -457,7 +456,18 @@ function Inventory({
   );
   return (
     <>
-      <PageHeader eyebrow="INVENTARIO / PRECIOS + STOCK" title="La batea">
+      <PageHeader eyebrow="Catálogo, precios y stock" title="Inventario">
+        <button
+          className="button outline small"
+          disabled={!Object.keys(selected).length}
+          onClick={() => setLabelsOpen(true)}
+        >
+          <Printer size={16} />
+          Etiquetas
+          {Object.keys(selected).length
+            ? ` (${Object.keys(selected).length})`
+            : ""}
+        </button>
         <a
           className="button outline small"
           href="/api/admin/export?type=products"
@@ -484,7 +494,7 @@ function Inventory({
             setQ(e.target.value);
             setPage(1);
           }}
-          placeholder="Busca un artista, álbum…"
+          placeholder="Artista, álbum o código de barras"
         />
         <span>{data?.total.toLocaleString("es-CL")} PRODUCTOS</span>
       </div>
@@ -496,6 +506,27 @@ function Inventory({
           <table>
             <thead>
               <tr>
+                <th className="selection-cell">
+                  <input
+                    type="checkbox"
+                    aria-label="Seleccionar página para etiquetas"
+                    checked={
+                      !!data?.products.length &&
+                      data.products.every((p) => !!selected[p.id])
+                    }
+                    onChange={(e) => {
+                      const checked = e.target.checked;
+                      setSelected((s) => {
+                        const next = { ...s };
+                        data?.products.forEach((p) => {
+                          if (checked) next[p.id] = p;
+                          else delete next[p.id];
+                        });
+                        return next;
+                      });
+                    }}
+                  />
+                </th>
                 <th>Disco</th>
                 <th>Formato</th>
                 <th>Precio</th>
@@ -507,6 +538,22 @@ function Inventory({
             <tbody>
               {data?.products.map((p) => (
                 <tr key={p.id}>
+                  <td className="selection-cell">
+                    <input
+                      type="checkbox"
+                      aria-label={`Seleccionar ${displayTitle(p.title)} para etiquetas`}
+                      checked={!!selected[p.id]}
+                      onChange={(e) => {
+                        const checked = e.target.checked;
+                        setSelected((s) => {
+                          const next = { ...s };
+                          if (checked) next[p.id] = p;
+                          else delete next[p.id];
+                          return next;
+                        });
+                      }}
+                    />
+                  </td>
                   <td>
                     <div className="inventory-disc">
                       <div className="table-art">
@@ -516,7 +563,7 @@ function Inventory({
                         <strong>{displayTitle(p.artist)}</strong>
                         <span>{displayTitle(p.title)}</span>
                         <small>
-                          {p.id} {p.featured ? "· DESTACADO" : ""}
+                          {p.barcode || p.id} {p.featured ? "· DESTACADO" : ""}
                         </small>
                       </div>
                     </div>
@@ -577,6 +624,23 @@ function Inventory({
           </button>
         </div>
       </div>
+      {!!Object.keys(selected).length && (
+        <div className="inventory-selection">
+          <span>{Object.keys(selected).length} títulos seleccionados</span>
+          <button className="text-link" onClick={() => setSelected({})}>
+            Quitar selección
+          </button>
+        </div>
+      )}
+      {labelsOpen && (
+        <Modal
+          title="Imprimir códigos de barras"
+          onClose={() => setLabelsOpen(false)}
+          wide
+        >
+          <BarcodeLabels products={Object.values(selected)} />
+        </Modal>
+      )}
       {(edit || create) && (
         <Modal
           title={
@@ -593,7 +657,8 @@ function Inventory({
             onSave={() => {
               setEdit(null);
               setCreate(false);
-              changed("Disco guardado. El catálogo ya está actualizado.");
+              setSelected({});
+              changed("Disco guardado. Inventario actualizado.");
             }}
           />
         </Modal>
@@ -689,6 +754,7 @@ function ProductEditor({
       format: f.get("format"),
       content: f.get("content"),
       language: f.get("language"),
+      retail_barcode: f.get("retail_barcode"),
     };
     try {
       await api(p ? "/api/admin/products/" + p.id : "/api/admin/products", {
@@ -745,6 +811,13 @@ function ProductEditor({
             JPG, PNG o WebP. La foto se optimiza y guarda en la tienda. Usa
             fotos del ejemplar o carátulas que tengas autorización de usar.
           </small>
+          {p?.barcode && (
+            <div className="editor-barcode">
+              <Barcode code={p.barcode} />
+              <code>{p.barcode}</code>
+              <span>Código interno · Code 128</span>
+            </div>
+          )}
         </div>
         <div className="editor-fields">
           <label>
@@ -818,6 +891,24 @@ function ProductEditor({
             </label>
           </div>
           <label>
+            EAN / UPC de fábrica <span className="muted">(opcional)</span>
+            <input
+              name="retail_barcode"
+              defaultValue={p?.retail_barcode || ""}
+              inputMode="numeric"
+              autoComplete="off"
+              maxLength={14}
+              pattern="[0-9]{8}|[0-9]{12,14}"
+              placeholder="Escanea el código original del disco"
+              onKeyDown={(e) => {
+                if (e.key === "Enter") e.preventDefault();
+              }}
+            />
+            <small className="field-hint">
+              Para ediciones con el mismo EAN, utiliza sus códigos internos.
+            </small>
+          </label>
+          <label>
             Selección
             <select
               name="category"
@@ -869,6 +960,7 @@ function ProductEditor({
               SKU: {p.id} · Los cambios de stock se registran.
             </p>
           )}
+          {p && <StockHistory id={p.id} />}
         </div>
       </div>
       {error && (
@@ -881,6 +973,52 @@ function ProductEditor({
         <Check size={18} />
       </button>
     </form>
+  );
+}
+function StockHistory({ id }: { id: string }) {
+  const [open, setOpen] = useState(false);
+  const { data, error } = useData<{
+    movements: {
+      id: number;
+      delta: number;
+      reason: string;
+      created_at: string;
+      order_code: string | null;
+    }[];
+  }>("/api/admin/products/" + id + "/movements");
+  return (
+    <details
+      className="stock-history"
+      open={open}
+      onToggle={(e) => setOpen(e.currentTarget.open)}
+    >
+      <summary>Movimientos de inventario</summary>
+      {error ? (
+        <p className="error">{error}</p>
+      ) : data?.movements.length ? (
+        <div>
+          {data.movements.map((m) => (
+            <div key={m.id}>
+              <strong className={m.delta > 0 ? "positive" : ""}>
+                {m.delta > 0 ? "+" : ""}
+                {m.delta}
+              </strong>
+              <span>
+                {m.reason}
+                {m.order_code && <code>{m.order_code}</code>}
+                <small>
+                  {new Date(m.created_at).toLocaleString("es-CL", {
+                    timeZone: "America/Santiago",
+                  })}
+                </small>
+              </span>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p className="field-hint">Sin movimientos desde la carga inicial.</p>
+      )}
+    </details>
   );
 }
 function parseCsv(s: string) {
@@ -1066,7 +1204,7 @@ function Orders({
   );
   return (
     <>
-      <PageHeader eyebrow="PEDIDOS / RESERVAS + ENTREGAS" title="Los pedidos">
+      <PageHeader eyebrow="Ventas y reservas" title="Pedidos">
         <a
           className="button outline small"
           href="/api/admin/export?type=orders"
@@ -1126,13 +1264,21 @@ function Orders({
                     </small>
                   </td>
                   <td>{o.customer_name}</td>
-                  <td>{o.delivery === "pickup" ? "Retiro" : "Despacho"}</td>
+                  <td>
+                    {o.channel === "store"
+                      ? "Venta en local"
+                      : o.delivery === "pickup"
+                        ? "Retiro"
+                        : "Despacho"}
+                  </td>
                   <td>
                     {money(o.subtotal)}
                     <small>
                       {o.payment_status === "paid"
                         ? "PAGO REGISTRADO"
-                        : "SIN PAGO REGISTRADO"}
+                        : o.payment_status === "refunded"
+                          ? "REEMBOLSADO"
+                          : "SIN PAGO REGISTRADO"}
                     </small>
                   </td>
                   <td>
@@ -1154,7 +1300,7 @@ function Orders({
             </tbody>
           </table>
           {data && !data.orders.length && (
-            <Empty title="La bandeja está al día.">
+            <Empty title="No hay pedidos.">
               <p>Los pedidos de la tienda aparecerán aquí.</p>
             </Empty>
           )}
@@ -1194,7 +1340,8 @@ function OrderEditor({ id, onSave }: { id: string; onSave: () => void }) {
     confirmed: ["confirmed", "ready", "shipped", "cancelled"],
     ready: ["ready", "completed", "cancelled"],
     shipped: ["shipped", "completed"],
-    completed: ["completed"],
+    completed:
+      o?.channel === "store" ? ["completed", "cancelled"] : ["completed"],
     cancelled: ["cancelled"],
     expired: ["expired"],
   };
@@ -1235,7 +1382,9 @@ function OrderEditor({ id, onSave }: { id: string; onSave: () => void }) {
   }
   if (error) return <p className="error">{error}</p>;
   if (!o) return <Loading />;
-  const closed = ["completed", "cancelled", "expired"].includes(o.status);
+  const closed =
+    ["cancelled", "expired"].includes(o.status) ||
+    (o.status === "completed" && o.channel !== "store");
   return (
     <form className="order-editor" onSubmit={save}>
       <div className="order-editor-heading">
@@ -1284,11 +1433,15 @@ function OrderEditor({ id, onSave }: { id: string; onSave: () => void }) {
             {new Date(o.created_at).toLocaleString("es-CL", {
               timeZone: "America/Santiago",
             })}
-            <br />
-            Reserva hasta{" "}
-            {new Date(o.expires_at).toLocaleString("es-CL", {
-              timeZone: "America/Santiago",
-            })}
+            {o.status === "pending" && (
+              <>
+                <br />
+                Reserva hasta{" "}
+                {new Date(o.expires_at).toLocaleString("es-CL", {
+                  timeZone: "America/Santiago",
+                })}
+              </>
+            )}
           </p>
         </div>
         <div>
@@ -1308,7 +1461,9 @@ function OrderEditor({ id, onSave }: { id: string; onSave: () => void }) {
                 )
                 .map((s) => (
                   <option value={s} key={s}>
-                    {statusName[s]}
+                    {s === "cancelled" && o.channel === "store"
+                      ? "Anular venta y devolver stock"
+                      : statusName[s]}
                   </option>
                 ))}
             </select>
@@ -1346,16 +1501,18 @@ function OrderEditor({ id, onSave }: { id: string; onSave: () => void }) {
               />
             </label>
           )}
-          <label>
-            Courier / número de seguimiento
-            <input
-              name="tracking"
-              defaultValue={o.tracking || ""}
-              maxLength={200}
-              placeholder="Ej.: Chilexpress · 123456"
-              disabled={closed}
-            />
-          </label>
+          {o.delivery === "shipping" && (
+            <label>
+              Courier / número de seguimiento
+              <input
+                name="tracking"
+                defaultValue={o.tracking || ""}
+                maxLength={200}
+                placeholder="Ej.: Chilexpress · 123456"
+                disabled={closed}
+              />
+            </label>
+          )}
           <label>
             Notas internas
             <textarea
@@ -1367,9 +1524,9 @@ function OrderEditor({ id, onSave }: { id: string; onSave: () => void }) {
             />
           </label>
           <p className="editor-source">
-            Confirma el pedido después de recibir el pago. Al cancelar, las
-            unidades vuelven al stock. Un pedido pagado requiere confirmar el
-            reembolso antes de cancelarlo.
+            {o.channel === "store"
+              ? "Anula una venta solo después del reembolso y la devolución de todos sus discos al local."
+              : "Al cancelar se libera el stock. Si el pedido está pagado, confirma primero el reembolso."}
           </p>
           {saveError && (
             <p className="error" role="alert">
@@ -1383,179 +1540,6 @@ function OrderEditor({ id, onSave }: { id: string; onSave: () => void }) {
         </div>
       </div>
     </form>
-  );
-}
-function PointOfSale({ changed }: { changed: (s: string) => void }) {
-  const [q, setQ] = useState(""),
-    [items, setItems] = useState<{ p: Product; qty: number }[]>([]),
-    [busy, setBusy] = useState(false),
-    [error, setError] = useState(""),
-    [receipt, setReceipt] = useState<{ code: string } | null>(null);
-  const { data } = useData<{ products: Product[] }>(
-    "/api/products?limit=9&q=" + encodeURIComponent(q) + "&sort=artist",
-  );
-  const key = useRef(crypto.randomUUID());
-  function add(p: Product) {
-    setReceipt(null);
-    setItems((v) => {
-      const cur = v.find((i) => i.p.id === p.id);
-      return cur
-        ? cur.qty >= Math.min(p.stock, 20)
-          ? v
-          : v.map((i) => (i.p.id === p.id ? { ...i, qty: i.qty + 1 } : i))
-        : [...v, { p, qty: 1 }];
-    });
-    key.current = crypto.randomUUID();
-  }
-  const total = items.reduce((n, i) => n + i.qty * i.p.price, 0);
-  async function sale(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setBusy(true);
-    setError("");
-    const f = new FormData(e.currentTarget);
-    try {
-      const r = await api<{ code: string }>("/api/admin/sales", {
-        method: "POST",
-        headers: { "Idempotency-Key": key.current },
-        body: JSON.stringify({
-          items: items.map((i) => ({ id: i.p.id, quantity: i.qty })),
-          name: f.get("name") || "Venta en tienda",
-          notes: "Venta presencial · Medio: " + f.get("method"),
-          email: "",
-          phone: "",
-        }),
-      });
-      setReceipt(r);
-      setItems([]);
-      key.current = crypto.randomUUID();
-      changed("Venta " + r.code + " registrada y stock actualizado.");
-    } catch (e) {
-      setError((e as Error).message);
-    } finally {
-      setBusy(false);
-    }
-  }
-  return (
-    <>
-      <PageHeader
-        eyebrow="MOSTRADOR / VENTA PRESENCIAL"
-        title="Suena en la tienda"
-      />
-      <div className="pos-grid">
-        <section>
-          <div className="admin-search">
-            <Search size={18} />
-            <input
-              value={q}
-              onChange={(e) => setQ(e.target.value)}
-              placeholder="Busca el disco que estás vendiendo"
-              type="search"
-              aria-label="Buscar disco para venta"
-            />
-          </div>
-          <div className="pos-products">
-            {data?.products.map((p) => (
-              <button
-                key={p.id}
-                onClick={() => add(p)}
-                aria-label={`Seleccionar ${p.title}`}
-              >
-                <div className="pos-art">
-                  <Cover p={p} />
-                </div>
-                <div>
-                  <span>{displayTitle(p.artist)}</span>
-                  <strong>{displayTitle(p.title)}</strong>
-                  <small>
-                    {p.content} · {p.stock} disponibles
-                  </small>
-                </div>
-                <b>{money(p.price)}</b>
-                <Plus size={18} />
-              </button>
-            ))}
-          </div>
-        </section>
-        <form className="pos-checkout admin-box" onSubmit={sale}>
-          <h2>La venta de ahora.</h2>
-          {items.length ? (
-            <div className="pos-items">
-              {items.map(({ p, qty }) => (
-                <div key={p.id}>
-                  <div>
-                    <strong>{displayTitle(p.artist)}</strong>
-                    <span>{displayTitle(p.title)}</span>
-                  </div>
-                  <div className="quantity">
-                    <button
-                      type="button"
-                      aria-label={`Quitar ${p.title}`}
-                      onClick={() => {
-                        setItems((v) =>
-                          v
-                            .map((i) =>
-                              i.p.id === p.id ? { ...i, qty: i.qty - 1 } : i,
-                            )
-                            .filter((i) => i.qty),
-                        );
-                        key.current = crypto.randomUUID();
-                      }}
-                    >
-                      <Minus size={13} />
-                    </button>
-                    <span>{qty}</span>
-                    <button
-                      type="button"
-                      aria-label={`Sumar ${p.title}`}
-                      disabled={qty >= Math.min(p.stock, 20)}
-                      onClick={() => add(p)}
-                    >
-                      <Plus size={13} />
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p className="pos-empty">
-              Selecciona los discos desde el buscador.
-            </p>
-          )}
-          <label>
-            Cliente <span className="muted">(opcional)</span>
-            <input name="name" maxLength={120} placeholder="Venta en tienda" />
-          </label>
-          <label>
-            Pago verificado
-            <select name="method">
-              <option>Efectivo</option>
-              <option>Transferencia recibida</option>
-              <option>Tarjeta en terminal de tienda</option>
-            </select>
-          </label>
-          <div className="pos-total">
-            <span>Total</span>
-            <strong>{money(total)}</strong>
-          </div>
-          {error && <p className="error">{error}</p>}
-          <button className="button red full" disabled={!items.length || busy}>
-            {busy ? "Registrando venta…" : "Registrar venta pagada"}
-            <Check size={17} />
-          </button>
-          <p className="editor-source">
-            Registra únicamente pagos ya recibidos. Esta acción crea una venta
-            entregada y descuenta las unidades del inventario.
-          </p>
-          {receipt && (
-            <div className="sale-receipt">
-              <Check size={22} />
-              <strong>Venta registrada: {receipt.code}</strong>
-              <span>El stock y el historial de ventas están actualizados.</span>
-            </div>
-          )}
-        </form>
-      </div>
-    </>
   );
 }
 interface DiscRequest {
@@ -1599,7 +1583,7 @@ function Requests({
     <>
       <PageHeader
         eyebrow="LA LISTA DE DESEOS / PEDIDOS ESPECIALES"
-        title="Discos por encontrar"
+        title="Solicitudes de discos"
       />
       {error && <p className="error">{error}</p>}
       {loading && !data ? (

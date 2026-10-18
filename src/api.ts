@@ -1,3 +1,11 @@
+export class ApiError extends Error {
+  constructor(
+    message: string,
+    public status: number,
+  ) {
+    super(message);
+  }
+}
 export async function api<T>(path: string, init: RequestInit = {}): Promise<T> {
   const response = await fetch(path, {
     ...init,
@@ -10,7 +18,10 @@ export async function api<T>(path: string, init: RequestInit = {}): Promise<T> {
   });
   const data = (await response.json()) as { error?: string };
   if (!response.ok)
-    throw new Error(data.error || "No pudimos conectar. Inténtalo de nuevo.");
+    throw new ApiError(
+      data.error || "No pudimos conectar. Inténtalo de nuevo.",
+      response.status,
+    );
   return data as T;
 }
 export function storeLocal(key: string, value: unknown) {

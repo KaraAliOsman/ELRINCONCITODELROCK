@@ -3419,3 +3419,227 @@ details > p {
     height: 210px;
   }
 }
+
+/* Storefront finish: artwork leads, controls stay quiet. */
+.storefront {
+  --paper: #101011;
+  --surface: #1a1a1d;
+  --line: #303034;
+  --faded: #a8a8af;
+}
+.hero {
+  padding-top: 42px;
+  padding-bottom: 48px;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 60px;
+}
+.hero h1 {
+  font-size: clamp(104px, 9.6vw, 138px);
+  line-height: 0.91;
+  letter-spacing: -0.025em;
+}
+.hero-description {
+  font-size: 16px;
+  margin: 24px 0 28px;
+}
+.hero-copy > .button {
+  min-width: 214px;
+}
+.spotlight-stage {
+  height: 334px;
+}
+.spotlight-cover,
+.spotlight-record {
+  width: 296px;
+  top: 18px;
+}
+.spotlight-cover {
+  left: calc(50% - 194px);
+}
+.spotlight-record {
+  left: calc(50% - 66px);
+}
+.spotlight-top {
+  padding: 0 0 12px;
+}
+.spotlight-bottom {
+  padding: 16px 0 0;
+}
+.spotlight-description strong {
+  font-size: 16px;
+}
+.spotlight-description > span {
+  font-size: 12px;
+}
+.section-head h2 {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+.featured-section {
+  padding-top: 22px;
+}
+.browse-tile h2 {
+  margin-top: 0;
+}
+@media (min-width: 1440px) {
+  .hero {
+    gap: 90px;
+    padding-top: 48px;
+    padding-bottom: 56px;
+  }
+}
+@media (max-width: 1000px) and (min-width: 701px) {
+  .hero {
+    gap: 30px;
+    padding-top: 32px;
+    padding-bottom: 38px;
+  }
+  .hero h1 {
+    font-size: 94px;
+  }
+  .spotlight-stage {
+    height: 280px;
+  }
+  .spotlight-cover,
+  .spotlight-record {
+    width: 246px;
+  }
+  .spotlight-cover {
+    left: calc(50% - 160px);
+  }
+  .spotlight-record {
+    left: calc(50% - 52px);
+  }
+}
+@media (max-width: 700px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 30px 20px;
+    gap: 28px;
+  }
+  .hero h1 {
+    font-size: clamp(58px, 14vw, 90px);
+    white-space: nowrap;
+    line-height: 0.95;
+  }
+  .hero h1 br {
+    display: none;
+  }
+  .hero h1 span {
+    margin-left: 0.14em;
+  }
+  .hero-description {
+    font-size: 14px;
+    margin: 15px 0 21px;
+  }
+  .hero-copy > .button {
+    min-height: 46px;
+  }
+  .spotlight {
+    max-width: none;
+  }
+  .spotlight-stage {
+    height: 254px;
+  }
+  .spotlight-cover,
+  .spotlight-record {
+    width: 230px;
+    top: 10px;
+  }
+  .spotlight-cover {
+    left: calc(50% - 153px);
+  }
+  .spotlight-record {
+    left: calc(50% - 51px);
+  }
+  .spotlight-top {
+    padding: 0 0 5px;
+  }
+  .spotlight-bottom {
+    padding: 10px 0 0;
+    min-height: 66px;
+  }
+  .spotlight-description strong {
+    font-size: 14px;
+  }
+  .spotlight-description > span {
+    font-size: 11px;
+  }
+  .section-head h2 {
+    font-size: 23px;
+  }
+  .featured-section {
+    padding-top: 24px;
+  }
+}
+@media (max-width: 360px) {
+  .hero {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .hero h1 {
+    font-size: 54px;
+  }
+  .spotlight-stage {
+    height: 226px;
+  }
+  .spotlight-cover,
+  .spotlight-record {
+    width: 205px;
+  }
+  .spotlight-cover {
+    left: calc(50% - 136px);
+  }
+  .spotlight-record {
+    left: calc(50% - 45px);
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .header {
+    background: var(--paper);
+    backdrop-filter: none;
+  }
+}
+@media (prefers-contrast: more) {
+  .storefront {
+    --line: #777;
+    --faded: #d1d1d5;
+  }
+}
+@media (min-width: 1001px) {
+  .header {
+    min-height: 96px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  .header .brand {
+    width: 72px;
+    height: 72px;
+  }
+  .hero {
+    padding-top: 32px;
+    padding-bottom: 36px;
+  }
+  .hero h1 {
+    font-size: clamp(104px, 9.2vw, 126px);
+  }
+  .spotlight-stage {
+    height: 308px;
+  }
+  .spotlight-cover,
+  .spotlight-record {
+    width: 280px;
+    top: 12px;
+  }
+  .spotlight-cover {
+    left: calc(50% - 184px);
+  }
+  .spotlight-record {
+    left: calc(50% - 62px);
+  }
+  .spotlight-bottom {
+    min-height: 64px;
+    padding-top: 12px;
+  }
+}

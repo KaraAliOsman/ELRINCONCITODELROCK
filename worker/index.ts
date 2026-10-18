@@ -34,6 +34,33 @@ function likePattern(value: string) {
 }
 const publicColumns =
   "id,slug,artist,title,format,content,language,category,price,stock,image,description,featured,active,version";
+const barcodeColumns =
+  ",COALESCE((SELECT code FROM product_barcodes WHERE product_id=products.id AND kind='internal'),'') AS barcode,COALESCE((SELECT code FROM product_barcodes WHERE product_id=products.id AND kind='retail'),'') AS retail_barcode";
+function retailBarcode(value: unknown) {
+  if (value === undefined || value === null || value === "") return "";
+  if (typeof value !== "string")
+    throw new HttpError(
+      400,
+      "El código debe ser texto para conservar sus ceros iniciales.",
+    );
+  const code = value.trim();
+  if (!/^(\d{8}|\d{12}|\d{13}|\d{14})$/.test(code))
+    throw new HttpError(
+      400,
+      "El código de fábrica debe ser un EAN o UPC de 8, 12, 13 o 14 dígitos.",
+    );
+  const digits = [...code].map(Number);
+  const check = digits.pop()!;
+  const sum = digits
+    .reverse()
+    .reduce((n, d, i) => n + d * (i % 2 === 0 ? 3 : 1), 0);
+  if ((10 - (sum % 10)) % 10 !== check)
+    throw new HttpError(
+      400,
+      "Revisa el EAN / UPC: su dígito de control no coincide.",
+    );
+  return code;
+}
 function text(v: unknown, max = 250) {
   return typeof v === "string" ? v.trim().slice(0, max) : "";
 }
@@ -182,10 +209,18 @@ async function expireReservations(env: AppEnv) {
 async function listProducts(url: URL, env: AppEnv, admin = false) {
   const clauses = admin ? ["1=1"] : ["active=1"];
   const bindings: (string | number)[] = [];
-  const q = normal(url.searchParams.get("q") || "").slice(0, 150);
-  for (const word of q.split(" ").filter(Boolean).slice(0, 8)) {
-    clauses.push("search_text LIKE ?");
-    bindings.push(likePattern(word));
+  const rawQuery = (url.searchParams.get("q") || "").trim().slice(0, 150);
+  const q = normal(rawQuery);
+  const words = q.split(" ").filter(Boolean).slice(0, 8);
+  if (words.length) {
+    const search = words.map(() => "search_text LIKE ?").join(" AND ");
+    bindings.push(...words.map(likePattern));
+    clauses.push(
+      admin
+        ? `(( ${search} ) OR id=? OR id=(SELECT product_id FROM product_barcodes WHERE code=?))`
+        : `(${search})`,
+    );
+    if (admin) bindings.push(rawQuery, rawQuery);
   }
   const fmt = url.searchParams.get("format");
   if (fmt === "vinilo" || fmt === "cd") {
@@ -228,7 +263,7 @@ async function listProducts(url: URL, env: AppEnv, admin = false) {
   const where = clauses.join(" AND ");
   const [rows, count] = await env.DB.batch([
     env.DB.prepare(
-      `SELECT ${publicColumns}${admin ? ",source,updated_at" : ""} FROM products WHERE ${where} ORDER BY ${order} LIMIT ? OFFSET ?`,
+      `SELECT ${publicColumns}${admin ? ",source,updated_at" + barcodeColumns : ""} FROM products WHERE ${where} ORDER BY ${order} LIMIT ? OFFSET ?`,
     ).bind(...bindings, limit, (page - 1) * limit),
     env.DB.prepare(
       `SELECT COUNT(*) AS total FROM products WHERE ${where}`,
@@ -302,6 +337,9 @@ async function createOrder(
       region,
       notes: text(b.notes, 1000),
       pos,
+      ...(pos
+        ? { prices: raw.map((r) => [r.id, r.expected_price ?? null]).sort() }
+        : {}),
     }),
   );
   const existing = await env.DB.prepare(
@@ -330,6 +368,19 @@ async function createOrder(
   for (const p of products) {
     if (!p.active || p.stock < items.get(p.id)!)
       throw new HttpError(409, `No queda suficiente stock de ${p.title}.`);
+    if (
+      pos &&
+      raw.some(
+        (r) =>
+          r.id === p.id &&
+          r.expected_price !== undefined &&
+          r.expected_price !== p.price,
+      )
+    )
+      throw new HttpError(
+        409,
+        `El precio de ${p.title} cambió. Quita el disco y vuelve a escanearlo antes de cobrar.`,
+      );
     subtotal += p.price * items.get(p.id)!;
   }
   const id = crypto.randomUUID(),
@@ -341,7 +392,7 @@ async function createOrder(
   const shipping = delivery === "pickup" ? 0 : cfg.shippingCost;
   const statements = [
     env.DB.prepare(
-      "INSERT INTO orders(id,code,token,idempotency_key,request_hash,customer_name,email,phone,delivery,address,city,region,notes,subtotal,shipping_cost,status,payment_status,expires_at) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+      "INSERT INTO orders(id,code,token,idempotency_key,request_hash,customer_name,email,phone,delivery,address,city,region,notes,subtotal,shipping_cost,status,payment_status,expires_at,channel) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
     ).bind(
       id,
       code,
@@ -361,6 +412,7 @@ async function createOrder(
       pos ? "completed" : "pending",
       pos ? "paid" : "unpaid",
       expires,
+      pos ? "store" : "web",
     ),
   ];
   for (const p of products)
@@ -432,6 +484,7 @@ async function updateOrder(
       shipping_cost: number | null;
       tracking: string;
       admin_notes: string;
+      channel: string;
     }>();
   if (!order) throw new HttpError(404, "Pedido no encontrado.");
   const target = text(b.status, 30) || order.status;
@@ -441,7 +494,7 @@ async function updateOrder(
     confirmed: ["ready", "shipped", "cancelled"],
     ready: ["completed", "cancelled"],
     shipped: ["completed"],
-    completed: [],
+    completed: order.channel === "store" ? ["cancelled"] : [],
     cancelled: [],
     expired: [],
   };
@@ -540,40 +593,68 @@ async function updateProduct(
       400,
       "La imagen debe ser una URL HTTPS o una imagen de la tienda.",
     );
-  const res = await env.DB.prepare(
+  const retail =
+    b.retail_barcode === undefined
+      ? (
+          await env.DB.prepare(
+            "SELECT code FROM product_barcodes WHERE product_id=? AND kind='retail'",
+          )
+            .bind(id)
+            .first<{ code: string }>()
+        )?.code || ""
+      : retailBarcode(b.retail_barcode);
+  const update = env.DB.prepare(
     "UPDATE products SET artist=?,title=?,price=?,stock=?,image=?,description=?,featured=?,active=?,category=?,search_text=?,version=version+1,updated_at=strftime('%Y-%m-%dT%H:%M:%fZ','now') WHERE id=? AND version=?",
-  )
-    .bind(
-      artist,
-      title,
-      price,
-      stock,
-      image,
-      text(b.description, 2000),
-      b.featured ? 1 : 0,
-      b.active ? 1 : 0,
-      text(b.category, 60) || current.category,
-      normal(artist + " " + title + " " + current.content),
-      id,
-      version,
-    )
-    .run();
-  if (res.meta.changes !== 1)
+  ).bind(
+    artist,
+    title,
+    price,
+    stock,
+    image,
+    text(b.description, 2000),
+    b.featured ? 1 : 0,
+    b.active ? 1 : 0,
+    text(b.category, 60) || current.category,
+    normal(artist + " " + title + " " + current.content),
+    id,
+    version,
+  );
+  // The version guard applies to aliases and stock movements as well as the
+  // product. A duplicate barcode rolls back every statement in this batch.
+  let results;
+  try {
+    results = await env.DB.batch([
+      env.DB.prepare(
+        "INSERT INTO stock_movements(product_id,delta,reason) SELECT id,?-stock,'Ajuste manual' FROM products WHERE id=? AND version=? AND stock<>?",
+      ).bind(stock, id, version, stock),
+      env.DB.prepare(
+        "DELETE FROM product_barcodes WHERE product_id=? AND kind='retail' AND EXISTS(SELECT 1 FROM products WHERE id=? AND version=?)",
+      ).bind(id, id, version),
+      env.DB.prepare(
+        "INSERT INTO product_barcodes(code,product_id,kind) SELECT ?,id,'retail' FROM products WHERE id=? AND version=? AND ?<>''",
+      ).bind(retail, id, version, retail),
+      env.DB.prepare(
+        "INSERT INTO audit_log(action,entity_id,detail) SELECT 'product_updated',id,? FROM products WHERE id=? AND version=?",
+      ).bind(
+        JSON.stringify({ stock, price, retail_barcode: retail }),
+        id,
+        version,
+      ),
+      update,
+    ]);
+  } catch (e) {
+    if (e instanceof Error && e.message.includes("product_barcodes.code"))
+      throw new HttpError(
+        409,
+        "Ese código ya está asignado a otro disco. Usa la etiqueta interna para distinguir ediciones.",
+      );
+    throw e;
+  }
+  if (results[4].meta.changes !== 1)
     throw new HttpError(
       409,
       "El stock cambió desde que abriste el producto. Actualízalo antes de guardar.",
     );
-  if (stock !== current.stock)
-    await env.DB.prepare(
-      "INSERT INTO stock_movements(product_id,delta,reason) VALUES(?,?,?)",
-    )
-      .bind(id, stock - current.stock, "Ajuste manual")
-      .run();
-  await env.DB.prepare(
-    "INSERT INTO audit_log(action,entity_id,detail) VALUES(?,?,?)",
-  )
-    .bind("product_updated", id, JSON.stringify({ stock, price }))
-    .run();
   return json({ ok: true });
 }
 async function api(req: Request, env: AppEnv, ctx: ExecutionContext) {
@@ -726,6 +807,34 @@ async function api(req: Request, env: AppEnv, ctx: ExecutionContext) {
     }
     if (path === "/api/admin/products" && method === "GET")
       return listProducts(url, env, true);
+    if (path === "/api/admin/barcodes" && method === "GET") {
+      const code = url.searchParams.get("code")?.trim() || "";
+      if (!code || code.length > 80)
+        throw new HttpError(400, "Escanea o escribe un código válido.");
+      const p = await env.DB.prepare(
+        `SELECT ${publicColumns}${barcodeColumns} FROM products WHERE id=(SELECT product_id FROM product_barcodes WHERE code=?)`,
+      )
+        .bind(code)
+        .first<Product>();
+      if (!p)
+        throw new HttpError(
+          404,
+          "Código sin asignar. Añádelo al disco desde Inventario o imprime su etiqueta interna.",
+        );
+      return json(p);
+    }
+    if (
+      /^\/api\/admin\/products\/[^/]+\/movements$/.test(path) &&
+      method === "GET"
+    ) {
+      const id = path.split("/")[4];
+      const rows = await env.DB.prepare(
+        "SELECT m.id,m.delta,m.reason,m.created_at,o.code AS order_code FROM stock_movements m LEFT JOIN orders o ON o.id=m.order_id WHERE m.product_id=? ORDER BY m.id DESC LIMIT 40",
+      )
+        .bind(id)
+        .all();
+      return json({ movements: rows.results });
+    }
     if (path === "/api/admin/products" && method === "POST") {
       const b = await body(req),
         artist = text(b.artist, 200),
@@ -749,6 +858,7 @@ async function api(req: Request, env: AppEnv, ctx: ExecutionContext) {
       const price = int(b.price, 1, 20000000),
         stock = int(b.stock, 0, 100000),
         image = text(b.image, 1000);
+      const retail = retailBarcode(b.retail_barcode);
       if (
         image &&
         !image.startsWith("/api/images/") &&
@@ -759,31 +869,40 @@ async function api(req: Request, env: AppEnv, ctx: ExecutionContext) {
           400,
           "Usa una imagen de la tienda o una URL HTTPS.",
         );
-      await env.DB.batch([
-        env.DB.prepare(
-          "INSERT INTO products(id,slug,artist,title,format,content,language,category,price,stock,image,description,featured,active,search_text,source) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
-        ).bind(
-          id,
-          slug,
-          artist,
-          title,
-          format,
-          text(b.content, 40) || "1 " + format.toUpperCase(),
-          language,
-          text(b.category, 60) || "Internacional",
-          price,
-          stock,
-          image,
-          text(b.description, 2000),
-          b.featured ? 1 : 0,
-          b.active === false ? 0 : 1,
-          normal(artist + " " + title),
-          "Añadido desde administración",
-        ),
-        env.DB.prepare(
-          "INSERT INTO stock_movements(product_id,delta,reason) VALUES(?,?,?)",
-        ).bind(id, stock, "Ingreso de producto"),
-      ]);
+      try {
+        await env.DB.batch([
+          env.DB.prepare(
+            "INSERT INTO products(id,slug,artist,title,format,content,language,category,price,stock,image,description,featured,active,search_text,source) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+          ).bind(
+            id,
+            slug,
+            artist,
+            title,
+            format,
+            text(b.content, 40) || "1 " + format.toUpperCase(),
+            language,
+            text(b.category, 60) || "Internacional",
+            price,
+            stock,
+            image,
+            text(b.description, 2000),
+            b.featured ? 1 : 0,
+            b.active === false ? 0 : 1,
+            normal(artist + " " + title),
+            "Añadido desde administración",
+          ),
+          env.DB.prepare(
+            "INSERT INTO stock_movements(product_id,delta,reason) VALUES(?,?,?)",
+          ).bind(id, stock, "Ingreso de producto"),
+          env.DB.prepare(
+            "INSERT INTO product_barcodes(code,product_id,kind) SELECT ?,?,'retail' WHERE ?<>''",
+          ).bind(retail, id, retail),
+        ]);
+      } catch (e) {
+        if (e instanceof Error && e.message.includes("product_barcodes.code"))
+          throw new HttpError(409, "Ese código ya está asignado a otro disco.");
+        throw e;
+      }
       return json({ id, slug }, 201);
     }
     if (path.startsWith("/api/admin/products/") && method === "PATCH")
@@ -802,7 +921,7 @@ async function api(req: Request, env: AppEnv, ctx: ExecutionContext) {
         args.push(likePattern(q), likePattern(q));
       }
       const rows = await env.DB.prepare(
-        "SELECT id,code,customer_name,delivery,subtotal,shipping_cost,status,payment_status,created_at,expires_at FROM orders WHERE " +
+        "SELECT id,code,channel,customer_name,delivery,subtotal,shipping_cost,status,payment_status,created_at,expires_at FROM orders WHERE " +
           clauses.join(" AND ") +
           " ORDER BY created_at DESC LIMIT 100",
       )
@@ -913,6 +1032,8 @@ async function api(req: Request, env: AppEnv, ctx: ExecutionContext) {
               "featured",
               "active",
               "version",
+              "barcode",
+              "retail_barcode",
             ]
           : [
               "code",
@@ -930,7 +1051,15 @@ async function api(req: Request, env: AppEnv, ctx: ExecutionContext) {
             ];
       const rows = await env.DB.prepare(
         "SELECT " +
-          cols.join(",") +
+          cols
+            .map((col) =>
+              col === "barcode"
+                ? "(SELECT code FROM product_barcodes WHERE product_id=products.id AND kind='internal') AS barcode"
+                : col === "retail_barcode"
+                  ? "(SELECT code FROM product_barcodes WHERE product_id=products.id AND kind='retail') AS retail_barcode"
+                  : col,
+            )
+            .join(",") +
           " FROM " +
           kind +
           " ORDER BY " +

@@ -571,11 +571,10 @@ function Home({
     <>
       <section className="hero">
         <div className="hero-copy">
-          <p className="eyebrow">Tienda de discos · Concepción</p>
           <h1>
             VINILOS
             <br />
-            <span>Y CDs.</span>
+            <span>Y CDs</span>
           </h1>
           <p className="hero-description">Rock, metal y música chilena.</p>
           <a
@@ -586,23 +585,8 @@ function Home({
             Explorar catálogo
             <ArrowRight size={19} />
           </a>
-          <p className="hero-count">
-            {stats
-              ? stats.available.toLocaleString("es-CL") + " títulos disponibles"
-              : ""}
-          </p>
         </div>
         <div className="spotlight" aria-label="Discos destacados">
-          <div className="spotlight-top">
-            <span className="eyebrow">En la batea</span>
-            <span className="spotlight-number">
-              {String((selected % (spotlights.length || 1)) + 1).padStart(
-                2,
-                "0",
-              )}
-              <span> / {String(spotlights.length || 3).padStart(2, "0")}</span>
-            </span>
-          </div>
           {spotlight ? (
             <a
               href={"/disco/" + spotlight.slug}
@@ -673,7 +657,7 @@ function Home({
       </section>
       <section className="section featured-section">
         <div className="section-head">
-          <h2>Una selección de la batea</h2>
+          <h2>Discos destacados</h2>
           <a
             href="/tienda"
             className="text-link"
@@ -735,7 +719,6 @@ function Home({
           className="browse-tile"
         >
           <div>
-            <span className="eyebrow">Internacional</span>
             <h2>Rock & metal</h2>
             <span className="text-link">
               Explorar
@@ -756,7 +739,6 @@ function Home({
           className="browse-tile"
         >
           <div>
-            <span className="eyebrow">Música de acá</span>
             <h2>Rock chileno</h2>
             <span className="text-link">
               Explorar
@@ -776,7 +758,7 @@ function Home({
       <div className="request-line">
         <span>¿Buscas un disco que no aparece?</span>
         <button className="text-link" onClick={onRequest}>
-          Déjanos tu búsqueda
+          Solicitar un disco
           <ArrowUpRight size={16} />
         </button>
       </div>
@@ -1964,7 +1946,7 @@ function StoreVisit({ cfg }: { cfg: StoreSettings }) {
       <div className="visit-contact">
         <Instagram size={20} />
         <div>
-          <h3>Hablemos de discos</h3>
+          <h3>Contacto</h3>
           <External href={cfg.instagram}>@elrinconcitodelrock</External>
           {cfg.shippingEnabled && (
             <p>
@@ -2060,7 +2042,7 @@ function RequestForm() {
     }
   }
   return sent ? (
-    <Empty title="Queda anotado en nuestra lista.">
+    <Empty title="Solicitud enviada">
       <Check size={25} />
       <p>
         Recibimos tu búsqueda. Si podemos encontrar ese disco, te contactaremos

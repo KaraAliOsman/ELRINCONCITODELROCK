@@ -424,15 +424,123 @@ try {
     200,
   );
   ok("Special disc requests reach the private panel");
+  const scan = (code, admin = true) =>
+    call("/api/admin/barcodes?code=" + encodeURIComponent(code), { admin });
+  assert.equal((await scan("RDR-" + a.id.toUpperCase(), false)).status, 401);
+  assert.equal((await scan("UNKNOWN-CODE")).status, 404);
+  const internal = await scan("rdr-" + a.id);
+  assert.equal(internal.status, 200);
+  assert.equal(internal.value.id, a.id);
+  assert.equal(internal.value.barcode, "RDR-" + a.id.toUpperCase());
+  const existingCode = await scan("RDR-VEN-0509");
+  assert.equal(existingCode.value.id, "ven-0509");
+  ok(
+    "Existing and new products get stable, private, case-insensitive barcodes",
+  );
+  const barA = await product("CODIGO A", 3);
+  const barB = await product("CODIGO B", 3);
+  const makeCode = (offset) => {
+    const digits = String(parseInt(session, 16) * 3 + offset).padStart(11, "0");
+    const sum = [...digits]
+      .reverse()
+      .reduce((n, d, i) => n + Number(d) * (i % 2 === 0 ? 3 : 1), 0);
+    return digits + ((10 - (sum % 10)) % 10);
+  };
+  const retail = makeCode(1);
+  const alternateCode = makeCode(2);
+  const editBarcode = (p, code, extra = {}) =>
+    call("/api/admin/products/" + p.id, {
+      method: "PATCH",
+      admin: true,
+      data: { ...p, retail_barcode: code, ...extra },
+    });
+  assert.equal(
+    (
+      await editBarcode(
+        barA,
+        retail.slice(0, -1) + ((Number(retail.at(-1)) + 1) % 10),
+      )
+    ).status,
+    400,
+  );
+  assert.equal((await editBarcode(barA, 36000291452)).status, 400);
+  assert.equal((await editBarcode(barA, retail)).status, 200);
+  assert.equal((await scan(retail)).value.id, barA.id);
+  assert.equal(
+    (await call("/api/admin/products?q=" + retail, { admin: true })).value
+      .products[0].id,
+    barA.id,
+  );
+  assert.equal((await get(barA.id)).stock, 3);
+  ok("EAN/UPC checksum, leading zero preservation and exact inventory search");
+  const conflict = await editBarcode(barB, retail, { stock: 10, price: 999 });
+  assert.equal(conflict.status, 409);
+  assert.equal((await get(barB.id)).stock, 3);
+  assert.equal((await get(barB.id)).price, barB.price);
+  assert.equal((await scan(retail)).value.id, barA.id);
+  assert.equal((await editBarcode(barA, alternateCode)).status, 409);
+  assert.equal((await scan(retail)).value.id, barA.id);
+  assert.equal((await scan(alternateCode)).status, 404);
+  ok("Duplicate and stale barcode edits roll back stock, price and aliases");
+  const raceCode = alternateCode;
+  const barC = await product("CODIGO C", 2);
+  const codeRace = await Promise.all([
+    editBarcode(barB, raceCode),
+    editBarcode(barC, raceCode),
+  ]);
+  assert.deepEqual(codeRace.map((r) => r.status).sort(), [200, 409]);
+  ok("Concurrent barcode assignment cannot create ambiguous scans");
+  const barFresh = (await scan(retail)).value;
+  assert.equal((await editBarcode(barFresh, "")).status, 200);
+  assert.equal((await scan(retail)).status, 404);
+  assert.equal((await scan(barFresh.barcode)).value.id, barA.id);
+  const createdWithCode = await call("/api/admin/products", {
+    method: "POST",
+    admin: true,
+    data: {
+      artist: "QA " + session,
+      title: "CODIGO REPETIDO",
+      format: "cd",
+      language: "en",
+      price: 1000,
+      stock: 2,
+      retail_barcode: raceCode,
+    },
+  });
+  assert.equal(createdWithCode.status, 409);
+  assert.equal(
+    (await call("/api/admin/products?q=CODIGO%20REPETIDO", { admin: true }))
+      .value.products.length,
+    0,
+  );
+  ok("Retail codes can be unlinked; duplicate creation is atomic");
+  const posKey = crypto.randomUUID();
+  const posPayload = {
+    items: [{ id: barA.id, quantity: 2, expected_price: barA.price }],
+    name: "QA mostrador",
+    notes: "Venta presencial · Medio: Efectivo",
+  };
+  assert.equal(
+    (
+      await call("/api/admin/sales", {
+        method: "POST",
+        admin: true,
+        headers: { "Idempotency-Key": crypto.randomUUID() },
+        data: {
+          ...posPayload,
+          items: [{ id: barA.id, quantity: 1, expected_price: 1 }],
+        },
+      })
+    ).status,
+    409,
+  );
+  assert.equal((await get(barA.id)).stock, 3);
+  ok("Register rejects a stale displayed price before discounting stock");
   const pos = await call("/api/admin/sales", {
     method: "POST",
     admin: true,
-    headers: { "Idempotency-Key": crypto.randomUUID() },
-    data: {
-      items: [{ id: a.id, quantity: 1 }],
-      name: "QA mostrador",
-      notes: "Prueba de pago recibido",
-    },
+    headers: { "Idempotency-Key": posKey },
+    data: posPayload,
   });
   assert.equal(pos.status, 201);
   assert.equal(
@@ -440,7 +548,86 @@ try {
       .status,
     "completed",
   );
+  assert.equal((await get(barA.id)).stock, 1);
+  const posDetail = (
+    await call("/api/admin/orders/" + pos.value.id, { admin: true })
+  ).value;
+  assert.equal(posDetail.channel, "store");
+  assert.equal(posDetail.payment_status, "paid");
+  assert.equal(posDetail.subtotal, barA.price * 2);
+  const retryPos = await call("/api/admin/sales", {
+    method: "POST",
+    admin: true,
+    headers: { "Idempotency-Key": posKey },
+    data: posPayload,
+  });
+  assert.equal(retryPos.value.id, pos.value.id);
+  assert.equal((await get(barA.id)).stock, 1);
   ok("In-store sales update the same inventory");
+  assert.equal(
+    (await change(pos.value.id, { status: "cancelled" })).status,
+    400,
+  );
+  assert.equal(
+    (
+      await change(pos.value.id, {
+        status: "cancelled",
+        payment_status: "refunded",
+      })
+    ).status,
+    200,
+  );
+  assert.equal((await get(barA.id)).stock, 3);
+  assert.equal(
+    (
+      await change(pos.value.id, {
+        status: "cancelled",
+        payment_status: "refunded",
+      })
+    ).status,
+    200,
+  );
+  assert.equal((await get(barA.id)).stock, 3);
+  const movements = (
+    await call("/api/admin/products/" + barA.id + "/movements", { admin: true })
+  ).value.movements;
+  assert.equal(
+    movements.filter((m) => m.reason === "Venta en tienda").length,
+    1,
+  );
+  assert.equal(
+    movements.filter((m) => m.reason === "Anulación de venta").length,
+    1,
+  );
+  assert.equal(
+    (await call("/api/admin/products/" + barA.id + "/movements")).status,
+    401,
+  );
+  ok(
+    "Refund-confirmed store annulment restores stock once with private history",
+  );
+  const last = await product("ULTIMO DISCO WEB Y CAJA", 1);
+  const crossChannel = await Promise.all([
+    reserve(input(last.id)),
+    call("/api/admin/sales", {
+      method: "POST",
+      admin: true,
+      headers: { "Idempotency-Key": crypto.randomUUID() },
+      data: {
+        items: [{ id: last.id, quantity: 1, expected_price: last.price }],
+        name: "QA tienda",
+      },
+    }),
+  ]);
+  assert.deepEqual(crossChannel.map((r) => r.status).sort(), [201, 409]);
+  assert.equal((await get(last.id)).stock, 0);
+  ok("Web checkout and scanner register cannot sell the same last unit");
+  const barcodeCsv = await call("/api/admin/export", { admin: true });
+  assert.ok(
+    barcodeCsv.value.split("\r\n")[0].includes("barcode,retail_barcode"),
+  );
+  assert.ok(barcodeCsv.value.includes(barFresh.barcode));
+  ok("Inventory export includes stable barcode values");
   await call("/api/admin/logout", { method: "POST", data: {}, admin: true });
   cookie = "";
   assert.equal((await call("/api/admin/session", { admin: true })).status, 401);

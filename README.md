@@ -12,7 +12,10 @@ Tienda operativa de vinilos y CDs en Concepción. Diseño propio en blanco y neg
 - Pedidos con retiro o despacho, reserva temporal de inventario y seguimiento privado.
 - Precios calculados en el servidor, stock reservado en una transacción e idempotencia.
 - Administración de productos, imágenes, pedidos, pagos recibidos, entregas y solicitudes de discos.
-- Venta presencial usando el mismo inventario; importación y exportación CSV con protección ante cambios concurrentes.
+- Caja con lector USB/Bluetooth: escaneo de etiquetas Code 128, EAN/UPC vinculados, cantidades y pago verificado.
+- Códigos internos estables para todos los discos, etiquetas A4 o rollo de 60 × 40 mm y exportación de códigos.
+- Inventario compartido entre web y local, historial por disco y anulación de ventas con reembolso y devolución de stock.
+- Importación y exportación CSV con protección ante cambios concurrentes.
 - SEO por producto, sitemap, vistas móvil y escritorio, navegación por teclado y movimiento reducido.
 - Despliegue automático desde `main`, después de compilación y pruebas contra Worker + D1 locales.
 
@@ -69,6 +72,14 @@ Mantener abierto el panel para revisar pedidos; el resumen se actualiza cada 30 
 
 Registrar las ventas presenciales en el panel para que se descuente su stock. Para editar en Excel, exportar el CSV del panel, modificar únicamente `price` y `stock` y conservar `id` y `version`. Una fila que cambió durante la edición se rechaza sin sobrescribir esa venta.
 
+### Lector y etiquetas
+
+En **Inventario**, seleccionar discos y abrir **Etiquetas**. Cada título tiene un código interno estable, compartido por sus ejemplares. Se pueden imprimir hasta 300 etiquetas por lote en A4 (64 × 38 mm, 3 columnas) o rollo de 60 × 40 mm. Usar escala 100 %, sin encabezados ni ajuste a página. El panel también permite vincular el EAN/UPC real desde **Editar**; se valida su dígito de control y se impide asignarlo a dos ediciones. El CSV incluye ambos códigos; se editan desde el panel, no mediante la importación de precios/stock.
+
+Abrir **Caja**, conectar un lector que reconozca Code 128 en modo teclado con sufijo Enter y enfocar **Lector de códigos**. Cada lectura añade una unidad. Revisar el total, el medio de pago y marcar **Pago recibido y verificado**; **Registrar venta** descuenta las unidades y guarda el pedido pagado. Escanear por sí solo no modifica el inventario. Los códigos desconocidos o sin stock se señalan y deben revisarse antes de continuar. El borrador se conserva al recargar la misma pestaña. Un intento con respuesta incierta se reenvía con el mismo identificador para evitar duplicados.
+
+En **Pedidos**, una venta presencial entregada se puede anular tras confirmar el reembolso y la devolución de todos sus discos; el stock se restaura una sola vez. Es una anulación completa, no una devolución parcial. **Editar disco → Movimientos de inventario** muestra ventas, reservas y ajustes.
+
 Exportar regularmente productos y pedidos desde el panel. Para un respaldo técnico completo, usar `wrangler d1 export rinconcito-db --remote --output respaldo.sql`; conservarlo en un lugar privado porque contiene datos de clientes. D1 dispone de Time Travel para recuperación. El respaldo de código no contiene pedidos posteriores al despliegue.
 
 ## Conectar lo pendiente
@@ -81,4 +92,4 @@ El setup oficial de Cloudflare instaló sus skills y registró el servidor MCP. 
 
 ## Validación
 
-24 comprobaciones de integración cubren autorización, origen, precios manipulados, idempotencia, última unidad concurrente, rollback real de `D1.batch`, cancelación, expiración, pagos, despacho, importación CSV, imágenes y ventas presenciales. Compilación TypeScript/Vite, dry-run de Wrangler y verificación pública de rutas, stock, SEO y panel privado. La base de producción se publicó sin fixtures de pruebas.
+33 comprobaciones de integración cubren autorización, origen, precios manipulados, idempotencia, última unidad concurrente entre web y caja, rollback real de `D1.batch`, cancelación, expiración, pagos, despacho, importación CSV, imágenes, códigos duplicados y simultáneos, EAN/UPC, precio desactualizado en caja y anulación de venta. Compilación TypeScript/Vite, dry-run de Wrangler y verificación pública de rutas, stock, SEO y panel privado. La base de producción se publica sin fixtures de pruebas. Lector e impresora físicos requieren una prueba de etiqueta en el local; el flujo de teclado se verificó en navegador y los códigos mediante decodificación digital independiente.
