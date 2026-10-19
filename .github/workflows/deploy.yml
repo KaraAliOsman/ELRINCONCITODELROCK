@@ -20,9 +20,11 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+      - run: npm run verify:artwork
       - run: npx wrangler deploy --dry-run
       - run: npx wrangler d1 migrations apply rinconcito-db --local
       - run: npx wrangler d1 execute rinconcito-db --local --file data/seed.sql > /tmp/rinconcito-seed.log
+      - run: npx wrangler d1 execute rinconcito-db --local --file data/artwork-update.sql > /tmp/rinconcito-artwork.log
       - run: npm run test:ci
   deploy:
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
@@ -41,3 +43,5 @@ jobs:
       - run: npm run build
       - run: npx wrangler d1 migrations apply rinconcito-db --remote
       - run: npx wrangler deploy
+      - name: Apply verified product cover references
+        run: node scripts/apply-artwork-update.mjs

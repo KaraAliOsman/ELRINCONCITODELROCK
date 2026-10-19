@@ -9,4 +9,11 @@ dist/
 test-results/
 data/catalogue-source.json
 data/artwork-cache.json
+data/artwork-apple-live-cache.json
+data/artwork-alias-unmatched.json
+data/artwork-musicbrainz-cache.json
+data/artwork-discogs-cache.json
+data/artwork-discogs-results.json
+data/artwork-deezer-cache.json
+data/artwork-deezer-*-cache.json
 data/local-initial-polish.sql

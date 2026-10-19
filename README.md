@@ -17,7 +17,7 @@ Tienda operativa de vinilos y CDs en Concepción. Diseño propio en blanco y neg
 - Inventario compartido entre web y local, historial por disco y anulación de ventas con reembolso y devolución de stock.
 - Importación y exportación CSV con protección ante cambios concurrentes.
 - SEO por producto, sitemap, vistas móvil y escritorio, navegación por teclado y movimiento reducido.
-- Despliegue automático desde `main`, después de compilación y pruebas contra Worker + D1 locales.
+- Despliegue automático desde `main`, después de compilación y pruebas contra Worker + D1 locales. Después del despliegue se aplican referencias de imagen únicamente a fichas sin foto, sin cambiar existencias ni precios.
 
 El sitio **no cobra online** todavía. Registra reservas y permite confirmar pagos recibidos fuera del sitio. Dominio y proveedor de cobro online quedan por conectar.
 
@@ -29,7 +29,9 @@ Datos verificados en [Instagram oficial](https://www.instagram.com/elrinconcitod
 
 Instagram es el contacto vigente verificado. El negocio anuncia entregas locales y envíos a Chile. No se publicaron teléfonos antiguos, courier, plazos ni tarifas sin verificar. El despacho se cotiza antes del pago. La duración inicial de reserva de 24 horas es configurable desde administración.
 
-Las 467 imágenes de productos son carátulas **de referencia**, nunca una afirmación sobre la edición o condición del ejemplar. Los otros títulos muestran un marcador sin foto. Ver [créditos](public/assets/CREDITS.md) y [fuentes de carátulas](data/artwork-credits.json). La tienda puede sustituirlas por fotos de sus ejemplares desde el panel.
+Cada ficha del catálogo tiene imagen: una carátula **de referencia** cuando la coincidencia está verificada, o una ilustración original identificada como ilustrativa cuando no se encuentra una portada fiable. Las imágenes no afirman la edición ni la condición del ejemplar; la tienda puede sustituirlas por fotos propias desde el panel. Ver [créditos](public/assets/CREDITS.md) y [fuentes de carátulas](data/artwork-credits.json).
+
+Para ampliar portadas, `npm run covers:refresh` busca en Apple/iTunes, Deezer, MusicBrainz/Cover Art Archive y Discogs. Primero exige coincidencias de artista y título; después permite variantes verificables, abreviaciones inequívocas y errores tipográficos cortos. Si no se encuentra una portada oficial, cada álbum recibe una ilustración local única etiquetada como ilustrativa; nunca se presenta como la portada original. Revisa `data/artwork-unmatched.json` para consultar qué discos siguen sin una portada oficial verificable. Al publicar por `main`, el flujo verifica que los archivos existan en `dist` y actualiza en D1 solo imágenes vacías o ilustraciones anteriores, conservando las fotos propias del negocio.
 
 ## Desarrollo
 

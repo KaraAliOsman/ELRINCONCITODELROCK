@@ -105,7 +105,7 @@ export function Cover({ p, eager = false }: { p: Product; eager?: boolean }) {
     <img
       className="cover-image"
       src={p.image}
-      alt={`Carátula de referencia de ${displayTitle(p.title)} — ${displayTitle(p.artist)}`}
+      alt={`${p.image.includes("/illustrative-") ? "Ilustración de catálogo para" : "Carátula de referencia de"} ${displayTitle(p.title)} — ${displayTitle(p.artist)}`}
       loading={eager ? "eager" : "lazy"}
       decoding="async"
       width="600"

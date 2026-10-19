@@ -1,0 +1,130 @@
+[
+  {
+    "inventoryArtist": "KORN",
+    "catalogArtist": "KoЯn",
+    "evidenceAlbums": ["Issues", "Follow the Leader", "Requiem"]
+  },
+  {
+    "inventoryArtist": "RED HOT CHILLI PEPERS",
+    "catalogArtist": "Red Hot Chili Peppers",
+    "evidenceAlbums": ["The Getaway", "Californication", "By the Way"]
+  },
+  {
+    "inventoryArtist": "KENDRID LAMAR",
+    "catalogArtist": "Kendrick Lamar",
+    "evidenceAlbums": ["GNX", "DAMN.", "To Pimp a Butterfly"]
+  },
+  {
+    "inventoryArtist": "MARRILION",
+    "catalogArtist": "Marillion",
+    "evidenceAlbums": ["Holidays in Eden", "Afraid of Sunlight", "Clutching at Straws"]
+  },
+  {
+    "inventoryArtist": "REDHOTCHILIPEPERS",
+    "catalogArtist": "Red Hot Chili Peppers",
+    "evidenceAlbums": ["Unlimited Love", "Californication", "By the Way"]
+  },
+  {
+    "inventoryArtist": "FRANK ZAPPAS",
+    "catalogArtist": "Frank Zappa",
+    "evidenceAlbums": ["The Grand Wazoo", "Absolutely Free", "Roxy & Elsewhere"]
+  },
+  {
+    "inventoryArtist": "ALEX ANDWANTE",
+    "catalogArtist": "Alex Anwandter",
+    "evidenceAlbums": ["El diablo en el cuerpo", "Dime Precioso", "Rebeldes"]
+  },
+  {
+    "inventoryArtist": "LA POLLA RECORS",
+    "catalogArtist": "La Polla Records",
+    "evidenceAlbums": ["No Somos Nada", "Revolución", "Salve"]
+  },
+  {
+    "inventoryArtist": "TWENTY ONE PILOT",
+    "catalogArtist": "Twenty One Pilots",
+    "evidenceAlbums": ["Breach", "Clancy", "Vessel"]
+  },
+  {
+    "inventoryArtist": "LOS FABULOSOS CADILLAS",
+    "catalogArtist": "Los Fabulosos Cadillacs",
+    "evidenceAlbums": ["Rey Azúcar", "El León", "Vasos Vacíos"]
+  },
+  {
+    "inventoryArtist": "MIRIAN HERNANDEZ",
+    "catalogArtist": "Myriam Hernández",
+    "evidenceAlbums": ["Grandes Éxitos en Vivo", "Tauro", "Sinergia"]
+  },
+  {
+    "inventoryArtist": "LOS FABULOSOS CADILLAC",
+    "catalogArtist": "Los Fabulosos Cadillacs",
+    "evidenceAlbums": ["El León", "La Salvación de Solo y Juan", "Bares y Fondas"]
+  },
+  {
+    "inventoryArtist": "INMOLATION",
+    "catalogArtist": "Immolation",
+    "evidenceAlbums": ["Harnessing Ruin", "Dawn of Possession", "Shadows in the Light"]
+  },
+  {
+    "inventoryArtist": "CHARLIE GARCIA",
+    "catalogArtist": "Charly García",
+    "evidenceAlbums": ["El Aguante", "La Lógica del Escorpión"]
+  },
+  {
+    "inventoryArtist": "CHAYANE",
+    "catalogArtist": "Chayanne",
+    "evidenceAlbums": ["Bailemos Otra Vez", "Atado a Tu Amor"]
+  },
+  {
+    "inventoryArtist": "CAFÉ TACUVA",
+    "catalogArtist": "Café Tacvba",
+    "evidenceAlbums": ["Re", "Avalancha de Éxitos"]
+  },
+  {
+    "inventoryArtist": "JHON COLTRANE",
+    "catalogArtist": "John Coltrane",
+    "evidenceAlbums": ["Giant Steps", "My Favorite Things"]
+  },
+  {
+    "inventoryArtist": "ROLLING STONE",
+    "catalogArtist": "The Rolling Stones",
+    "evidenceAlbums": ["Out of Our Heads", "Blue & Lonesome"]
+  },
+  {
+    "inventoryArtist": "BUMBURY",
+    "catalogArtist": "Bunbury",
+    "evidenceAlbums": ["California Live", "Palosanto"]
+  },
+  {
+    "inventoryArtist": "JORGE GONZALES",
+    "catalogArtist": "Jorge González",
+    "evidenceAlbums": ["Nada es para siempre", "Corazones (En Vivo)"]
+  },
+  {
+    "inventoryArtist": "APOCALIPTICA",
+    "catalogArtist": "Apocalyptica",
+    "evidenceAlbums": ["Inquisition Symphony", "Plays Metallica (Vol. 2)"]
+  },
+  {
+    "inventoryArtist": "ANTRAX",
+    "catalogArtist": "Anthrax",
+    "evidenceAlbums": ["Spreading the Disease", "For All Kings"]
+  },
+  {
+    "inventoryArtist": "ANIMAL",
+    "catalogArtist": "A.N.I.M.A.L.",
+    "evidenceAlbums": [
+      "El Nuevo Camino del Hombre",
+      "Poder Latino",
+      "Vivo en Red House"
+    ]
+  },
+  {
+    "inventoryArtist": "A-AH",
+    "catalogArtist": "a-ha",
+    "evidenceAlbums": [
+      "Time and Again: The Ultimate",
+      "Cast in Steel",
+      "The Singles: 1984-2004"
+    ]
+  }
+]

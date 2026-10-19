@@ -4,7 +4,7 @@ Composición, diseño y representación decorativa de un vinilo en CSS creados p
 
 Logo oficial: perfil público de [El Rinconcito del Rock en Instagram](https://www.instagram.com/elrinconcitodelrock/), aportado como referencia comercial por el usuario.
 
-71 coincidencias de artista y álbum se recuperaron del demo aportado por el usuario. Otras 396 coincidencias exactas se consultaron en Apple/iTunes; detalle en `data/artwork-credits.json`. Las carátulas conservan los derechos de sus respectivos titulares. Son referencias del álbum, no fotografías del ejemplar ni licencias transferidas a la tienda. Los productos sin carátula verificada muestran un marcador de imagen no disponible.
+Las carátulas encontradas en el demo se conservaron. Las referencias nuevas provienen de Apple/iTunes, Deezer, MusicBrainz/Cover Art Archive y Discogs; cada ficha registra su fuente en `data/artwork-credits.json`. Las portadas son referencias del álbum, no fotografías del ejemplar físico ni licencias transferidas a la tienda. Cuando no hay una portada oficial inequívoca, se usa una ilustración original única, marcada como ilustrativa y no como portada del disco. La lista de títulos sin portada oficial verificable está en `data/artwork-unmatched.json`.
 
 Fuentes: Figtree y Barlow Condensed, distribuidas mediante Google Fonts bajo sus licencias abiertas. Iconos: Lucide, licencia ISC.
 
