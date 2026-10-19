@@ -14,7 +14,7 @@
     "db:migrate": "wrangler d1 migrations apply rinconcito-db --remote",
     "db:seed:local": "wrangler d1 execute rinconcito-db --local --file data/seed.sql && wrangler d1 execute rinconcito-db --local --file data/artwork-update.sql",
     "db:seed": "wrangler d1 execute rinconcito-db --remote --file data/seed.sql",
-    "covers:refresh": "node scripts/clear-illustrative-artwork.mjs && node scripts/enrich-covers.mjs && node scripts/apply-cover-edition-aliases.mjs && node scripts/enrich-covers-musicbrainz.mjs && node scripts/search-discogs-covers.mjs && node scripts/apply-discogs-covers.mjs && node scripts/fill-missing-artwork.mjs && node scripts/optimize-cover-assets.mjs",
+    "covers:refresh": "node scripts/clear-illustrative-artwork.mjs && node scripts/enrich-covers.mjs && node scripts/apply-cover-edition-aliases.mjs && node scripts/enrich-covers-musicbrainz.mjs && node scripts/search-discogs-covers.mjs && node scripts/apply-discogs-covers.mjs && node scripts/apply-cached-cover-spelling-matches.mjs && node scripts/fill-missing-artwork.mjs && node scripts/optimize-cover-assets.mjs",
     "verify:artwork": "node scripts/verify-artwork.mjs",
     "test": "node scripts/test-store.mjs",
     "test:ci": "node scripts/ci-verify.mjs"
