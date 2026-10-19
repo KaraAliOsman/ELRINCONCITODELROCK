@@ -1122,7 +1122,8 @@ footer {
   font-size: 12px;
 }
 .sort-control select {
-  background: transparent;
+  background: var(--surface);
+  color: var(--ink);
   min-height: 44px;
   width: auto;
   max-width: 240px;
@@ -1130,6 +1131,11 @@ footer {
   margin-top: 0;
   font-size: 13px;
   padding-left: 3px;
+}
+.storefront select option,
+.storefront select optgroup {
+  background: var(--surface);
+  color: var(--ink);
 }
 .filter-panel {
   display: grid;
