@@ -139,6 +139,6 @@ await fs.writeFile(`${sourcePath}.tmp`, JSON.stringify(products, null, 2) + "\n"
 await fs.rename(`${sourcePath}.tmp`, sourcePath);
 await fs.writeFile(`${creditsPath}.tmp`, JSON.stringify(credits, null, 2) + "\n");
 await fs.rename(`${creditsPath}.tmp`, creditsPath);
-const sql = products.filter((product) => product.image).map((product) => `UPDATE products SET image='${product.image}' WHERE id='${product.id}' AND (image='' OR image LIKE '/assets/covers/illustrative-%');`);
+const sql = products.filter((product) => product.image).map((product) => `UPDATE products SET image='${product.image}' WHERE id='${product.id}' AND (image='' OR image LIKE '/assets/covers/illustrative-%' OR image LIKE 'https://%' OR image LIKE 'http://%');`);
 await fs.writeFile("data/artwork-update.sql", sql.join("\n") + "\n");
 console.log(`Ilustraciones únicas generadas: ${groups.size} álbumes · ${productsFilled} fichas sin portada oficial previa.`);

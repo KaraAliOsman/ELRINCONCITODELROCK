@@ -13,7 +13,7 @@ const statements = source
   .map((statement) => statement.trim())
   .filter(Boolean);
 const safeImageUpdate =
-  /^UPDATE products SET image='(?:[^']|'')*' WHERE id='(?:[^']|'')*' AND (?:image=''|\(image='' OR image LIKE '\/assets\/covers\/illustrative-%'\))$/;
+  /^UPDATE products SET image='(?:[^']|'')*' WHERE id='(?:[^']|'')*' AND \(image='' OR image LIKE '\/assets\/covers\/illustrative-%' OR image LIKE 'https:\/\/%' OR image LIKE 'http:\/\/%'\)$/;
 for (const statement of statements) {
   if (!safeImageUpdate.test(statement))
     throw new Error(

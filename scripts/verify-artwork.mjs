@@ -17,7 +17,7 @@ const failures = [];
 
 for (const statement of updates) {
   const match = statement.match(
-    /^UPDATE products SET image='([^']+)' WHERE id='([^']+)' AND \(image='' OR image LIKE '\/assets\/covers\/illustrative-%'\)$/,
+    /^UPDATE products SET image='([^']+)' WHERE id='([^']+)' AND \(image='' OR image LIKE '\/assets\/covers\/illustrative-%' OR image LIKE 'https:\/\/%' OR image LIKE 'http:\/\/%'\)$/,
   );
   if (!match) {
     failures.push("SQL contiene una instrucción que no es una actualización segura de imágenes");
