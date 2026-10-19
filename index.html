@@ -8,6 +8,68 @@
     />
     <meta name="theme-color" content="#111112" />
     <title>El Rinconcito del Rock</title>
+    <!-- Keep the first paint styled even before the app stylesheet arrives. -->
+    <style>
+      html {
+        background: #101011;
+      }
+      body {
+        margin: 0;
+      }
+      .ssr-home {
+        box-sizing: border-box;
+        display: flex;
+        min-height: 100vh;
+        min-height: 100svh;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 32px 24px;
+        background: #101011;
+        color: #f4f4f1;
+        font:
+          14px/1.6 Arial,
+          sans-serif;
+        text-align: center;
+        -webkit-font-smoothing: antialiased;
+      }
+      .ssr-home > img {
+        display: block;
+        width: 82px;
+        height: 82px;
+        margin-bottom: 24px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      .ssr-home h1 {
+        margin: 0 0 8px;
+        font:
+          600 20px/1.3 Arial,
+          sans-serif;
+        letter-spacing: -0.025em;
+      }
+      .ssr-home p {
+        max-width: 360px;
+        margin: 0;
+        color: #a6a6ac;
+      }
+      .no-script a {
+        color: inherit;
+        text-underline-offset: 4px;
+      }
+      .ssr-product {
+        max-width: 480px;
+        margin-top: 32px;
+      }
+      .no-script {
+        padding: 20px 24px;
+        color: #a6a6ac;
+        font:
+          14px/1.6 Arial,
+          sans-serif;
+        text-align: center;
+      }
+    </style>
     <!--seo-->
     <!--robots-->
     <link rel="icon" type="image/jpeg" href="/assets/logo.jpg" />
@@ -29,15 +91,20 @@
   <body>
     <div id="root">
       <main class="ssr-home">
+        <img src="/assets/logo.jpg" alt="" width="82" height="82" />
         <h1>El Rinconcito del Rock</h1>
         <p>Vinilos y CDs en Freire 1119, Concepción. Envíos a todo Chile.</p>
         <!--ssr-content-->
       </main>
     </div>
-    <noscript
-      >Activa JavaScript para explorar el catálogo y reservar tus
-      discos.</noscript
-    >
+    <noscript>
+      <div class="no-script">
+        Activa JavaScript para explorar el catálogo y reservar tus discos.
+        <a href="https://www.instagram.com/elrinconcitodelrock/"
+          >Contáctanos en Instagram</a
+        >.
+      </div>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
